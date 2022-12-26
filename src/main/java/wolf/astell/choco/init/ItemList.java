@@ -19,9 +19,9 @@ public class ItemList{
 
     public static void init() {
 
-        foodChocolate = new FoodItem("chocolate", 8, 1F, false, true);
-        foodGoldenChocolate = new FoodItem("golden_chocolate", 19, 1F, false, true);
-        foodEnchantedChocolate = new FoodItem("enchanted_chocolate", 2560, 1F, false, true);
+        foodChocolate = new IsFood("chocolate", 8, 1F, false, true);
+        foodGoldenChocolate = new IsFood("golden_chocolate", 19, 1F, false, true);
+        foodEnchantedChocolate = new IsFood("enchanted_chocolate", 2560, 1F, false, true);
 
         baubleChocolate = new BaubleChocolate("bauble_chocolate");
         airChocolate = new AirChocolate("air_chocolate");

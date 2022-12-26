@@ -2,12 +2,12 @@ package wolf.astell.choco.itemtool;
 
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.Main;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -15,26 +15,26 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class FoodItem extends ItemFood {
+import javax.annotation.Nonnull;
+import java.util.Objects;
 
-    private PotionEffect[] effects;
-    private int probability;
-    private ItemStack returnItem;
-    private int maxUseDuration;
+public class IsFood extends ItemFood {
 
-    public FoodItem(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, int probability, ItemStack returnItem, int useDuration, int setMaxStackSize, EnumAction DrinkItem) {
+    private final PotionEffect[] effect;
+    private final int probability;
+    private final ItemStack returnItem;
+    private final int maxUseDuration;
+
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, int probability, ItemStack returnItem, int useDuration, int setMaxStackSize) {
 
         super(food, saturation, wolfFood);
 
         this.setUnlocalizedName(name);
         this.setRegistryName(name);
-
         if (setAlwaysEdible)
             this.setAlwaysEdible();
-
         this.setMaxStackSize(setMaxStackSize);
-
-        this.effects = effects;
+        this.effect = effects;
         this.probability = probability;
         this.returnItem = returnItem;
         this.maxUseDuration = useDuration;
@@ -43,17 +43,18 @@ public class FoodItem extends ItemFood {
         ItemList.ITEM_LIST.add(this);
     }
 
-    public FoodItem(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, ItemStack returnItem, int useDuration, int setMaxStackSize, EnumAction DrinkItem) {
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, ItemStack returnItem, int useDuration, int setMaxStackSize) {
         this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {}, 1, returnItem, useDuration,
-                setMaxStackSize, DrinkItem);
+                setMaxStackSize);
     }
 
-    public FoodItem(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible) {
-        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {}, null, 32, 64, EnumAction.EAT);
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible) {
+        this(name, food, saturation, wolfFood, setAlwaysEdible, null, 32, 64);
     }
 
     @Override
-    public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entity) {
+    @Nonnull
+    public ItemStack onItemUseFinish(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull EntityLivingBase entity) {
 
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
@@ -62,13 +63,13 @@ public class FoodItem extends ItemFood {
                     SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
             player.getFoodStats().addStats(this, stack);
             this.onFoodEaten(stack, world, player);
-            player.addStat(StatList.getObjectUseStats(this));
+            player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));//In case of NPE
 
             if (player instanceof EntityPlayerMP)
                 CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP) player, stack);
         }
 
-        for (PotionEffect effect : effects) {
+        for (PotionEffect effect : effect) {
             if (world.rand.nextInt(probability) == 0) {
                 entity.addPotionEffect(new PotionEffect(effect));
             }
@@ -80,7 +81,7 @@ public class FoodItem extends ItemFood {
     }
 
     @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
+    public int getMaxItemUseDuration(@Nonnull ItemStack stack) {
 
         return maxUseDuration;
     }
