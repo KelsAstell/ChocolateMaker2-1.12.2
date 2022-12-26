@@ -1,4 +1,4 @@
-# ChocolateMaker2-1.12.2
+# Choco Mod
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
 
