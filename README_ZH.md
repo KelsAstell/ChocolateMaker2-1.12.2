@@ -1,6 +1,11 @@
-# 巧克力制造
+# 超级巧克力制造
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
+<a aria-label="GitHub commit activity" href="https://github.com/KelsAstell/ChocolateMaker2-1.12.2/commits/main" title="GitHub commit activity">
+    <img src="https://img.shields.io/github/commit-activity/m/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square"/>
+  </a>
 
 [English](https://github.com/KelsAstell/ChocolateMaker2-1.12.2/blob/master/README.md) / 中文
 
