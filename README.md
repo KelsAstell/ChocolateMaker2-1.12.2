@@ -1,4 +1,4 @@
-# Choco Mod
+# Super Chocolate Maker Mod
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
 <a aria-label="GitHub commit activity" href="https://github.com/KelsAstell/Next/commits/main" title="GitHub commit activity">
