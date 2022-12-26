@@ -1,4 +1,4 @@
-# 超级巧克力制造2-1.12.2
+# 巧克力制造
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
 
