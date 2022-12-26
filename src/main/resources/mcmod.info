@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["Kels_Astell"],
   "credits": "Powered by Chocolate and Love",
-  "logoFile": "assets/choco/textures/item/chocolate.png",
+  "logoFile": "assets/choco/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
