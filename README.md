@@ -1,5 +1,5 @@
 # Super Chocolate Maker Mod
-[logo.png](https://postimg.cc/MnM0JfTw)
+[![logo.png](https://i.postimg.cc/htM2x9RX/logo.png)](https://postimg.cc/MnM0JfTw)
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KelsAstell/ChocolateMaker2-1.12.2?style=flat-square)
 <a aria-label="GitHub commit activity" href="https://github.com/KelsAstell/Next/commits/main" title="GitHub commit activity">
