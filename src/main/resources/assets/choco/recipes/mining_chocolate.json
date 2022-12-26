@@ -3,15 +3,12 @@
   "pattern": [
     "OOO",
     "OWO",
-    "OXO"
+    "OOO"
   ],
   "key": {
     "O": {
       "item": "minecraft:stone",
       "data": 0
-    },
-    "X": {
-      "item": "minecraft:diamond_pickaxe"
     },
     "W": {
       "item": "choco:chocolate"

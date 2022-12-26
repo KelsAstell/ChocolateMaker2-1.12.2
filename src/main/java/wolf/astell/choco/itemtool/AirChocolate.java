@@ -40,7 +40,7 @@ public class AirChocolate extends CloudChoco implements IBauble {
 			Vector3 look = new Vector3(playerSp.getLookVec()).multiply(1, 0, 1).normalize();
 			boolean doGlide = player.isSneaking() && !player.onGround && player.fallDistance >= 2F;
 			if(doGlide) {
-				player.motionY = Math.max(-0.05F, player.motionY);
+				player.motionY = Math.max(0.15F, player.motionY);//It should be OP but haven't test yet
 				float mul = 0.8F;
 				player.motionX = look.x * mul;
 				player.motionZ = look.z * mul;
@@ -61,6 +61,6 @@ public class AirChocolate extends CloudChoco implements IBauble {
 		}
 	}
 	public int getMaxAllowedJumps() {
-		return 4;
+		return 5;
 	}
 }
