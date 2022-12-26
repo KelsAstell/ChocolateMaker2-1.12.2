@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "OWO",
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:gold_nugget"
+    },
+    "W": {
+      "item": "choco:chocolate"
+    }
+  },
+  "result": {
+    "item": "choco:golden_chocolate",
+    "count": 1
+  }
+}

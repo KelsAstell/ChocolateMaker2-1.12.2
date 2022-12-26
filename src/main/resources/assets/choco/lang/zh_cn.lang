@@ -1,0 +1,16 @@
+itemGroup.ProjectChocolate=超级巧克力制造2
+
+item.chocolate.name=巧克力
+item.golden_chocolate.name=金巧克力
+item.enchanted_chocolate.name=附魔金巧克力
+item.enchanted_chocolate.desc=可能暂时还不能发光
+item.air_chocolate.name=空气巧克力
+item.air_chocolate.desc=又轻又可口, 或许可以用来...?
+item.bauble_chocolate.name=翻糖巧克力
+item.bauble_chocolate.desc=硬到掉牙, 或许可以用来...?
+item.mining_chocolate.name=加速先生巧克力
+item.mining_chocolate.desc=今天我就要在这里加速
+item.carrot_chocolate.name=夜视巧克力
+item.carrot_chocolate.desc=健康之选
+item.speed_chocolate.name=迅捷巧克力
+item.speed_chocolate.desc=快如闪电

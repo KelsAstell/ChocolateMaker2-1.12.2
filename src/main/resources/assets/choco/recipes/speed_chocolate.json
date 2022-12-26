@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WOW",
+    "O O",
+    "WOW"
+  ],
+  "key": {
+    "O": {
+      "item": "choco:golden_chocolate"
+    },
+    "W": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "choco:speed_chocolate",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+itemGroup.ProjectChocolate=Super Chocolate Maker 2
+
+item.chocolate.name=Chocolate
+item.golden_chocolate.name=Golden Chocolate
+item.enchanted_chocolate.name=Enchanted Chocolate
+item.enchanted_chocolate.desc=Not likely to be shining.
+item.air_chocolate.name=Air Chocolate
+item.air_chocolate.desc=Looks Soft and Delicious.
+item.bauble_chocolate.name=Fondant Chocolate
+item.bauble_chocolate.desc=So Hard.
+item.mining_chocolate.name=Mining Chocolate
+item.mining_chocolate.desc=Mr.Torchrino
+item.carrot_chocolate.name=Carrot Chocolate
+item.carrot_chocolate.desc=Balanced Diet
+item.speed_chocolate.name=Speed Chocolate
+item.speed_chocolate.desc=Super Fast

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "choco",
+  "name": "ProjectChocolate",
+  "description": "A simple chocolate mod.",
+  "version": "1.0.1",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Kels_Astell"],
+  "credits": "Powered by Chocolate and Love",
+  "logoFile": "assets/choco/textures/item/chocolate.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
