@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.itemtool;
+package wolf.astell.choco.items;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -11,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
-
-import java.util.Objects;
 
 public class SpeedChocolate extends Item implements IBauble {
 

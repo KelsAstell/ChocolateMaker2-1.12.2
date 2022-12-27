@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.itemtool;
+package wolf.astell.choco.items;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -12,9 +12,9 @@ import net.minecraft.potion.PotionEffect;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
 
-public class CarrotChocolate extends Item implements IBauble {
+public class MiningChocolate extends Item implements IBauble {
 
-	public CarrotChocolate(String name) {
+	public MiningChocolate(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
@@ -28,15 +28,22 @@ public class CarrotChocolate extends Item implements IBauble {
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			player.removePotionEffect(MobEffects.NIGHT_VISION);
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, Integer.MAX_VALUE, 1, true, false));
-		}
+			if(!player.isSneaking()) {
+				player.removePotionEffect(MobEffects.HASTE);
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, 2, true, false));
+			}
+			else {
+				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
+				if(effect != null && effect.getAmplifier() == 2)
+					player.removePotionEffect(MobEffects.HASTE);
+				}
+			}
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-		if(effect != null && effect.getAmplifier() == 1)
-			player.removePotionEffect(MobEffects.NIGHT_VISION);
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
+		if(effect != null && effect.getAmplifier() == 2)
+			player.removePotionEffect(MobEffects.HASTE);
 	}
 
 	@Override

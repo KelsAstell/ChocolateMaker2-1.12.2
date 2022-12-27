@@ -1,14 +1,15 @@
 package wolf.astell.choco;
 
-import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.init.ItemRegister;
-import wolf.astell.choco.network.PacketHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ItemRegister;
+import wolf.astell.choco.init.SmeltingList;
+import wolf.astell.choco.network.PacketHandler;
 
 @Mod(modid = Main.MODID, version = Main.VERSION)
 public class Main {
@@ -40,6 +41,7 @@ public class Main {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
+//        GameRegistry.addSmelting(ItemList.foodChocolate, new ItemStack(ItemList.ingotChocolate), 5f);
+        SmeltingList.init();
     }
 }

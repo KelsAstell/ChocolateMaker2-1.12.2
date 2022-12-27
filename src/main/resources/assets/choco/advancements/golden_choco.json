@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "choco:golden_chocolate"
+        },
+        "title": {
+            "translate": "advancement.chocolate.name"
+        },
+        "description": {
+            "translate": "advancement.chocolate.desc"
+        },
+        "frame": "goal"
+    },
+    "parent": "choco:root",
+    "criteria": {
+        "goldenchoco": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "choco:golden_chocolate"
+                    }
+                ]
+            }
+        }
+    }
+}

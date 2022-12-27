@@ -1,5 +1,6 @@
-package wolf.astell.choco.itemtool;
+package wolf.astell.choco.items;
 
+import net.minecraft.init.MobEffects;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.Main;
 
@@ -21,11 +22,10 @@ import java.util.Objects;
 public class IsFood extends ItemFood {
 
     private final PotionEffect[] effect;
-    private final int probability;
     private final ItemStack returnItem;
     private final int maxUseDuration;
 
-    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, int probability, ItemStack returnItem, int useDuration, int setMaxStackSize) {
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, ItemStack returnItem, int useDuration, int setMaxStackSize) {
 
         super(food, saturation, wolfFood);
 
@@ -35,7 +35,6 @@ public class IsFood extends ItemFood {
             this.setAlwaysEdible();
         this.setMaxStackSize(setMaxStackSize);
         this.effect = effects;
-        this.probability = probability;
         this.returnItem = returnItem;
         this.maxUseDuration = useDuration;
         this.setCreativeTab(Main.ProjectChocolate);
@@ -44,12 +43,17 @@ public class IsFood extends ItemFood {
     }
 
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, ItemStack returnItem, int useDuration, int setMaxStackSize) {
-        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {}, 1, returnItem, useDuration,
+        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {}, returnItem, useDuration,
                 setMaxStackSize);
     }
 
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible) {
         this(name, food, saturation, wolfFood, setAlwaysEdible, null, 32, 64);
+    }
+
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, int useDuration) {
+        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {new PotionEffect(MobEffects.ABSORPTION, 90, 3, true, false),new PotionEffect(MobEffects.REGENERATION, 15, 2, true, false),new PotionEffect(MobEffects.RESISTANCE, 15, 2, true, false)}, null, useDuration,
+                64);
     }
 
     @Override
@@ -70,9 +74,7 @@ public class IsFood extends ItemFood {
         }
 
         for (PotionEffect effect : effect) {
-            if (world.rand.nextInt(probability) == 0) {
                 entity.addPotionEffect(new PotionEffect(effect));
-            }
         }
 
 
