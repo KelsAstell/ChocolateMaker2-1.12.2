@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 public class SpeedChocolate extends Item implements IBauble {
 
@@ -31,10 +32,10 @@ public class SpeedChocolate extends Item implements IBauble {
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.SPEED);
-				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, 3, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, ModConfig.POTION_CONF.SPEED_LEVEL - 1, true, false));
 			}
 			else {
-				if(effect != null && effect.getAmplifier() == 3)
+				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
 					player.removePotionEffect(MobEffects.SPEED);
 				}
 			}
@@ -42,7 +43,7 @@ public class SpeedChocolate extends Item implements IBauble {
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
-		if(effect != null && effect.getAmplifier() == 3)
+		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
 			player.removePotionEffect(MobEffects.SPEED);
 	}
 

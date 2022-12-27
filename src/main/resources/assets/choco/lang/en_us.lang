@@ -14,6 +14,19 @@ item.carrot_chocolate.name=Carrot Chocolate
 item.carrot_chocolate.desc=Balanced Diet
 item.speed_chocolate.name=Speed Chocolate
 item.speed_chocolate.desc=Super Fast
+item.ingot_chocolate.name=Chocolate Ingot
+item.chocolate_icecream.name=Chocolate Icecream
+
+choco.PotionConf=Choco Trinkets Potion Settings
+config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
+config.speed_chocolate.potion.name=Speed Chocolate Speeed Effect Level
+config.bauble_chocolate.potion.name=Fondant Chocolate Resistance Effect Level
+choco.TrinketConf=Choco Trinkets Settings
+config.bauble_chocolate.godmode.name=Enable Fondant Chocolate God Mode
+config.air_chocolate.descend.name=Air Chocolate Descend Rate
+config.air_chocolate.maxjump.name=Air Chocolate Max Allowed Jumps
+choco.SpecialConf=DANGER Zone! Edit at your own risk.
+config.chocolate.lazydoge.name=Enable Super Lazy Doge Mode
 
 advancement.chocolate.name=Chocolate
 advancement.chocolate.desc=Craft a Chocolate

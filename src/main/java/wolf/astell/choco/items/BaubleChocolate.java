@@ -4,15 +4,19 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 @EventBusSubscriber
 public class BaubleChocolate extends Item implements IBauble
@@ -37,7 +41,7 @@ public class BaubleChocolate extends Item implements IBauble
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void handleDamage(LivingAttackEvent e)
 	{
-		if(e.getEntityLiving() instanceof EntityPlayer)
+		if(ModConfig.TRINKET_CONF.GODMODE && e.getEntityLiving() instanceof EntityPlayer)
 		{
 			IBaublesItemHandler h = BaublesApi.getBaublesHandler((EntityPlayer) e.getEntityLiving());
 			for(int i : BaubleType.AMULET.getValidSlots())
@@ -49,5 +53,26 @@ public class BaubleChocolate extends Item implements IBauble
 				}
 			}
 		}
+	}
+	@Override
+	public void onWornTick(ItemStack stack, EntityLivingBase player) {
+		IBauble.super.onWornTick(stack, player);
+		if (player instanceof EntityPlayer && !player.world.isRemote) {
+			if(!player.isSneaking()) {
+				player.removePotionEffect(MobEffects.RESISTANCE);
+				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1, true, false));
+			}
+			else {
+				PotionEffect effect = player.getActivePotionEffect(MobEffects.RESISTANCE);
+				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1)
+					player.removePotionEffect(MobEffects.RESISTANCE);
+			}
+		}
+	}
+	@Override
+	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.RESISTANCE);
+		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1)
+			player.removePotionEffect(MobEffects.RESISTANCE);
 	}
 }

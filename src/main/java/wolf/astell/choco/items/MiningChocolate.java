@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 public class MiningChocolate extends Item implements IBauble {
 
@@ -30,11 +31,11 @@ public class MiningChocolate extends Item implements IBauble {
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.HASTE);
-				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, 2, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, ModConfig.POTION_CONF.HASTE_LEVEL - 1, true, false));
 			}
 			else {
 				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-				if(effect != null && effect.getAmplifier() == 2)
+				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
 					player.removePotionEffect(MobEffects.HASTE);
 				}
 			}
@@ -42,7 +43,7 @@ public class MiningChocolate extends Item implements IBauble {
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-		if(effect != null && effect.getAmplifier() == 2)
+		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
 			player.removePotionEffect(MobEffects.HASTE);
 	}
 

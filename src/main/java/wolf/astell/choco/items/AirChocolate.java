@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.Vector3;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 import wolf.astell.choco.network.PacketHandler;
 import wolf.astell.choco.network.PacketJump;
 public class AirChocolate extends CloudChoco implements IBauble {
@@ -40,7 +41,7 @@ public class AirChocolate extends CloudChoco implements IBauble {
 			Vector3 look = new Vector3(playerSp.getLookVec()).multiply(1, 0, 1).normalize();
 			boolean doGlide = player.isSneaking() && !player.onGround && player.fallDistance >= 2F;
 			if(doGlide) {
-				player.motionY = Math.max(-0.05F, player.motionY);
+				player.motionY = Math.max(ModConfig.TRINKET_CONF.DESCEND_RATE, player.motionY);
 				float mul = 0.8F;
 				player.motionX = look.x * mul;
 				player.motionZ = look.z * mul;
@@ -61,6 +62,6 @@ public class AirChocolate extends CloudChoco implements IBauble {
 		}
 	}
 	public int getMaxAllowedJumps() {
-		return 4;
+		return Math.max(ModConfig.TRINKET_CONF.MAX_ALLOWED_JUMPS, 1);//In case of negative value
 	}
 }
