@@ -57,7 +57,7 @@ public class ModConfig {
         @Config.LangKey("config.air_chocolate.descend.name")
         @Config.Comment("Air Chocolate Descend Rate")
         @Config.RequiresWorldRestart
-        public double DESCEND_RATE = -0.15;
+        public double DESCEND_RATE = 0.15;
 
         @Config.LangKey("config.air_chocolate.maxjump.name")
         @Config.Comment("Air Chocolate Max Allowed Jumps")

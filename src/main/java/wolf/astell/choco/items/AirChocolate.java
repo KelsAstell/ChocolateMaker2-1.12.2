@@ -42,7 +42,7 @@ public class AirChocolate extends CloudChoco implements IBauble {
 			boolean doGlide = player.isSneaking() && !player.onGround && player.fallDistance >= 2F;
 			if(doGlide) {
 				player.motionY = Math.max(ModConfig.TRINKET_CONF.DESCEND_RATE, player.motionY);
-				float mul = 0.8F;
+				float mul = 0.7F;
 				player.motionX = look.x * mul;
 				player.motionZ = look.z * mul;
 				player.fallDistance = 2F;

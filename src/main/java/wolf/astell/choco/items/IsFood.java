@@ -52,7 +52,7 @@ public class IsFood extends ItemFood {
     }
 
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, int useDuration) {
-        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {new PotionEffect(MobEffects.ABSORPTION, 90, 3, true, false),new PotionEffect(MobEffects.REGENERATION, 15, 2, true, false),new PotionEffect(MobEffects.RESISTANCE, 15, 2, true, false)}, null, useDuration,
+        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {new PotionEffect(MobEffects.ABSORPTION, 200, 3, true, false),new PotionEffect(MobEffects.REGENERATION, 200, 2, true, false),new PotionEffect(MobEffects.RESISTANCE, 200, 1, true, false)}, null, useDuration,
                 64);
     }
 
