@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "choco:chocolate"
+    },
+    {
+      "item": "choco:chocolate"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:snow"
+    }
+  ],
+  "result": {
+    "item": "choco:chocolate_icecream",
+    "count": 2
+  }
+}

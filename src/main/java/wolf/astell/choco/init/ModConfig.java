@@ -75,6 +75,11 @@ public class ModConfig {
         @Config.RequiresWorldRestart
         public boolean LAZY_DOGE_MODE = false;
 
+        @Config.LangKey("config.chocolate.basehunger.name")
+        @Config.Comment("Set Base Hunger Provided by Chocolate")
+        @Config.RequiresWorldRestart
+        public int BASE_HUNGER = 4;
+
     }
 }
 

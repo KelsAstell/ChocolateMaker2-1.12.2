@@ -27,6 +27,4 @@ config.air_chocolate.descend.name=Air Chocolate Descend Rate
 config.air_chocolate.maxjump.name=Air Chocolate Max Allowed Jumps
 choco.SpecialConf=DANGER Zone! Edit at your own risk.
 config.chocolate.lazydoge.name=Enable Super Lazy Doge Mode
-
-advancement.chocolate.name=Chocolate
-advancement.chocolate.desc=Craft a Chocolate
+config.chocolate.basehunger.name=Set Base Hunger Provided by Chocolate
