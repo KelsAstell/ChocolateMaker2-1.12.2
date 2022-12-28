@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "forge:ore_shaped",
   "pattern": [
     "OOO",
     "OWO",
@@ -10,7 +10,7 @@
       "item": "minecraft:gold_nugget"
     },
     "W": {
-      "item": "choco:chocolate"
+      "type": "forge:ore_dict", "ore": "foodChocolate"
     }
   },
   "result": {

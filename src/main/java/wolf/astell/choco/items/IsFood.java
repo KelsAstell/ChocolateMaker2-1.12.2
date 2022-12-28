@@ -42,7 +42,6 @@ public class IsFood extends ItemFood {
 
         ItemList.ITEM_LIST.add(this);
     }
-
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, ItemStack returnItem, int useDuration, int setMaxStackSize) {
         this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {}, returnItem, useDuration,
                 setMaxStackSize);

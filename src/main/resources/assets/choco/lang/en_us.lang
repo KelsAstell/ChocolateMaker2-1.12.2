@@ -15,6 +15,7 @@ item.carrot_chocolate.desc=Balanced Diet
 item.speed_chocolate.name=Speed Chocolate
 item.speed_chocolate.desc=Super Fast
 item.ingot_chocolate.name=Chocolate Ingot
+item.ingot_chocolate.desc=Hard as Iron
 item.chocolate_icecream.name=Chocolate Icecream
 
 choco.PotionConf=Choco Trinkets Potion Settings

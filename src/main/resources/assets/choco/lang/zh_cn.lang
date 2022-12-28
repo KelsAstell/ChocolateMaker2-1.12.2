@@ -26,4 +26,5 @@ config.bauble_chocolate.godmode.name=启用翻糖巧克力的伤害免疫
 config.air_chocolate.descend.name=Air巧克力滑翔下降速度
 config.air_chocolate.maxjump.name=Air巧克力允许的最大跳跃次数
 choco.SpecialConf=危险区!
-config.chocolate.lazydoge.name=启用超级懒狗模式
+config.chocolate.lazydoge.name=启用超级懒狗模式item.ingot_chocolate.desc=Chocolate Ingot
+config.chocolate.basehunger.name=Set Base Hunger Provided by Chocolate

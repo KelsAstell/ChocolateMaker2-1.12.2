@@ -54,6 +54,7 @@ public class BaubleChocolate extends Item implements IBauble
 			}
 		}
 	}
+
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);

@@ -6,10 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.init.ItemRegister;
-import wolf.astell.choco.init.OreDictList;
-import wolf.astell.choco.init.SmeltingList;
+import wolf.astell.choco.init.*;
 import wolf.astell.choco.network.PacketHandler;
 
 @Mod(modid = Main.MODID, version = Main.VERSION)
@@ -24,14 +21,9 @@ public class Main {
         }
     };
 
-    @Mod.Instance(Main.MODID)
-    public static Main instance;
-
     public Main() {
         MinecraftForge.EVENT_BUS.register(this);
     }
-
-
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -42,7 +34,8 @@ public class Main {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        SmeltingList.init();
-        OreDictList.init();
+        SmeltingRegister.init();
+        OreDictRegister.init();
+        MinecraftForge.EVENT_BUS.register(new LootRegister());
     }
 }

@@ -18,6 +18,8 @@ public class ItemList{
     public static Item carrotChocolate;
     public static Item speedChocolate;
     public static Item ingotChocolate;
+    public static Item pickaxeChocolate;
+
 
     public static void init() {
 
@@ -31,5 +33,6 @@ public class ItemList{
         carrotChocolate = new CarrotChocolate("carrot_chocolate");
         speedChocolate = new SpeedChocolate("speed_chocolate");
         ingotChocolate = new IngotChocolate("ingot_chocolate");
+        pickaxeChocolate = new PickaxeChocolate("pickaxe_chocolate");
     }
 }

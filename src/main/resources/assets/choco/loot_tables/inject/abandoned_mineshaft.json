@@ -1,0 +1,29 @@
+{
+  "__comment": "This table is injected as its own pool into minecraft:chests/abandoned_mineshaft",
+  "pools": [{
+    "name": "main",
+    "rolls": 1,
+    "entries": [
+      {
+        "type": "item",
+        "name": "choco:chocolate",
+        "weight": 35
+      },
+      {
+        "type": "item",
+        "name": "choco:ingot_chocolate",
+        "weight": 35,
+        "functions": [{ "function": "set_count", "count": { "min": 1, "max": 5 } }]
+      },
+      {
+        "type": "item",
+        "name": "choco:golden_chocolate",
+        "weight": 5
+      },
+      {
+        "type": "empty",
+        "weight": 25
+      }
+    ]
+  }]
+}

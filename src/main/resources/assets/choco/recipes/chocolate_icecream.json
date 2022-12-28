@@ -1,11 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "forge:ore_shapeless",
   "ingredients": [
     {
       "item": "choco:golden_chocolate"
     },
     {
-      "item": "choco:chocolate"
+      "type": "forge:ore_dict", "ore": "foodChocolate"
     },
     {
       "item": "minecraft:sugar"
