@@ -17,6 +17,7 @@ item.speed_chocolate.desc=Super Fast
 item.ingot_chocolate.name=Chocolate Ingot
 item.ingot_chocolate.desc=Hard as Iron
 item.chocolate_icecream.name=Chocolate Icecream
+item.pickaxe_chocolate.name=Emowolf A.I.O Pickaxe
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
