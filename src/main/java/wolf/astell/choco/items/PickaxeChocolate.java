@@ -68,7 +68,7 @@ public class PickaxeChocolate extends ItemPickaxe
             worldIn.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             worldIn.playEvent(2001, pos, Block.getStateId(Blocks.GLASS.getDefaultState()));
             worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-            Block.spawnAsEntity(worldIn, pos,new ItemStack(worldIn.getBlockState(pos).getBlock(), 1, worldIn.getBlockState(pos).getBlock().getMetaFromState(worldIn.getBlockState(pos))));
+            Block.spawnAsEntity(worldIn, pos,new ItemStack(Blocks.GLASS));
         }
         return EnumActionResult.SUCCESS;
     }

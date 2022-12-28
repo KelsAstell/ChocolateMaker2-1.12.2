@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "choco:chocolate"
+    },
+    {
+      "item": "choco:chocolate"
+    }
+  ],
+  "result": {
+    "item": "choco:ingot_chocolate",
+    "count": 1
+  }
+}

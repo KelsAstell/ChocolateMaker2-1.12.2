@@ -74,6 +74,8 @@ public class AirChocolate extends CloudChoco implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.air_chocolate.desc"));
+		tooltip.add(I18n.format("item.air_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.air_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.air_chocolate.desc.2"));
 	}
 }

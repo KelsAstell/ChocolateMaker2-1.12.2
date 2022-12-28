@@ -12,7 +12,7 @@ import wolf.astell.choco.network.PacketHandler;
 @Mod(modid = Main.MODID, version = Main.VERSION)
 public class Main {
     public static final String MODID = "choco";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.2";
     public static CreativeTabs ProjectChocolate = new CreativeTabs("ProjectChocolate") {
 
         @Override
@@ -34,8 +34,8 @@ public class Main {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        SmeltingRegister.init();
         OreDictRegister.init();
+        SmeltingRegister.init();
         MinecraftForge.EVENT_BUS.register(new LootRegister());
     }
 }
