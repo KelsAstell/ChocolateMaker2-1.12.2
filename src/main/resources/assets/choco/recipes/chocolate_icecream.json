@@ -2,13 +2,16 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "choco:chocolate"
+      "item": "choco:golden_chocolate"
     },
     {
       "item": "choco:chocolate"
     },
     {
       "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:stick"
     },
     {
       "item": "minecraft:snow"

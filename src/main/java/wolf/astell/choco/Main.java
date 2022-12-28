@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ItemRegister;
+import wolf.astell.choco.init.OreDictList;
 import wolf.astell.choco.init.SmeltingList;
 import wolf.astell.choco.network.PacketHandler;
 
@@ -41,7 +42,7 @@ public class Main {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-//        GameRegistry.addSmelting(ItemList.foodChocolate, new ItemStack(ItemList.ingotChocolate), 5f);
         SmeltingList.init();
+        OreDictList.init();
     }
 }

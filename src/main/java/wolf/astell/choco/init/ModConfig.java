@@ -80,6 +80,12 @@ public class ModConfig {
         @Config.RequiresWorldRestart
         public int BASE_HUNGER = 4;
 
+        @Config.LangKey("config.chocolate.consumespeed.name")
+        @Config.Comment("Set Consume Speed of Chocolate, Base is 32.")
+        @Config.RequiresWorldRestart
+        public int CONSUME_SPEED = 20;
+
     }
+
 }
 

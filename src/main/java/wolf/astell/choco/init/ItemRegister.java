@@ -11,7 +11,7 @@ import wolf.astell.choco.Main;
 @Mod.EventBusSubscriber(modid = Main.MODID)
 public class ItemRegister {
     @SubscribeEvent
-    public static void register(RegistryEvent.Register<Item> event) {
+    public void register(RegistryEvent.Register<Item> event) {
 
         IForgeRegistry<Item> registry = event.getRegistry();
         for (Item object : ItemList.ITEM_LIST)

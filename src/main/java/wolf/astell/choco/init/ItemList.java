@@ -21,9 +21,9 @@ public class ItemList{
 
     public static void init() {
 
-        foodChocolate = new IsFood("chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER, 1F, false, true);
-        foodGoldenChocolate = new IsFood("golden_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 2, 1F, false, true);
-        foodEnchantedChocolate = new IsFood("enchanted_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 9, 1F, false, true);
+        foodChocolate = new IsFood("chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER, 1F, false, true, null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
+        foodGoldenChocolate = new IsFood("golden_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 2, 1F, false, true,null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
+        foodEnchantedChocolate = new IsFood("enchanted_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 5, 1F, false, true,null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
         foodChocolateIcecream = new IsFood("chocolate_icecream", ModConfig.SPECIAL_CONF.BASE_HUNGER, 1F, false, true, 8);
         baubleChocolate = new BaubleChocolate("bauble_chocolate");
         airChocolate = new AirChocolate("air_chocolate");

@@ -1,6 +1,7 @@
 package wolf.astell.choco.items;
 
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.Main;
 
@@ -47,12 +48,12 @@ public class IsFood extends ItemFood {
                 setMaxStackSize);
     }
 
-    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible) {
-        this(name, food, saturation, wolfFood, setAlwaysEdible, null, 32, 64);
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, ItemStack returnItem, int useDuration) {
+        this(name, food, saturation, wolfFood, setAlwaysEdible, returnItem, useDuration, 64);
     }
 
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, int useDuration) {
-        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {new PotionEffect(MobEffects.ABSORPTION, 200, 3, true, false),new PotionEffect(MobEffects.REGENERATION, 200, 2, true, false),new PotionEffect(MobEffects.RESISTANCE, 200, 1, true, false)}, null, useDuration,
+        this(name, food, saturation, wolfFood, setAlwaysEdible, new PotionEffect[] {new PotionEffect(MobEffects.ABSORPTION, 200, 3, true, false),new PotionEffect(MobEffects.REGENERATION, 200, 2, true, false),new PotionEffect(MobEffects.RESISTANCE, 200, 1, true, false)}, new ItemStack(Item.getItemById(281)), useDuration,
                 64);
     }
 
