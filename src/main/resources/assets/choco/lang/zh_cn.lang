@@ -11,11 +11,16 @@ item.bauble_chocolate.desc=硬到掉牙, 或许可以用来...?
 item.mining_chocolate.name=急迫巧克力
 item.mining_chocolate.desc=还不够快!
 item.carrot_chocolate.name=夜视巧克力
-item.carrot_chocolate.desc=健康之选
+item.carrot_chocolate.desc=爱吃胡萝卜的孩子视力不会太差
 item.speed_chocolate.name=加速先生巧克力
-item.speed_chocolate.desc=今天我就要在这里加速
+item.speed_chocolate.desc=今天我就要在这里加速!
 item.ingot_chocolate.name=可可锭
+item.ingot_chocolate.desc.0=看起来依然很棒, 可惜咬不动
+item.ingot_chocolate.desc.1=或许...可以当成铁锭用?
 item.chocolate_icecream.name=生巧冰淇淋
+item.pickaxe_chocolate.name=恶魔狼狼A.I.O工具
+item.pickaxe_chocolate.desc.0=右键点击以拆除玻璃
+item.pickaxe_chocolate.desc.1=&e右键点击以拆除基岩
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -26,5 +31,12 @@ config.bauble_chocolate.godmode.name=启用翻糖巧克力的伤害免疫
 config.air_chocolate.descend.name=Air巧克力滑翔下降速度
 config.air_chocolate.maxjump.name=Air巧克力允许的最大跳跃次数
 choco.SpecialConf=危险区!
-config.chocolate.lazydoge.name=启用超级懒狗模式item.ingot_chocolate.desc=Chocolate Ingot
-config.chocolate.basehunger.name=Set Base Hunger Provided by Chocolate
+config.chocolate.lazydoge.name=启用超级懒狗模式
+config.chocolate.basehunger.name=设置巧克力提供的基础饱和度
+config.chocolate.consumespeed.name=设置巧克力食用速度
+config.chocolate.isChocoIron.name=可可锭 = 铁锭
+choco.ToolConf=恶魔狼狼A.I.O工具
+config.chocolate.tool_level.name=挖掘等级
+config.chocolate.tool_durability.name=耐久度
+config.chocolate.tool_efficiency.name=效率等级
+config.chocolate.tool_enchant_ability.name=附魔等级

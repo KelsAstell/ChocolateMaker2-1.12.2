@@ -7,7 +7,7 @@
   ],
   "key": {
     "O": {
-      "item": "minecraft:gold_nugget"
+      "item": "minecraft:gold_ingot"
     },
     "W": {
       "type": "forge:ore_dict", "ore": "foodChocolate"

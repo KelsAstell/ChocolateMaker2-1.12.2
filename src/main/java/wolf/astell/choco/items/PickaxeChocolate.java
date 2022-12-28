@@ -2,6 +2,8 @@ package wolf.astell.choco.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -17,11 +19,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public class PickaxeChocolate extends ItemPickaxe
 {
@@ -48,7 +53,7 @@ public class PickaxeChocolate extends ItemPickaxe
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if(!worldIn.isRemote && (worldIn.getBlockState(pos).getBlock() == Blocks.BEDROCK)) {
-            if(true) {
+            if(ModConfig.TOOL_CONF.BEDROCK_BREAKER) {
                 worldIn.playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 worldIn.playEvent(2001, pos, Block.getStateId(Blocks.BEDROCK.getDefaultState()));
                 worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
@@ -59,11 +64,27 @@ public class PickaxeChocolate extends ItemPickaxe
                 worldIn.playEvent(2001, pos, Block.getStateId(Blocks.OBSIDIAN.getDefaultState()));
             }
         }
+        if(!worldIn.isRemote && (worldIn.getBlockState(pos).getBlock() == Blocks.GLASS)) {
+            worldIn.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            worldIn.playEvent(2001, pos, Block.getStateId(Blocks.GLASS.getDefaultState()));
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+            Block.spawnAsEntity(worldIn, pos,new ItemStack(worldIn.getBlockState(pos).getBlock(), 1, worldIn.getBlockState(pos).getBlock().getMetaFromState(worldIn.getBlockState(pos))));
+        }
         return EnumActionResult.SUCCESS;
     }
 
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
         return par2ItemStack.getItem() == ItemList.ingotChocolate || super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.0"));
+        if(ModConfig.TOOL_CONF.BEDROCK_BREAKER){
+            tooltip.add(I18n.format("item.pickaxe_chocolate.desc.1"));
+        }
     }
 }

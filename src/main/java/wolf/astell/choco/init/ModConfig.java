@@ -105,7 +105,7 @@ public class ModConfig {
         public int TOOL_DURABILITY = 2560;
 
         @Config.LangKey("config.chocolate.tool_efficiency.name")
-        @Config.Comment("Tool Durability, default 16")
+        @Config.Comment("Tool Efficiency, default 16")
         @Config.RequiresWorldRestart
         public float TOOL_EFFICIENCY = 16.0F;
 
@@ -113,6 +113,11 @@ public class ModConfig {
         @Config.Comment("Tool Enchant Ability, default 22")
         @Config.RequiresWorldRestart
         public int TOOL_ENCHANT_ABILITY = 22;
+
+        @Config.LangKey("config.chocolate.tool_bedrock_break.name")
+        @Config.Comment("Can A.I.O Break Bedrock, default true")
+        @Config.RequiresWorldRestart
+        public boolean BEDROCK_BREAKER = true;
 
     }
 

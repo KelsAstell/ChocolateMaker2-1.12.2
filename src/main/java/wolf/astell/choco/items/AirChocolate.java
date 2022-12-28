@@ -5,8 +5,11 @@ import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
@@ -15,6 +18,9 @@ import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 import wolf.astell.choco.network.PacketHandler;
 import wolf.astell.choco.network.PacketJump;
+
+import java.util.List;
+
 public class AirChocolate extends CloudChoco implements IBauble {
 	private static int timesJumped;
 	private static boolean jumpDown;
@@ -63,5 +69,11 @@ public class AirChocolate extends CloudChoco implements IBauble {
 	}
 	public int getMaxAllowedJumps() {
 		return Math.max(ModConfig.TRINKET_CONF.MAX_ALLOWED_JUMPS, 1);//In case of negative value
+	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add(I18n.format("item.air_chocolate.desc"));
 	}
 }

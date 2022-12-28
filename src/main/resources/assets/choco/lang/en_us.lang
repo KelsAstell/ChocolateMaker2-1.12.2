@@ -15,9 +15,12 @@ item.carrot_chocolate.desc=Balanced Diet
 item.speed_chocolate.name=Speed Chocolate
 item.speed_chocolate.desc=Super Fast
 item.ingot_chocolate.name=Chocolate Ingot
-item.ingot_chocolate.desc=Hard as Iron
+item.ingot_chocolate.desc.0=Looks Good but Not Edible
+item.ingot_chocolate.desc.1=Hard as Iron
 item.chocolate_icecream.name=Chocolate Icecream
 item.pickaxe_chocolate.name=Emowolf A.I.O Pickaxe
+item.pickaxe_chocolate.desc.0=RIGHT Click to remove glass
+item.pickaxe_chocolate.desc.1=&eRIGHT Click to remove bedrock
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -30,3 +33,10 @@ config.air_chocolate.maxjump.name=Air Chocolate Max Allowed Jumps
 choco.SpecialConf=DANGER Zone! Edit at your own risk.
 config.chocolate.lazydoge.name=Enable Super Lazy Doge Mode
 config.chocolate.basehunger.name=Set Base Hunger Provided by Chocolate
+config.chocolate.consumespeed.name=Set Consume Speed of Chocolate
+config.chocolate.isChocoIron.name=Chocolate Ingot = Iron Ingot
+choco.ToolConf=Edit Chocolate AIO Tool Features Here.
+config.chocolate.tool_level.name=Tool Harvest Level
+config.chocolate.tool_durability.name=Tool Durability
+config.chocolate.tool_efficiency.name=Tool Efficiency
+config.chocolate.tool_enchant_ability.name=Tool Enchant Ability

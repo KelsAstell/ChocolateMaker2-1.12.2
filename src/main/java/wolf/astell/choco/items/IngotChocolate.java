@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
@@ -26,10 +27,14 @@ public class IngotChocolate extends Item
 
 		ItemList.ITEM_LIST.add(this);
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.ingot_chocolate.desc"));
+		if(ModConfig.SPECIAL_CONF.CHOCO_IRON){
+			tooltip.add(I18n.format("item.ingot_chocolate.desc.1"));
+		}
+		tooltip.add(I18n.format("item.ingot_chocolate.desc.0"));
 	}
 }
