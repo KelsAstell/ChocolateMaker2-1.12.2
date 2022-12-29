@@ -1,0 +1,24 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "choco:golden_chocolate"
+    },
+    {
+      "type": "forge:ore_dict", "ore": "foodChocolate"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "minecraft:snow"
+    }
+  ],
+  "result": {
+    "item": "choco:chocolate_icecream",
+    "count": 2
+  }
+}
