@@ -75,7 +75,7 @@ public class PickaxeChocolate extends ItemPickaxe
             return EnumActionResult.SUCCESS;
         }
         if(player.isSneaking() && ModConfig.TOOL_CONF.TELEPORT_UP) {
-            if(ConfirmTeleport==30){
+            if(ConfirmTeleport==25){
                 player.swingArm(hand);
                 worldIn.playSound(null,pos,SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT,SoundCategory.PLAYERS,1.0F, 1.0F);
                 player.attemptTeleport(player.posX,72,player.posZ);
