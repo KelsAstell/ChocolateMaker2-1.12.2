@@ -28,6 +28,7 @@ item.chocolate_icecream.name=生巧冰淇淋
 item.pickaxe_chocolate.name=恶魔狼狼A.I.O工具
 item.pickaxe_chocolate.desc.0=右键点击以拆除玻璃
 item.pickaxe_chocolate.desc.1=§e右键点击以拆除基岩
+item.hazard_potion.name=加了胡椒粉的热巧克力
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

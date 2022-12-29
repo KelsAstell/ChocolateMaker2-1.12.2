@@ -1,4 +1,4 @@
-package wolf.astell.choco.init;
+package wolf.astell.choco.init.register;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.util.ResourceLocation;

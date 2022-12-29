@@ -28,6 +28,13 @@ item.chocolate_icecream.name=Chocolate Icecream
 item.pickaxe_chocolate.name=Emowolf A.I.O Pickaxe
 item.pickaxe_chocolate.desc.0=RIGHT Click to remove glass
 item.pickaxe_chocolate.desc.1=§eRIGHT Click to remove bedrock
+item.hazard_potion.name=Spicy Hot Chocolate
+item.hazard_potion.desc=Spicy.
+choco.potion.waterCandle=Hazard
+item.chocolate_milk.name=Hot Chocolate Milk
+item.chocolate_milk.desc=Sweet.
+item.animal_potion.name=Hot Chocolate with Egg Yolk
+item.animal_potion.desc=Hot Chocolate with Egg Yolk
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level

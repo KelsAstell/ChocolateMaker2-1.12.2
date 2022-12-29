@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -16,12 +16,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
-public class CarrotChocolate extends Item implements IBauble {
+public class MiningChocolate extends Item implements IBauble {
 
-	public CarrotChocolate(String name) {
+	public MiningChocolate(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
@@ -35,28 +36,34 @@ public class CarrotChocolate extends Item implements IBauble {
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			player.removePotionEffect(MobEffects.NIGHT_VISION);
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));
-		}
+			if(!player.isSneaking()) {
+				player.removePotionEffect(MobEffects.HASTE);
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, ModConfig.POTION_CONF.HASTE_LEVEL - 1, true, false));
+			}
+			else {
+				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
+				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
+					player.removePotionEffect(MobEffects.HASTE);
+				}
+			}
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
-		if(effect != null && effect.getAmplifier() == 0)
-			player.removePotionEffect(MobEffects.NIGHT_VISION);
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
+		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
+			player.removePotionEffect(MobEffects.HASTE);
 	}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack arg0) {
 		return BaubleType.TRINKET;
 	}
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.carrot_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.carrot_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.mining_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.mining_chocolate.desc.1"));
 	}
 
 }

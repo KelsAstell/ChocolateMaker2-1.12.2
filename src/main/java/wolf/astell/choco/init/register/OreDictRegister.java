@@ -1,7 +1,9 @@
-package wolf.astell.choco.init;
+package wolf.astell.choco.init.register;
 
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
+import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 public class OreDictRegister {
     public static void init(){

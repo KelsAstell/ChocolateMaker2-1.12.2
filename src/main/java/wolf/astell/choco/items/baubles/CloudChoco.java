@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.baubles;
 
 import baubles.api.IBauble;
 import net.minecraft.entity.EntityLivingBase;

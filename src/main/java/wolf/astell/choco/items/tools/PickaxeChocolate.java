@@ -1,4 +1,4 @@
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.tools;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

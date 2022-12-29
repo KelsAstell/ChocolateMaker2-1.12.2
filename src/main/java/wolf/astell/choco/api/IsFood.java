@@ -1,4 +1,4 @@
-package wolf.astell.choco.items;
+package wolf.astell.choco.api;
 
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;

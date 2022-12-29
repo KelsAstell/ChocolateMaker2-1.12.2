@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -20,9 +20,9 @@ import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
-public class MiningChocolate extends Item implements IBauble {
+public class SpeedChocolate extends Item implements IBauble {
 
-	public MiningChocolate(String name) {
+	public SpeedChocolate(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
@@ -35,35 +35,36 @@ public class MiningChocolate extends Item implements IBauble {
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
 			if(!player.isSneaking()) {
-				player.removePotionEffect(MobEffects.HASTE);
-				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, ModConfig.POTION_CONF.HASTE_LEVEL - 1, true, false));
+				player.removePotionEffect(MobEffects.SPEED);
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, ModConfig.POTION_CONF.SPEED_LEVEL - 1, true, false));
 			}
 			else {
-				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
-					player.removePotionEffect(MobEffects.HASTE);
+				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
+					player.removePotionEffect(MobEffects.SPEED);
 				}
 			}
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
-			player.removePotionEffect(MobEffects.HASTE);
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
+		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
+			player.removePotionEffect(MobEffects.SPEED);
 	}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack arg0) {
 		return BaubleType.TRINKET;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.mining_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.mining_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.speed_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.speed_chocolate.desc.1"));
 	}
 
 }

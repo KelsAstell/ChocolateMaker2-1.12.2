@@ -1,7 +1,16 @@
 package wolf.astell.choco.init;
 
+import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import wolf.astell.choco.api.IsFood;
+import wolf.astell.choco.items.PotionBase;
+import wolf.astell.choco.init.register.EffectRegister;
 import wolf.astell.choco.items.*;
+import wolf.astell.choco.items.baubles.*;
+import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +28,10 @@ public class ItemList{
     public static Item speedChocolate;
     public static Item ingotChocolate;
     public static Item pickaxeChocolate;
+    public static Item hazardPotion;
+    public static Item animalPotion;
+    public static Item beheadingPotion;
+    public static Item travellerPotion;
 
 
     public static void init() {
@@ -34,5 +47,8 @@ public class ItemList{
         speedChocolate = new SpeedChocolate("speed_chocolate");
         ingotChocolate = new IngotChocolate("ingot_chocolate");
         pickaxeChocolate = new PickaxeChocolate("pickaxe_chocolate");
-    }
+        hazardPotion = new PotionBase("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+        animalPotion = new PotionBase("animal_potion", new PotionEffect[] {new PotionEffect(EffectRegister.animalBoost, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+        beheadingPotion = new PotionBase("beheading_potion", new PotionEffect[] {new PotionEffect(EffectRegister.beheading, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+        travellerPotion = new PotionBase("chocolate_milk", new PotionEffect[] {new PotionEffect(MobEffects.NIGHT_VISION, 12000, 0), new PotionEffect(MobEffects.JUMP_BOOST, 12000, 1), new PotionEffect(MobEffects.SPEED, 12000, 0), new PotionEffect(MobEffects.SATURATION, 12000, 0)},new ItemStack(Items.GLASS_BOTTLE));}
 }

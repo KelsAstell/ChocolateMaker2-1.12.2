@@ -1,4 +1,4 @@
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;

@@ -1,4 +1,4 @@
-package wolf.astell.choco.init;
+package wolf.astell.choco.api;
 
 import wolf.astell.choco.Main;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -8,6 +8,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import wolf.astell.choco.init.ItemList;
 
 import java.util.Objects;
 

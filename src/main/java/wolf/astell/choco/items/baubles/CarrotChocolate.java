@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.items;
+package wolf.astell.choco.items.baubles;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
@@ -16,13 +16,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
-public class SpeedChocolate extends Item implements IBauble {
+public class CarrotChocolate extends Item implements IBauble {
 
-	public SpeedChocolate(String name) {
+	public CarrotChocolate(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
@@ -35,23 +34,16 @@ public class SpeedChocolate extends Item implements IBauble {
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			if(!player.isSneaking()) {
-				player.removePotionEffect(MobEffects.SPEED);
-				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, ModConfig.POTION_CONF.SPEED_LEVEL - 1, true, false));
-			}
-			else {
-				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
-					player.removePotionEffect(MobEffects.SPEED);
-				}
-			}
+			player.removePotionEffect(MobEffects.NIGHT_VISION);
+			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));
+		}
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
-		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
-			player.removePotionEffect(MobEffects.SPEED);
+		PotionEffect effect = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
+		if(effect != null && effect.getAmplifier() == 0)
+			player.removePotionEffect(MobEffects.NIGHT_VISION);
 	}
 
 	@Override
@@ -63,8 +55,8 @@ public class SpeedChocolate extends Item implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.speed_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.speed_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.carrot_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.carrot_chocolate.desc.1"));
 	}
 
 }
