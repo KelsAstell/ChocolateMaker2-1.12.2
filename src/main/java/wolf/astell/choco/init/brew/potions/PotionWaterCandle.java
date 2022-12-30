@@ -14,7 +14,7 @@ public class PotionWaterCandle extends PotionMod {
 	private static final int RANGE = 48;
 
 	public PotionWaterCandle() {
-		super("waterCandle", false, 0xC32222, 0);
+		super("waterCandle", false, 0xE5E5E5, 0);
 		MinecraftForge.EVENT_BUS.register(this);
 		setBeneficial();
 	}

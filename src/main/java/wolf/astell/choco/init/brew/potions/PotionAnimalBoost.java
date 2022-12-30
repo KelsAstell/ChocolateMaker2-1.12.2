@@ -15,7 +15,7 @@ public class PotionAnimalBoost extends PotionMod {
 	private static final int RANGE = 128;
 
 	public PotionAnimalBoost() {
-		super("animalBoost", false, 0xC32222, 1);
+		super("animalBoost", false, 0x744300, 1);
 		MinecraftForge.EVENT_BUS.register(this);
 		setBeneficial();
 	}

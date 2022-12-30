@@ -10,9 +10,9 @@ import wolf.astell.choco.Main;
 @Config(modid = Main.MODID, category = "")
 public class ModConfig {
     @Mod.EventBusSubscriber(modid = Main.MODID)
-    private static class EventHandler {
+    public static class ConfigSyncHandler {
         @SubscribeEvent
-        public static void onConfigChanged(final ConfigChangedEvent.OnConfigChangedEvent event) {
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
             if (event.getModID().equals(Main.MODID)) {
                 ConfigManager.sync(Main.MODID, Config.Type.INSTANCE);
             }
@@ -26,17 +26,17 @@ public class ModConfig {
     public static class PotionConf {
         @Config.LangKey("config.mining_chocolate.potion.name")
         @Config.Comment("Mining Chocolate Haste Effect Level, default 2")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int HASTE_LEVEL = 2;
 
         @Config.LangKey("config.speed_chocolate.potion.name")
         @Config.Comment("Speed Chocolate Speeed Effect Level, default 2")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int SPEED_LEVEL = 2;
 
         @Config.LangKey("config.bauble_chocolate.potion.name")
         @Config.Comment("Fondant Chocolate Resistance Effect Level, default 2")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int RESISTANCE_LEVEL = 2;
     }
     @Config.LangKey("choco.TrinketConf")
@@ -47,17 +47,17 @@ public class ModConfig {
 
         @Config.LangKey("config.bauble_chocolate.godmode.name")
         @Config.Comment("Enable Fondant Chocolate God Mode, default true")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public boolean GODMODE = true;
 
         @Config.LangKey("config.air_chocolate.descend.name")
         @Config.Comment("Air Chocolate Ascend Rate, default 0.15")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public double DESCEND_RATE = 0.15;
 
         @Config.LangKey("config.air_chocolate.maxjump.name")
         @Config.Comment("Air Chocolate Max Allowed Jumps, default 5")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int MAX_ALLOWED_JUMPS = 5;
     }
     @Config.LangKey("choco.SpecialConf")
@@ -68,22 +68,22 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.lazydoge.name")
         @Config.Comment("Enable Super Lazy Doge Mode, default false")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public boolean LAZY_DOGE_MODE = false;
 
         @Config.LangKey("config.chocolate.basehunger.name")
         @Config.Comment("Set Base Hunger Provided by Chocolate, default 4")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int BASE_HUNGER = 4;
 
         @Config.LangKey("config.chocolate.consumespeed.name")
         @Config.Comment("Set Consume Speed of Chocolate, default 20")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int CONSUME_SPEED = 20;
 
         @Config.LangKey("config.chocolate.isChocoIron.name")
         @Config.Comment("Chocolate Ingot = Iron Ingot. Default true")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public boolean CHOCO_IRON = true;
 
     }
@@ -96,33 +96,53 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.tool_level.name")
         @Config.Comment("Tool Harvest Level, default 3")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int TOOL_LEVEL = 3;
 
         @Config.LangKey("config.chocolate.tool_durability.name")
         @Config.Comment("Tool Durability, default 2560")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int TOOL_DURABILITY = 2560;
 
         @Config.LangKey("config.chocolate.tool_efficiency.name")
         @Config.Comment("Tool Efficiency, default 16")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public float TOOL_EFFICIENCY = 16.0F;
 
         @Config.LangKey("config.chocolate.tool_enchant_ability.name")
         @Config.Comment("Tool Enchant Ability, default 22")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public int TOOL_ENCHANT_ABILITY = 22;
+
+        @Config.LangKey("config.chocolate.tool_attack_damage.name")
+        @Config.Comment("A.I.O Attack Damage, default 12")
+        @Config.RequiresMcRestart
+        public int TOOL_ATTACK_DAMAGE = 12;
 
         @Config.LangKey("config.chocolate.tool_bedrock_break.name")
         @Config.Comment("Can A.I.O Break Bedrock, default true")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public boolean BEDROCK_BREAKER = true;
 
         @Config.LangKey("config.chocolate.tool_teleport.name")
         @Config.Comment("Can A.I.O Teleport UP, default true")
-        @Config.RequiresWorldRestart
+        @Config.RequiresMcRestart
         public boolean TELEPORT_UP = true;
+
+        @Config.LangKey("config.chocolate.tool_time_change.name")
+        @Config.Comment("Can A.I.O Change World Time, default true")
+        @Config.RequiresMcRestart
+        public boolean TSOT = true;//The Sand of Time
+
+        @Config.LangKey("config.chocolate.tool_beheading.name")
+        @Config.Comment("Can A.I.O Loot Mob Heads, default true")
+        @Config.RequiresMcRestart
+        public boolean BEHEADING = true;
+
+        @Config.LangKey("config.chocolate.tool_beheading_chance.name")
+        @Config.Comment("A.I.O Heads Looting Chance, default 0.3")
+        @Config.RequiresMcRestart
+        public double BEHEADING_CHANCE = 0.3;
 
     }
 
