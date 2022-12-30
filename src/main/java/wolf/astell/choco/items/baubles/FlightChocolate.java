@@ -79,8 +79,8 @@ public class FlightChocolate extends Item implements IBauble {
 											-MathHelper.sin(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F),
 											-MathHelper.sin(newPitch * 0.0174F),
 											MathHelper.cos(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F));
-									player.world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE, player.posX,
-											player.posY + player.getEyeHeight() - 0.4f, player.posZ, shootPosition.x, shootPosition.y , shootPosition.z , 1);
+									player.world.spawnParticle(EnumParticleTypes.END_ROD, player.posX,
+											player.posY + player.getEyeHeight() - 0.8f, player.posZ, shootPosition.x, shootPosition.y , shootPosition.z , 1);
 								}
 							}
 						}
