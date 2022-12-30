@@ -29,8 +29,8 @@ item.pickaxe_chocolate.name=恶魔狼狼A.I.O工具
 item.pickaxe_chocolate_aio.desc=§cA.§6I.§eO §2I§an§bf§3u§9s§de§cd§6.
 item.pickaxe_chocolate.desc.0=§e右键点击以拆除黑曜石.
 item.pickaxe_chocolate.desc.1=§c右键点击以拆除基岩.
-item.pickaxe_chocolate.desc.2=§b蹲下右键点击以传送到头顶最高的方块.
-item.pickaxe_chocolate.desc.3=§a在空中蹲下右键点击以跳过夜晚.
+item.pickaxe_chocolate.desc.2=§b潜行右键点击以传送到露天方块.
+item.pickaxe_chocolate.desc.3=§a在空中潜行右键点击以跳过夜晚.
 item.pickaxe_chocolate.desc.4=§d概率掉落被击败生物的头.
 item.hazard_potion.name=加了胡椒粉的热巧克力
 item.hazard_potion.desc=§c好辣! 感觉要有什么坏事发生了...
@@ -41,6 +41,10 @@ item.chocolate_milk.desc=§e甜甜的, 出门前喝一瓶, 精神百倍.
 item.animal_potion.name=咸蛋黄热巧克力
 item.animal_potion.desc=§e好喝! 你身边的怪物刷新频率降低了.
 item.hot_chocolate.name=热巧克力
+item.flight_chocolate.name=飞行巧克力
+item.flight_chocolate.desc.0=§e装备后获得创造飞行能力.
+item.flight_chocolate.desc.1=§e按疾跑键加速.
+item.flight_chocolate_egg.name=飞行荷兰人
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -54,7 +58,7 @@ choco.SpecialConf=危险区!
 config.chocolate.lazydoge.name=启用超级懒狗模式
 config.chocolate.basehunger.name=设置巧克力提供的基础饱和度
 config.chocolate.consumespeed.name=设置巧克力食用速度
-config.chocolate.isChocoIron.name=可可锭 
+config.chocolate.isChocoIron.name=可可锭 = 铁锭
 choco.ToolConf=恶魔狼狼A.I.O工具
 config.chocolate.tool_level.name=挖掘等级
 config.chocolate.tool_durability.name=耐久度
@@ -66,5 +70,6 @@ config.chocolate.tool_attack_damage.name=A.I.O 攻击伤害
 config.chocolate.tool_time_change.name=A.I.O 是否能改变时间
 config.chocolate.tool_beheading.name=A.I.O 是否能砍下怪物头颅
 config.chocolate.tool_beheading_chance.name=A.I.O 斩首概率
+config.flight_chocolate.doExhaust.name=开启飞行巧克力冲刺计量条
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送

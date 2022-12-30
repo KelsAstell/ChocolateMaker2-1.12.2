@@ -59,6 +59,10 @@ public class ModConfig {
         @Config.Comment("Air Chocolate Max Allowed Jumps, default 5")
         @Config.RequiresMcRestart
         public int MAX_ALLOWED_JUMPS = 5;
+
+        @Config.LangKey("config.flight_chocolate.doExhaust.name")
+        @Config.Comment("Should Flight Chocolate Drain Player Food Level, default true")
+        public boolean DO_FLIGHT_EXHAUST = true;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")
@@ -130,9 +134,9 @@ public class ModConfig {
         public boolean TELEPORT_UP = true;
 
         @Config.LangKey("config.chocolate.tool_time_change.name")
-        @Config.Comment("Can A.I.O Change World Time, default true")
+        @Config.Comment("Can A.I.O Change World Time, default false")
         @Config.RequiresMcRestart
-        public boolean TSOT = true;//The Sand of Time
+        public boolean TSOT = false;//The Sand of Time
 
         @Config.LangKey("config.chocolate.tool_beheading.name")
         @Config.Comment("Can A.I.O Loot Mob Heads, default true")

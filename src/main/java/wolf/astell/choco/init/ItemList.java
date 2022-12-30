@@ -27,6 +27,7 @@ public class ItemList{
     public static Item miningChocolate;
     public static Item carrotChocolate;
     public static Item speedChocolate;
+    public static Item flightChocolate;
     public static Item ingotChocolate;
     public static Item pickaxeChocolate;
     public static Item hazardPotion;
@@ -46,6 +47,7 @@ public class ItemList{
         miningChocolate = new MiningChocolate("mining_chocolate");
         carrotChocolate = new CarrotChocolate("carrot_chocolate");
         speedChocolate = new SpeedChocolate("speed_chocolate");
+        flightChocolate = new FlightChocolate("flight_chocolate");
         ingotChocolate = new IngotChocolate("ingot_chocolate");
         pickaxeChocolate = new PickaxeChocolate("pickaxe_chocolate");
         hazardPotion = new IsPotion("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));

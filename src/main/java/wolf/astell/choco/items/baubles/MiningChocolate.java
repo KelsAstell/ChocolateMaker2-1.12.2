@@ -58,6 +58,7 @@ public class MiningChocolate extends Item implements IBauble {
 	public BaubleType getBaubleType(ItemStack arg0) {
 		return BaubleType.TRINKET;
 	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {

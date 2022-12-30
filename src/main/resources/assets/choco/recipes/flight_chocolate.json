@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ADA",
+    "SHS",
+    " S "
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:slime_ball"
+    },
+    "A": {
+      "item": "minecraft:feather"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "H": {
+      "item": "choco:air_chocolate"
+    }
+  },
+  "result": {
+    "item": "choco:flight_chocolate",
+    "count": 1
+  }
+}
