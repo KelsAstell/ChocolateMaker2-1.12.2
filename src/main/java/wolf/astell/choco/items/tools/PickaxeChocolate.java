@@ -181,7 +181,7 @@ public class PickaxeChocolate extends ItemPickaxe
             tooltip.add(I18n.format("item.pickaxe_chocolate.desc.3"));
         }
         if(ModConfig.TOOL_CONF.BEHEADING && ModConfig.TOOL_CONF.BEHEADING_CHANCE != 0.0){
-            tooltip.add(ModConfig.TOOL_CONF.BEHEADING_CHANCE * 100 + I18n.format("item.pickaxe_chocolate.desc.4"));
+            tooltip.add(ModConfig.TOOL_CONF.BEHEADING_CHANCE * 100 + "%" + I18n.format("item.pickaxe_chocolate.desc.4"));
             if(ModConfig.TOOL_CONF.BEDROCK_BREAKER && ModConfig.TOOL_CONF.TELEPORT_UP && ModConfig.TOOL_CONF.TSOT){
                 tooltip.add(I18n.format("item.pickaxe_chocolate_aio.desc"));
             }
