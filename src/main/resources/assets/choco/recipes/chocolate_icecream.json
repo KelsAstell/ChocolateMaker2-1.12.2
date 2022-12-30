@@ -5,7 +5,7 @@
       "item": "choco:golden_chocolate"
     },
     {
-      "type": "forge:ore_dict", "ore": "foodChocolate"
+      "type": "forge:ore_dict", "ore": "foodChocolatebar"
     },
     {
       "item": "minecraft:sugar"

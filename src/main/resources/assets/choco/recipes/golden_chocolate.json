@@ -10,7 +10,7 @@
       "item": "minecraft:gold_ingot"
     },
     "W": {
-      "type": "forge:ore_dict", "ore": "foodChocolate"
+      "type": "forge:ore_dict", "ore": "foodChocolatebar"
     }
   },
   "result": {

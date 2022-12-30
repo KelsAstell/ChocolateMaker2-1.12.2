@@ -14,7 +14,7 @@
       "item": "minecraft:diamond_pickaxe"
     },
     "W": {
-      "type": "forge:ore_dict", "ore": "foodChocolate"
+      "type": "forge:ore_dict", "ore": "foodChocolatebar"
     }
   },
   "result": {
