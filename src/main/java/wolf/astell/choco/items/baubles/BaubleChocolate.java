@@ -38,6 +38,7 @@ public class BaubleChocolate extends Item implements IBauble
 
 		ItemList.ITEM_LIST.add(this);
 	}
+	int potionLevel = ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1;
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack)
@@ -65,14 +66,14 @@ public class BaubleChocolate extends Item implements IBauble
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		if (player instanceof EntityPlayer && !player.world.isRemote) {
+		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.RESISTANCE);
-				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
 			}
 			else {
 				PotionEffect effect = player.getActivePotionEffect(MobEffects.RESISTANCE);
-				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1)
+				if(effect != null && effect.getAmplifier() == potionLevel)
 					player.removePotionEffect(MobEffects.RESISTANCE);
 			}
 		}
@@ -80,7 +81,7 @@ public class BaubleChocolate extends Item implements IBauble
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.RESISTANCE);
-		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1)
+		if(effect != null && effect.getAmplifier() == potionLevel)
 			player.removePotionEffect(MobEffects.RESISTANCE);
 	}
 	@SideOnly(Side.CLIENT)
@@ -88,9 +89,14 @@ public class BaubleChocolate extends Item implements IBauble
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format("item.bauble_chocolate.desc.0"));
+		if(potionLevel >= 0){
+			tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
+		}
 		if(ModConfig.TRINKET_CONF.GODMODE){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));
 		}
-		tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
+		if (!ModConfig.TRINKET_CONF.GODMODE && potionLevel < 0){
+			tooltip.add(I18n.format("message.choco.effect_off"));
+		}
 	}
 }

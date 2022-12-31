@@ -7,8 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import wolf.astell.choco.api.IsFood;
 import wolf.astell.choco.api.IsPotion;
+import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
-import wolf.astell.choco.items.*;
+import wolf.astell.choco.items.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
@@ -36,7 +37,6 @@ public class ItemList{
 
 
     public static void init() {
-
         foodChocolate = new IsFood("chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER, 0.5F, false, true, null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
         foodGoldenChocolate = new IsFood("golden_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 2, 0.5F, false, true,null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
         foodEnchantedChocolate = new IsFood("enchanted_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 5, 0.5F, false, true,null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
@@ -50,7 +50,11 @@ public class ItemList{
         flightChocolate = new FlightChocolate("flight_chocolate");
         ingotChocolate = new IngotChocolate("ingot_chocolate");
         pickaxeChocolate = new PickaxeChocolate("pickaxe_chocolate");
-        hazardPotion = new IsPotion("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
-        animalPotion = new IsPotion("animal_potion", new PotionEffect[] {new PotionEffect(EffectRegister.animalBoost, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+        if (SpecialDays.getToday().equals("APRIL_FOOLS_DAY")){
+            hazardPotion = new IsPotion("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.animalBoost, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+            animalPotion = new IsPotion("animal_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));}
+        else{
+            hazardPotion = new IsPotion("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
+            animalPotion = new IsPotion("animal_potion", new PotionEffect[] {new PotionEffect(EffectRegister.animalBoost, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));}
         travellerPotion = new IsPotion("chocolate_milk", new PotionEffect[] {new PotionEffect(MobEffects.NIGHT_VISION, 12000, 0), new PotionEffect(MobEffects.JUMP_BOOST, 12000, 1), new PotionEffect(MobEffects.SPEED, 12000, 0), new PotionEffect(MobEffects.SATURATION, 12000, 0)},new ItemStack(Items.GLASS_BOTTLE));}
 }

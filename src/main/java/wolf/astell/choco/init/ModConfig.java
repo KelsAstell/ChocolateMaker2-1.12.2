@@ -55,6 +55,11 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public double DESCEND_RATE = 0.15;
 
+        @Config.LangKey("config.air_chocolate.glide.name")
+        @Config.Comment("Enable Air Chocolate Glide Up, default true")
+        @Config.RequiresMcRestart
+        public boolean GLIDE_UP = true;
+
         @Config.LangKey("config.air_chocolate.maxjump.name")
         @Config.Comment("Air Chocolate Max Allowed Jumps, default 5")
         @Config.RequiresMcRestart
@@ -63,6 +68,10 @@ public class ModConfig {
         @Config.LangKey("config.flight_chocolate.doExhaust.name")
         @Config.Comment("Should Flight Chocolate Drain Player Food Level, default true")
         public boolean DO_FLIGHT_EXHAUST = true;
+
+        @Config.LangKey("config.flight_chocolate.enable.name")
+        @Config.Comment("Enable Flight Chocolate Flight Ability, default true")
+        public boolean ENABLE_FLIGHT = true;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")
@@ -147,6 +156,16 @@ public class ModConfig {
         @Config.Comment("A.I.O Heads Looting Chance, default 0.3")
         @Config.RequiresMcRestart
         public double BEHEADING_CHANCE = 0.3;
+
+        @Config.LangKey("config.chocolate.tool_extra_loot.name")
+        @Config.Comment("Can A.I.O Gain Extra Loot When in Offhand, default true")
+        @Config.RequiresMcRestart
+        public boolean EX_LOOT = true;
+
+        @Config.LangKey("config.chocolate.tool_extra_loot_chance.name")
+        @Config.Comment("A.I.O Extra Loot Chance, default 0.5")
+        @Config.RequiresMcRestart
+        public double EX_LOOT_CHANCE = 0.5;
 
     }
 

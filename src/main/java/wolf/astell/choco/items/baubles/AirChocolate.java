@@ -42,7 +42,7 @@ public class AirChocolate extends CloudChoco implements IBauble {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void clientWornTick(ItemStack stack, EntityLivingBase player) {
-		if(player instanceof EntityPlayerSP && player == Minecraft.getMinecraft().player) {
+		if(player instanceof EntityPlayerSP && player == Minecraft.getMinecraft().player && ModConfig.TRINKET_CONF.GLIDE_UP) {
 			EntityPlayerSP playerSp = (EntityPlayerSP) player;
 			Vector3 look = new Vector3(playerSp.getLookVec()).multiply(1, 0, 1).normalize();
 			boolean doGlide = player.isSneaking() && !player.onGround && player.fallDistance >= 2F;
@@ -53,8 +53,10 @@ public class AirChocolate extends CloudChoco implements IBauble {
 				player.motionZ = look.z * mul;
 				player.fallDistance = 2F;
 			}
-			if(playerSp.onGround)
+			if(playerSp.onGround){
+				player.fallDistance = 0;
 				timesJumped = 0;
+			}
 			else {
 				if(playerSp.movementInput.jump) {
 					if(!jumpDown && timesJumped < getMaxAllowedJumps()) {
@@ -75,7 +77,15 @@ public class AirChocolate extends CloudChoco implements IBauble {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format("item.air_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.air_chocolate.desc.1"));
-		tooltip.add(I18n.format("item.air_chocolate.desc.2"));
+		if (ModConfig.TRINKET_CONF.GLIDE_UP){
+			tooltip.add(I18n.format("item.air_chocolate.desc.1"));
+			tooltip.add(I18n.format("item.air_chocolate.desc.3"));
+		}
+		if (ModConfig.TRINKET_CONF.MAX_ALLOWED_JUMPS > 1){
+			tooltip.add(I18n.format("item.air_chocolate.desc.2"));
+		}
+		if (ModConfig.TRINKET_CONF.MAX_ALLOWED_JUMPS <= 1 && !ModConfig.TRINKET_CONF.GLIDE_UP){
+			tooltip.add(I18n.format("message.choco.effect_off"));
+		}
 	}
 }

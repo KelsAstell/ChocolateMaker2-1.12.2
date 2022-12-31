@@ -7,7 +7,7 @@ import wolf.astell.choco.Main;
 public class Log {
 	
 	private static final Logger l = LogManager.getLogger(Main.MODID);
-	private static final boolean dbg = Boolean.parseBoolean(System.getProperty("moddebug"));
+	private static final boolean dbg = false;
 	
 	public static void i(Object o) {
 		l.info(o);

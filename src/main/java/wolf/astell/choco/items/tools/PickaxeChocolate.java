@@ -2,18 +2,14 @@ package wolf.astell.choco.items.tools;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntityWitherSkeleton;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.*;
-import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -27,7 +23,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -37,6 +32,7 @@ import wolf.astell.choco.init.ModConfig;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Random;
 
 public class PickaxeChocolate extends ItemPickaxe
 {
@@ -53,8 +49,11 @@ public class PickaxeChocolate extends ItemPickaxe
 
         ItemList.ITEM_LIST.add(this);
     }
-    public static class AIOBeheadingHandler {
+    static Random r = new Random();
+    private static int cooldown = 0;
+    private static boolean shouldExplode = false;
 
+    public static class AIOBeheadingHandler {
         @SubscribeEvent
         public void onEntityKilled(LivingDropsEvent event) {
             if (event.getEntityLiving().getEntityWorld().isRemote) return;
@@ -76,7 +75,6 @@ public class PickaxeChocolate extends ItemPickaxe
                 }
             }
         }
-
         private boolean rollChance() {
             double ran = Math.random();
             double chance = ModConfig.TOOL_CONF.BEHEADING_CHANCE;
@@ -110,11 +108,50 @@ public class PickaxeChocolate extends ItemPickaxe
 
     }
 
-    @SubscribeEvent
-    public void onBlockDrops(BlockEvent.HarvestDropsEvent event) {
-        if(event.getHarvester() != null && event.getState() != null && event.getDrops() != null && event.getDrops().isEmpty() && event.getHarvester().getHeldItemMainhand().getItem() == this && event.getState().getMaterial() == Material.GLASS && event.getState().getBlock().canSilkHarvest(event.getWorld(), event.getPos(), event.getState(), event.getHarvester()))
-            event.getDrops().add(new ItemStack(event.getState().getBlock(), 1, event.getState().getBlock().getMetaFromState(event.getState())));
+    public static class AIOExtraLoot {
+        @SubscribeEvent
+        public void onEntityKilled(LivingDropsEvent event) {
+            if (event.getEntityLiving().getEntityWorld().isRemote) return;
+            World world = event.getEntityLiving().getEntityWorld();
+            if (event.getSource().getTrueSource() instanceof EntityPlayer){
+                EntityPlayer attacker = (EntityPlayer) event.getSource().getTrueSource();
+                if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate){
+                    attacker.world.spawnEntity(new EntityTNTPrimed(attacker.world,attacker.posX, attacker.posY + 102, attacker.posZ,event.getEntityLiving()));
+                    attacker.sendMessage(new TextComponentTranslation("message.choco.watch_out").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                    attacker.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0,true,false));
+                    attacker.addPotionEffect(new PotionEffect(MobEffects.LEVITATION,100,8,true,false));
+                    attacker.setHealth(1);
+                    world.playSound(attacker, attacker.posX, attacker.posY, attacker.posZ, SoundEvents.ENTITY_FIREWORK_LAUNCH, SoundCategory.PLAYERS, 0.8F, world.rand.nextFloat() * 0.1F + 0.9F);
+                }
+                if (rollChance() && attacker.getHeldItemOffhand().getItem()==ItemList.pickaxeChocolate && !event.getDrops().isEmpty()) {
+                    ItemStack bonus = getBonusLoot(event.getEntityLiving(), event.getDrops().get(r.nextInt(event.getDrops().size())).getItem());
+                    EntityItem eni = new EntityItem(event.getEntityLiving().getEntityWorld(), event.getEntityLiving().posX, event.getEntityLiving().posY, event.getEntityLiving().posZ, bonus);
+                    eni.setDefaultPickupDelay();
+                    eni.lifespan = 6000;
+                    event.getDrops().add(eni);
+                }
+            }
+        }
+        private boolean rollChance() {
+            double ran = Math.random();
+            double chance = ModConfig.TOOL_CONF.EX_LOOT_CHANCE;
+            return ran < chance;
+        }
+
+        private ItemStack getBonusLoot(EntityLivingBase entity, ItemStack loot) {
+            if(entity instanceof EntityMob) {
+                return new ItemStack(loot.getItem(), Math.max(10,loot.getCount() * 2));
+            } else if(entity instanceof EntityPlayer) {
+                ItemStack egg = new ItemStack(Items.EGG, 1, 0);
+                egg.addEnchantment(Enchantments.UNBREAKING,1);
+                egg.setStackDisplayName(I18n.format("message.choco.player_egg"));
+                return egg;
+            }
+            return ItemStack.EMPTY;
+        }
+
     }
+
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -146,6 +183,7 @@ public class PickaxeChocolate extends ItemPickaxe
             ConfirmTeleport=0;
             return EnumActionResult.SUCCESS;
         }
+
         if(player.onGround && player.isSneaking() && ModConfig.TOOL_CONF.TELEPORT_UP) {
             if(ConfirmTeleport==25){
                 player.swingArm(hand);
@@ -180,9 +218,16 @@ public class PickaxeChocolate extends ItemPickaxe
         if(ModConfig.TOOL_CONF.TSOT){
             tooltip.add(I18n.format("item.pickaxe_chocolate.desc.3"));
         }
+        if(ModConfig.TOOL_CONF.EX_LOOT){
+            tooltip.add(I18n.format("item.pickaxe_chocolate.desc.5"));
+        }
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.6"));
         if(ModConfig.TOOL_CONF.BEHEADING && ModConfig.TOOL_CONF.BEHEADING_CHANCE != 0.0){
             tooltip.add(ModConfig.TOOL_CONF.BEHEADING_CHANCE * 100 + "%" + I18n.format("item.pickaxe_chocolate.desc.4"));
-            if(ModConfig.TOOL_CONF.BEDROCK_BREAKER && ModConfig.TOOL_CONF.TELEPORT_UP && ModConfig.TOOL_CONF.TSOT){
+            if(ModConfig.TOOL_CONF.BEDROCK_BREAKER &&
+                    ModConfig.TOOL_CONF.TELEPORT_UP &&
+                    ModConfig.TOOL_CONF.TSOT &&
+                    ModConfig.TOOL_CONF.EX_LOOT){
                 tooltip.add(I18n.format("item.pickaxe_chocolate_aio.desc"));
             }
         }

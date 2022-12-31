@@ -78,5 +78,8 @@ public class IsPotion extends ItemFood {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format(stack.getUnlocalizedName() +".desc"));
+		if(SpecialDays.getToday().equals("APRIL_FOOLS_DAY")){
+			tooltip.add(I18n.format("message.choco.afday"));
+		}
 	}
 }

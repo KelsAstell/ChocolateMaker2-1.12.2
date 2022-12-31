@@ -31,18 +31,19 @@ public class SpeedChocolate extends Item implements IBauble {
 
 		ItemList.ITEM_LIST.add(this);
 	}
+	int potionLevel = ModConfig.POTION_CONF.SPEED_LEVEL - 1;
 
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
-		if (player instanceof EntityPlayer && !player.world.isRemote) {
+		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.SPEED);
-				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, ModConfig.POTION_CONF.SPEED_LEVEL - 1, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, Integer.MAX_VALUE, potionLevel, true, false));
 			}
 			else {
-				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
+				if(effect != null && effect.getAmplifier() == potionLevel)
 					player.removePotionEffect(MobEffects.SPEED);
 				}
 			}
@@ -50,7 +51,7 @@ public class SpeedChocolate extends Item implements IBauble {
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.SPEED);
-		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.SPEED_LEVEL - 1)
+		if(effect != null && effect.getAmplifier() == potionLevel)
 			player.removePotionEffect(MobEffects.SPEED);
 	}
 
@@ -65,8 +66,11 @@ public class SpeedChocolate extends Item implements IBauble {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 
 		tooltip.add(I18n.format("item.speed_chocolate.desc.1"));
-		if (ModConfig.POTION_CONF.SPEED_LEVEL > 4){
+		if (potionLevel > 4){
 			tooltip.add(I18n.format("item.speed_chocolate.desc.0"));
+		}
+		if (potionLevel < 0){
+			tooltip.add(I18n.format("message.choco.effect_off"));
 		}
 	}
 

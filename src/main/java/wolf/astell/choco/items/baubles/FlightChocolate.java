@@ -44,7 +44,7 @@ public class FlightChocolate extends Item implements IBauble {
 
 	@Override
 	public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
-		if(entity instanceof EntityPlayer)
+		if(entity instanceof EntityPlayer && ModConfig.TRINKET_CONF.ENABLE_FLIGHT)
 		{
 			EntityPlayer player = (EntityPlayer)entity;
 			if(!player.isSpectator() && !player.capabilities.isCreativeMode)
@@ -128,7 +128,11 @@ public class FlightChocolate extends Item implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.flight_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.flight_chocolate.desc.1"));
+		if (ModConfig.TRINKET_CONF.ENABLE_FLIGHT){
+			tooltip.add(I18n.format("item.flight_chocolate.desc.0"));
+			tooltip.add(I18n.format("item.flight_chocolate.desc.1"));}else{
+			tooltip.add(I18n.format("message.choco.effect_off"));
+		}
+
 	}
 }

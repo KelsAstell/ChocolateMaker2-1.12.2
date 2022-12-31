@@ -62,9 +62,12 @@ public class IsFood extends ItemFood {
 
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
+            if (SpecialDays.getToday().equals("APRIL_FOOLS_DAY")){
+                world.playSound(player, player.posX, player.posY + 3, player.posZ, SoundEvents.ENTITY_ZOMBIE_AMBIENT, SoundCategory.PLAYERS, 0.9F, world.rand.nextFloat() * 0.1F + 0.9F);
+            }else{
+                world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.8F, world.rand.nextFloat() * 0.1F + 0.9F);
+            }
 
-            world.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP,
-                    SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
             player.getFoodStats().addStats(this, stack);
             this.onFoodEaten(stack, world, player);
             player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));//In case of NPE

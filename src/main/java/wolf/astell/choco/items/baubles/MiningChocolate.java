@@ -31,18 +31,19 @@ public class MiningChocolate extends Item implements IBauble {
 
 		ItemList.ITEM_LIST.add(this);
 	}
+	int potionLevel = ModConfig.POTION_CONF.HASTE_LEVEL - 1;
 
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		if (player instanceof EntityPlayer && !player.world.isRemote) {
+		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.HASTE);
-				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, ModConfig.POTION_CONF.HASTE_LEVEL - 1, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, potionLevel, true, false));
 			}
 			else {
 				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-				if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
+				if(effect != null && effect.getAmplifier() == potionLevel)
 					player.removePotionEffect(MobEffects.HASTE);
 				}
 			}
@@ -50,7 +51,7 @@ public class MiningChocolate extends Item implements IBauble {
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-		if(effect != null && effect.getAmplifier() == ModConfig.POTION_CONF.HASTE_LEVEL - 1)
+		if(effect != null && effect.getAmplifier() == potionLevel)
 			player.removePotionEffect(MobEffects.HASTE);
 	}
 
@@ -64,7 +65,11 @@ public class MiningChocolate extends Item implements IBauble {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format("item.mining_chocolate.desc.0"));
-		tooltip.add(I18n.format("item.mining_chocolate.desc.1"));
+		if (potionLevel >= 0){
+			tooltip.add(I18n.format("item.mining_chocolate.desc.1"));
+		}else{
+			tooltip.add(I18n.format("message.choco.effect_off"));
+		}
 	}
 
 }

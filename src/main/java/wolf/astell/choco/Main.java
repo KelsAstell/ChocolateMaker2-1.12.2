@@ -6,15 +6,16 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import wolf.astell.choco.init.*;
+import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.register.*;
-import wolf.astell.choco.items.tools.PickaxeChocolate;
 import wolf.astell.choco.network.PacketHandler;
+
+
 
 @Mod(modid = Main.MODID, version = Main.VERSION)
 public class Main {
     public static final String MODID = "choco";
-    public static final String VERSION = "1.0.3";
+    public static final String VERSION = "1.0.4";
     public static Main INSTANCE;
     public static CreativeTabs ProjectChocolate = new CreativeTabs("ProjectChocolate") {
 
