@@ -37,7 +37,7 @@ public class InfiniteChocolate extends Item {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 32;
+		return 50;
 	}
 
 	@Nonnull
