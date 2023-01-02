@@ -52,6 +52,10 @@ item.flight_chocolate_egg.name=飞行荷兰人
 item.powered_chocolate.name=电动巧克力
 item.powered_chocolate.desc.0=§e使用 RF 能源来补充饱食度.
 item.powered_chocolate.desc.1=§e潜行使用将消耗大量能量补满你的生命值并附加溢出护盾.
+item.infinite_chocolate.name=§d无尽巧克力
+item.infinite_chocolate.desc.0=§e可以吃无数次.
+item.infinite_chocolate.desc.1=§e食用后获得多种正面BUFF.
+item.infinite_chocolate.desc.2=无尽+银河混合口味.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

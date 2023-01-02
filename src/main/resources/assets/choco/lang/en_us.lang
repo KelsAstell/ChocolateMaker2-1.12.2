@@ -52,6 +52,10 @@ item.flight_chocolate_egg.name=The Flying Dutchman
 item.powered_chocolate.name=Powered Chocolate
 item.powered_chocolate.desc.0=§eUse RF to Restore Hunger, why not?
 item.powered_chocolate.desc.1=§eSneak and Use to Fully Restore Your Health and Gain Absorption.
+item.infinite_chocolate.name=§dInfinite Chocolate
+item.infinite_chocolate.desc.0=§eCan be Consumed Permanently.
+item.infinite_chocolate.desc.1=§eGain Positive Effects on Consume.
+item.infinite_chocolate.desc.2=Flavour of Galaxy and Infinity.
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level

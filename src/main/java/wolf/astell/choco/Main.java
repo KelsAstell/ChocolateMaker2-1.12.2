@@ -7,6 +7,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import wolf.astell.choco.init.IRegisterAvaritia;
+import wolf.astell.choco.init.IRegisterCoFH;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.register.*;
 import wolf.astell.choco.init.register.compact.AvaritiaCompact;
@@ -36,8 +38,14 @@ public class Main {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ItemList.init();
-        if (Loader.isModLoaded("redstoneflux")){CoFHCompact.init();}
-
+        if (Loader.isModLoaded("redstoneflux")){
+            IRegisterCoFH.init();
+            CoFHCompact.init();
+        }
+        if (Loader.isModLoaded("avaritia")){
+            IRegisterAvaritia.init();
+            AvaritiaCompact.init();
+        }
         PacketHandler.init();
         AIORegister.init();
         MinecraftForge.EVENT_BUS.register(new ItemRegister());
@@ -48,7 +56,6 @@ public class Main {
         OreDictRegister.init();
         DogeRegister.init();
         BrewRegister.init();
-        if (Loader.isModLoaded("avaritia")){AvaritiaCompact.init();}
         MinecraftForge.EVENT_BUS.register(new LootRegister());
     }
 }

@@ -1,14 +1,10 @@
 package wolf.astell.choco.api;
 
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
-import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.Main;
-
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -16,6 +12,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import wolf.astell.choco.Main;
+import wolf.astell.choco.init.ItemList;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;

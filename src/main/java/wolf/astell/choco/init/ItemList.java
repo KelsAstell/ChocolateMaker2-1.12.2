@@ -5,14 +5,12 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.fml.common.Loader;
 import wolf.astell.choco.api.IsFood;
 import wolf.astell.choco.api.IsPotion;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
 import wolf.astell.choco.items.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
-import wolf.astell.choco.items.linkage.PoweredChocolate;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.ArrayList;
