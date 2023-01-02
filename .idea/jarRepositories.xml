@@ -31,5 +31,25 @@
       <option name="name" value="2041456c-831c-4eb1-be77-8c89794154b8" />
       <option name="url" value="https://lss233.littleservice.cn/repositories/minecraft/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="CoFH Maven" />
+      <option name="name" value="CoFH Maven" />
+      <option name="url" value="https://maven.covers1624.net" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Ls233 Maven" />
+      <option name="name" value="Ls233 Maven" />
+      <option name="url" value="https://lss233.littleservice.cn/repositories/minecraft" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="CB Maven" />
+      <option name="name" value="CB Maven" />
+      <option name="url" value="http://chickenbones.net/maven" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Curse Maven" />
+      <option name="name" value="Curse Maven" />
+      <option name="url" value="https://www.cursemaven.com" />
+    </remote-repository>
   </component>
 </project>

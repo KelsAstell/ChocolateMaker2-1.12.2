@@ -35,6 +35,7 @@ item.pickaxe_chocolate.desc.3=§2在空中潜行右键点击以跳过夜晚.
 item.pickaxe_chocolate.desc.4=§b概率掉落被击败生物的头.
 item.pickaxe_chocolate.desc.5=§a放在副手时概率掉落额外怪物战利品.
 item.pickaxe_chocolate.desc.6=§3同时放在主手和副手时████████.
+
 item.hazard_potion.name=加了胡椒粉的热巧克力
 item.hazard_potion.desc=§c好辣! 感觉要有什么坏事发生了...
 choco.potion.waterCandle=危机四伏
@@ -48,6 +49,9 @@ item.flight_chocolate.name=飞行巧克力
 item.flight_chocolate.desc.0=§e装备后获得创造飞行能力.
 item.flight_chocolate.desc.1=§e按疾跑键加速.
 item.flight_chocolate_egg.name=飞行荷兰人
+item.powered_chocolate.name=电动巧克力
+item.powered_chocolate.desc.0=§e使用 RF 能源来补充饱食度.
+item.powered_chocolate.desc.1=§e潜行使用将消耗大量能量补满你的生命值并附加溢出护盾.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

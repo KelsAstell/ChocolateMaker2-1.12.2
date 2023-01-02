@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ThermalFoundation-1.12.2-2.6.7.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/ThermalFoundation-1.12.2-2.6.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

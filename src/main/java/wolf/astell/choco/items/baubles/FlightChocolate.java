@@ -69,7 +69,7 @@ public class FlightChocolate extends Item implements IBauble {
 								player.motionY += vec3d.y * 0.2D + (vec3d.y * 1.5D - player.motionY) * 0.5D;
 								player.motionZ += vec3d.z * 0.2D + (vec3d.z * 1.5D - player.motionZ) * 0.5D;
 								if (ModConfig.TRINKET_CONF.DO_FLIGHT_EXHAUST){
-									player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel()-1);
+									player.getFoodStats().addStats(-1,1F);
 								}
 								float pitch = player.rotationPitch, yaw = player.rotationYaw;
 								for (int p = 0; p < 3; p++) {
@@ -92,7 +92,7 @@ public class FlightChocolate extends Item implements IBauble {
 
 	private int getRand()
 	{
-		return new Random().nextInt(30 - -30)+ -30;
+		return new Random().nextInt(20 - -20)+ -20;
 	}
 
 

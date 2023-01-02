@@ -34,17 +34,17 @@ public class PotionMod extends Potion {
 		return entity.getActivePotionEffect(potion) != null;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
-		render(x + 6, y + 7, 1);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
-		render(x + 3, y + 3, alpha);
-	}
+//	@Override
+//	@SideOnly(Side.CLIENT)
+//	public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc) {
+//		render(x + 6, y + 7, 1);
+//	}
+//
+//	@Override
+//	@SideOnly(Side.CLIENT)
+//	public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
+//		render(x + 3, y + 3, alpha);
+//	}
 
 	@SideOnly(Side.CLIENT)
 	private void render(int x, int y, float alpha) {

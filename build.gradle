@@ -13,7 +13,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.4'
+version = '1.0.5'
 group = 'wolf.astell.choco' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'SuperChocolateMaker'
 
@@ -60,6 +60,12 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    implementation fg.deobf("cofh:CoFHCore:1.12.2-4.6.6.1-universal")
+    implementation fg.deobf("cofh:ThermalFoundation:1.12.2-2.6.7.1-universal")
+    implementation fg.deobf("cofh:RedstoneFlux-1.12-2.1.1.1-universal")
+    implementation fg.deobf("morph:Avaritia-1.12.2-3.3.0.37-universal"){
+        transitive = false
+    }
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
@@ -115,10 +121,30 @@ publishing {
 }
 repositories {
     flatDir{ dirs 'libs'}
+    maven {
+        name = "CoFH Maven"
+        url = "https://maven.covers1624.net"
+    }
+    maven {
+        name = "Ls233 Maven"
+        url = "https://lss233.littleservice.cn/repositories/minecraft"
+    }
+    maven {
+        name = "CB Maven"
+        url = "http://chickenbones.net/maven"
+    }
+    maven {
+        name = "Curse Maven"
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
-    implementation files('libs/Baubles-1.12-1.5.2-deobf.jar')
+    implementation files('libs/Baubles-1.12-1.5.2-deobf.jar')//Sorry for the inconvenience. But due to some reasons,deobf always fail on my IDEA.
+    implementation files('libs/CoFHCore-1.12.2-4.6.6.1-universal.jar')
+    implementation files('libs/ThermalFoundation-1.12.2-2.6.7.1-universal.jar')
+    implementation files('libs/RedstoneFlux-1.12-2.1.1.1-universal.jar')
+    implementation files('libs/Avaritia-1.12.2-3.3.0.37-universal.jar')
 }
 
 sourceSets {

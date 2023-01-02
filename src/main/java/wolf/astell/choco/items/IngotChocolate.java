@@ -19,7 +19,7 @@ public class IngotChocolate extends Item
 {
 	public IngotChocolate(String name)
 	{
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(64);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);

@@ -2,6 +2,8 @@ package wolf.astell.choco.items.tools;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSkull;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,8 +36,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Random;
 
-public class PickaxeChocolate extends ItemPickaxe
-{
+public class PickaxeChocolate extends ItemPickaxe {
     public static final Item.ToolMaterial CHOCOLATE = EnumHelper.addToolMaterial("CHOCOLATE", ModConfig.TOOL_CONF.TOOL_LEVEL, ModConfig.TOOL_CONF.TOOL_DURABILITY, ModConfig.TOOL_CONF.TOOL_EFFICIENCY, (float) ModConfig.TOOL_CONF.TOOL_ATTACK_DAMAGE - 2, ModConfig.TOOL_CONF.TOOL_ENCHANT_ABILITY);
     private int ConfirmTeleport = 0;
     public PickaxeChocolate(String name)
@@ -50,8 +51,6 @@ public class PickaxeChocolate extends ItemPickaxe
         ItemList.ITEM_LIST.add(this);
     }
     static Random r = new Random();
-    private static int cooldown = 0;
-    private static boolean shouldExplode = false;
 
     public static class AIOBeheadingHandler {
         @SubscribeEvent
@@ -116,7 +115,7 @@ public class PickaxeChocolate extends ItemPickaxe
             if (event.getSource().getTrueSource() instanceof EntityPlayer){
                 EntityPlayer attacker = (EntityPlayer) event.getSource().getTrueSource();
                 if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate){
-                    attacker.world.spawnEntity(new EntityTNTPrimed(attacker.world,attacker.posX, attacker.posY + 102, attacker.posZ,event.getEntityLiving()));
+                    attacker.world.spawnEntity(new EntityTNTPrimed(attacker.world,attacker.posX, attacker.posY + 100, attacker.posZ,event.getEntityLiving()));
                     attacker.sendMessage(new TextComponentTranslation("message.choco.watch_out").setStyle(new Style().setColor(TextFormatting.YELLOW)));
                     attacker.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0,true,false));
                     attacker.addPotionEffect(new PotionEffect(MobEffects.LEVITATION,100,8,true,false));
@@ -202,6 +201,13 @@ public class PickaxeChocolate extends ItemPickaxe
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
         return par2ItemStack.getItem() == ItemList.ingotChocolate || super.getIsRepairable(par1ItemStack, par2ItemStack);
+    }
+
+    public float getDestroySpeed(ItemStack stack, IBlockState state) {
+        if (state.getMaterial() == Material.GOURD || state.getMaterial() == Material.SAND || state.getMaterial() == Material.CLAY || state.getMaterial() == Material.WOOD){
+            return 32;
+        }
+        return 8;
     }
 
     @SideOnly(Side.CLIENT)
