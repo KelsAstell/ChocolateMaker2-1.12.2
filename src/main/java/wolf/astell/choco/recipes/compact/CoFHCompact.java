@@ -1,4 +1,4 @@
-package wolf.astell.choco.init.register.compact;
+package wolf.astell.choco.recipes.compact;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
 
-import static wolf.astell.choco.init.IRegisterCoFH.poweredChocolate;
+import static wolf.astell.choco.init.register.compact.CoFHRegister.poweredChocolate;
 
 public class CoFHCompact {
 

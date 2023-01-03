@@ -7,12 +7,12 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import wolf.astell.choco.init.IRegisterAvaritia;
-import wolf.astell.choco.init.IRegisterCoFH;
+import wolf.astell.choco.init.register.compact.AvaritiaRegister;
+import wolf.astell.choco.init.register.compact.CoFHRegister;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.register.*;
-import wolf.astell.choco.init.register.compact.AvaritiaCompact;
-import wolf.astell.choco.init.register.compact.CoFHCompact;
+import wolf.astell.choco.recipes.compact.AvaritiaCompact;
+import wolf.astell.choco.recipes.compact.CoFHCompact;
 import wolf.astell.choco.network.PacketHandler;
 
 
@@ -39,11 +39,11 @@ public class Main {
     public void preInit(FMLPreInitializationEvent event) {
         ItemList.init();
         if (Loader.isModLoaded("redstoneflux")){
-            IRegisterCoFH.init();
+            CoFHRegister.init();
             CoFHCompact.init();
         }
         if (Loader.isModLoaded("avaritia")){
-            IRegisterAvaritia.init();
+            AvaritiaRegister.init();
             AvaritiaCompact.init();
         }
         PacketHandler.init();
