@@ -13,7 +13,6 @@ import wolf.astell.choco.init.ItemList;
 
 import java.util.List;
 
-@EventBusSubscriber
 public class ChocoSingularity extends Item
 {
 	public ChocoSingularity(String name)

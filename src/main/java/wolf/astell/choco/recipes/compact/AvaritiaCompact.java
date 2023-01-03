@@ -5,6 +5,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import wolf.astell.choco.api.AvaritiaUtils;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 import wolf.astell.choco.init.register.compact.AvaritiaRegister;
 
 import static wolf.astell.choco.init.register.compact.AvaritiaRegister.infiniteBaubleChocolate;
@@ -13,9 +14,11 @@ import static wolf.astell.choco.init.register.compact.AvaritiaRegister.infiniteC
 public class AvaritiaCompact {
 
     public static void init(){
-        AvaritiaUtils.addCatalystIngredient(new ItemStack(ItemList.foodEnchantedChocolate));
-        AvaritiaUtils.addCompressorRecipe(new ItemStack(AvaritiaRegister.chocolateSingularity),300,true,new ItemStack(ItemList.foodChocolate));
-        AvaritiaUtils.addShapedRecipe(
+        if (ModConfig.AVARITIA_CONF.ADD_CHOCO_TO_CATALYST){
+            AvaritiaUtils.addCatalystIngredient(new ItemStack(ItemList.foodEnchantedChocolate));
+        }
+        if (ModConfig.AVARITIA_CONF.CHOCO_INFINITY){
+            AvaritiaUtils.addShapedRecipe(
                 new ItemStack(infiniteChocolate, 1, 0),
                 "    Z    ",
                 " NDDDDDN ",
@@ -31,7 +34,9 @@ public class AvaritiaCompact {
                 'D', new ItemStack(ItemList.foodEnchantedChocolate, 1, 0),
                 'Z', new ItemStack(ItemList.flightChocolate, 1, 0)
         );
-        AvaritiaUtils.addShapedRecipe(
+        }
+        if (ModConfig.AVARITIA_CONF.FONDANT_INFINITY){
+            AvaritiaUtils.addShapedRecipe(
                 new ItemStack(infiniteBaubleChocolate, 1, 0),
                 " A    A  ",
                 "AEA  AFA ",
@@ -49,5 +54,7 @@ public class AvaritiaCompact {
                 'E', new ItemStack(ItemList.baubleChocolate, 1, 0),
                 'F', new ItemStack(ItemList.flightChocolate, 1, 0)
         );
+        }
+        AvaritiaUtils.addCompressorRecipe(new ItemStack(AvaritiaRegister.chocolateSingularity),300,true,new ItemStack(ItemList.foodChocolate));
     }
 }

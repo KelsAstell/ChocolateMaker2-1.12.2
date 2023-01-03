@@ -4,7 +4,7 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import morph.avaritia.init.ModItems;
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -15,13 +15,10 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,10 +28,13 @@ import wolf.astell.choco.api.InjectDamageSource;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
-@EventBusSubscriber
+import static java.lang.Math.abs;
+
+@Mod.EventBusSubscriber
 public class InfiniteBaubleChocolate extends Item implements IBauble
 {
 	public InfiniteBaubleChocolate(String name)
@@ -47,18 +47,16 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 
 		ItemList.ITEM_LIST.add(this);
 	}
-	int potionLevel = ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1;
 
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack)
 	{
 		return BaubleType.AMULET;
 	}
-
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void handleDamage(LivingAttackEvent e)
 	{
-		if(ModConfig.TRINKET_CONF.GODMODE && e.getEntityLiving() instanceof EntityPlayer)
+		if(e.getEntityLiving() instanceof EntityPlayer)
 		{
 			IBaublesItemHandler h = BaublesApi.getBaublesHandler((EntityPlayer) e.getEntityLiving());
 			for(int i : BaubleType.AMULET.getValidSlots())
@@ -67,9 +65,9 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 				if(!e.isCanceled() && !stack.isEmpty() && stack.getItem() instanceof InfiniteBaubleChocolate)
 				{
 					Entity attacker = e.getSource().getTrueSource();
-					if(attacker instanceof EntityPlayer){
+					if(attacker instanceof EntityPlayer && ModConfig.AVARITIA_CONF.FONDANT_PERIMETER_MODE){
 						EntityPlayer victim = (EntityPlayer) attacker;
-						if(e.getAmount() > e.getEntityLiving().getHealth()-1 || victim.getHeldItemMainhand().equals(new ItemStack(ModItems.infinity_sword))){
+						if(e.getAmount() > e.getEntityLiving().getHealth()-1){
 							victim.playSound(SoundEvents.ENTITY_CHICKEN_DEATH, 0.9F, victim.world.rand.nextFloat() * 0.1F + 0.9F);
 							victim.world.spawnEntity(new EntityLightningBolt(victim.world,victim.posX,victim.posY,victim.posZ,true));
 							victim.getCombatTracker().trackDamage(new InjectDamageSource(e.getEntityLiving()), victim.getHealth(), victim.getHealth());
@@ -83,33 +81,30 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 		}
 	}
 
-
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
+		double speed = abs(player.motionX) + abs(player.motionY) + abs(player.motionZ);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			if(!((EntityPlayer) player).isSpectator() && !((EntityPlayer) player).capabilities.isCreativeMode)
+			if(!((EntityPlayer) player).capabilities.isCreativeMode)
 			{
 				if(!((EntityPlayer) player).capabilities.allowFlying)
 				{
 					enableFlyingAbility((EntityPlayer) player);
 				}
-			float pitch = player.rotationPitch, yaw = player.rotationYaw;
-			float newYaw = yaw + getRand();
-			float newPitch = pitch + getRand();
-			Vec3d shootPosition = new Vec3d(
-					-MathHelper.sin(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F),
-					-MathHelper.sin(newPitch * 0.0174F),
-					MathHelper.cos(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F));
-			player.world.spawnParticle(EnumParticleTypes.TOTEM, player.posX,
-					player.posY + player.getEyeHeight() + 1f, player.posZ, shootPosition.x, shootPosition.y, shootPosition.z, 1);
-
-		}
+				if (player.isSprinting() && !((EntityPlayer) player).isSpectator() && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE){
+					player.noClip = true;
+					((EntityPlayer) player).setGameType(GameType.SPECTATOR);
+					((EntityPlayer) player).capabilities.isFlying = true;
+					((EntityPlayer) player).sendPlayerAbilities();
+				}
+				if(speed==0 && !player.isSprinting() && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE){
+					player.noClip = false;
+					((EntityPlayer) player).setGameType(GameType.SURVIVAL);
+					((EntityPlayer) player).sendPlayerAbilities();
+				}
+			}
 	}
-	}
-	private int getRand()
-	{
-		return new Random().nextInt(50 - -50)+ -50;
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
@@ -131,19 +126,17 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 		player.sendPlayerAbilities();
 	}
 
-//	@SideOnly(Side.CLIENT)
-//	@Override
-//	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-//		super.addInformation(stack, worldIn, tooltip, flagIn);
-//		tooltip.add(I18n.format("item.bauble_chocolate.desc.0"));
-//		if(potionLevel >= 0){
-//			tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
-//		}
-//		if(ModConfig.TRINKET_CONF.GODMODE){
-//			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));
-//		}
-//		if (!ModConfig.TRINKET_CONF.GODMODE && potionLevel < 0){
-//			tooltip.add(I18n.format("message.choco.effect_off"));
-//		}
-//	}
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+		super.addInformation(stack, worldIn, tooltip, flagIn);
+		tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.1"));
+		if (ModConfig.AVARITIA_CONF.FONDANT_PERIMETER_MODE){
+			tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.2"));
+		}
+		if (ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE){
+			tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.3"));
+		}
+	}
 }

@@ -169,5 +169,37 @@ public class ModConfig {
 
     }
 
+    @Config.LangKey("choco.AvaritiaConf")
+    @Config.Comment("Choco Avaritia Integration Settings.")
+    public static final AvaritiaConf AVARITIA_CONF = new AvaritiaConf();
+
+    public static class AvaritiaConf {
+
+        @Config.LangKey("config.chocolate.infinity_chocolate.name")
+        @Config.Comment("Enable Infinity Chocolate Recipe, default true")
+        @Config.RequiresMcRestart
+        public boolean CHOCO_INFINITY = true;
+
+        @Config.LangKey("config.chocolate.infinity_bauble_chocolate.name")
+        @Config.Comment("Enable Infinity Fondant Chocolate Recipe, default true")
+        @Config.RequiresMcRestart
+        public boolean FONDANT_INFINITY = true;
+
+        @Config.LangKey("config.chocolate.overpowered_fondant.name")
+        @Config.Comment("Enable Infinity Fondant Chocolate 'Anti-Hardcoded Death' Algorithm, MAY NOT WORK!")
+        @Config.RequiresMcRestart
+        public boolean FONDANT_PERIMETER_MODE = true;
+
+        @Config.LangKey("config.chocolate.fondant_spmode.name")
+        @Config.Comment("Enable Infinity Fondant Chocolate Spectator Mode when Dash, default true")
+        @Config.RequiresMcRestart
+        public boolean FONDANT_SPECTATOR_MODE = true;
+
+        @Config.LangKey("config.chocolate.chocky_catalyst.name")
+        @Config.Comment("Add Chocolate to Infinity Catalyst Recipe, Why Not?")
+        @Config.RequiresMcRestart
+        public boolean ADD_CHOCO_TO_CATALYST = true;
+    }
+
 }
 

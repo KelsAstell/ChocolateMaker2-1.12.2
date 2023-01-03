@@ -2,7 +2,8 @@
   {
     "parent": "item/generated",
     "textures": {
-      "layer0": "choco:item/singularity"
+      "layer0": "choco:item/singularity",
+      "layer1": "choco:item/singularity2"
     }
   }
   

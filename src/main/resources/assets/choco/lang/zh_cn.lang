@@ -57,6 +57,10 @@ item.infinite_chocolate.desc.0=§e可以吃无数次.
 item.infinite_chocolate.desc.1=§e食用后获得多种正面BUFF.
 item.infinite_chocolate.desc.2=无尽+银河混合口味.
 item.infinite_bauble_chocolate.name=§d无尽翻糖巧克力
+item.infinite_bauble_chocolate.desc.0=§e无尽风味.
+item.infinite_bauble_chocolate.desc.1=§e装备后获得创造飞行能力, 免疫常规伤害.
+item.infinite_bauble_chocolate.desc.2=§e受到致命攻击时将尝试从代码层面反弹伤害.
+item.infinite_bauble_chocolate.desc.3=§e冲刺时, 切换为旁观模式.
 item.singularity.name=§e奇点-巧克力
 item.singularity.desc=是时候整点好活了!
 
@@ -89,6 +93,12 @@ config.air_chocolate.glide.name=开启空气巧克力滑翔功能
 config.flight_chocolate.enable.name=开启飞行巧克力飞行功能
 config.chocolate.tool_extra_loot.name=A.I.O 在副手持握时能否获得额外战利品
 config.chocolate.tool_extra_loot_chance.name=A.I.O 额外战利品概率
+choco.AvaritiaConf=无尽贪婪联动设定
+config.chocolate.infinity_chocolate.name=启用无尽巧克力配方
+config.chocolate.infinity_bauble_chocolate.name=启用无尽翻糖巧克力配方
+config.chocolate.overpowered_fondant.name=启用无尽翻糖巧克力边缘系统, 受到致命伤害时试图从代码层面反击
+config.chocolate.chocky_catalyst.name=将巧克力加入无尽催化剂豪华午餐, 为什么不试试呢
+config.chocolate.fondant_spmode.name=启用无尽翻糖巧克力冲刺特效, 冲刺时会进入旁观模式
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.
@@ -100,5 +110,5 @@ message.choco.power_not_sufficient=电量不足.
 message.choco.noclip.enabled=§f无碰撞模式已启用.
 message.choco.noclip.disabled=§f无碰撞模式已禁用.
 
-death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
-death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.
+death.attack.infinity_bauble_chocolate.0=%1$s被做成了巧克力.
+death.attack.infinity_bauble_chocolate.1=%1$s试图伤害一位巧克力爱好者.

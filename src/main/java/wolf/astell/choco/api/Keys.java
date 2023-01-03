@@ -20,7 +20,7 @@ public class Keys {
         public boolean conflicts(IKeyConflictContext other) {
             return other == this || KeyConflictContext.IN_GAME.isActive();
         }
-    }, Keyboard.KEY_UNDERLINE, "key.categories.choco");
+    }, Keyboard.KEY_C, "key.categories.choco");
 
     public static void init() {
         ClientRegistry.registerKeyBinding(NOCLIP);

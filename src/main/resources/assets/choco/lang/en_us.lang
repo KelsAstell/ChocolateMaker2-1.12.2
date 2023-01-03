@@ -57,6 +57,10 @@ item.infinite_chocolate.desc.0=§eCan be Consumed Permanently.
 item.infinite_chocolate.desc.1=§eGain Positive Effects on Consume.
 item.infinite_chocolate.desc.2=Flavour of Galaxy and Infinity.
 item.infinite_bauble_chocolate.name=§dInfinite Fondant Chocolate
+item.infinite_bauble_chocolate.desc.0=§eFlavor of Infinity.
+item.infinite_bauble_chocolate.desc.1=§eGain Flying Ability and Immunity to Most Damage.
+item.infinite_bauble_chocolate.desc.2=§eWill Attempt to Reflect Coded Damage on Hit.
+item.infinite_bauble_chocolate.desc.3=§eWhen Sprinting, Change to Spectator.
 item.singularity.name=§eSingularity-Chocolate
 item.singularity.desc=Time to Make Something Brilliant!
 
@@ -89,6 +93,12 @@ config.air_chocolate.glide.name=Enable Air Chocolate Glide Up
 config.flight_chocolate.enable.name=Enable Flight Chocolate Flight Ability
 config.chocolate.tool_extra_loot.name=Can A.I.O Gain Extra Loot When in Offhand
 config.chocolate.tool_extra_loot_chance.name=A.I.O Extra Loot Chance
+choco.AvaritiaConf=Choco Avaritia Integration Settings.
+config.chocolate.infinity_chocolate.name=Enable Infinity Chocolate Recipe
+config.chocolate.infinity_bauble_chocolate.name=Enable Infinity Fondant Chocolate Recipe
+config.chocolate.overpowered_fondant.name=Enable Infinity Fondant Chocolate 'Anti-Hardcoded Death' Algorithm, MAY NOT WORK!
+config.chocolate.chocky_catalyst.name=Add Chocolate to Infinity Catalyst Recipe, Why Not?
+config.chocolate.fondant_spmode.name=Enable Infinity Fondant Chocolate Spectator Mode when Dash
 
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.
