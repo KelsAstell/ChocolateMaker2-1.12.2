@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,6 +19,9 @@ public final class PacketHandler {
 	public static void init() {
 		int id = 0;
 		HANDLER.registerMessage(PacketJump.Handler.class, PacketJump.class, id++, Side.SERVER);
+		if (Loader.isModLoaded("avaritia")){
+			HANDLER.registerMessage(PacketNoClip.class, PacketNoClip.class, id++, Side.SERVER);
+		}
 	}
 
 	public static void sendToNearby(World world, BlockPos pos, IMessage toSend) {

@@ -56,6 +56,9 @@ item.infinite_chocolate.name=§dInfinite Chocolate
 item.infinite_chocolate.desc.0=§eCan be Consumed Permanently.
 item.infinite_chocolate.desc.1=§eGain Positive Effects on Consume.
 item.infinite_chocolate.desc.2=Flavour of Galaxy and Infinity.
+item.infinite_bauble_chocolate.name=§dInfinite Fondant Chocolate
+item.singularity.name=§eSingularity-Chocolate
+item.singularity.desc=Time to Make Something Brilliant!
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -94,3 +97,8 @@ message.choco.player_egg=§eSo what do you want?
 message.choco.watch_out=§e[A.I.O]§f TNT Overhead!
 message.choco.powered_chocolate.success=§e[Powered Chocolate]§f Successfully Restored Health and Shield!
 message.choco.power_not_sufficient=Low Battery.
+message.choco.noclip.enabled=Noclip Enabled
+message.choco.noclip.disabled=Noclip Disabled
+
+death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
+death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.

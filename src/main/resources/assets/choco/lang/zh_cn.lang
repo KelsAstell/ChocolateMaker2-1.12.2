@@ -56,6 +56,9 @@ item.infinite_chocolate.name=§d无尽巧克力
 item.infinite_chocolate.desc.0=§e可以吃无数次.
 item.infinite_chocolate.desc.1=§e食用后获得多种正面BUFF.
 item.infinite_chocolate.desc.2=无尽+银河混合口味.
+item.infinite_bauble_chocolate.name=§d无尽翻糖巧克力
+item.singularity.name=§e奇点-巧克力
+item.singularity.desc=是时候整点好活了!
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -92,3 +95,10 @@ message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.
 message.choco.afday=§c愚人节快乐!
 message.choco.player_egg=§e你在期待什么呢?
 message.choco.watch_out=§e[A.I.O]§f 小心高空坠物!
+message.choco.powered_chocolate.success=§e[电动巧克力]§f 已恢复生命值和护盾!
+message.choco.power_not_sufficient=电量不足.
+message.choco.noclip.enabled=§f无碰撞模式已启用.
+message.choco.noclip.disabled=§f无碰撞模式已禁用.
+
+death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
+death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.

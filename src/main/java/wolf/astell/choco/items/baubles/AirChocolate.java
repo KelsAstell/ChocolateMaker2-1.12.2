@@ -39,8 +39,8 @@ public class AirChocolate extends CloudChoco implements IBauble {
 		return BaubleType.BODY;
 	}
 
-	@Override
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void clientWornTick(ItemStack stack, EntityLivingBase player) {
 		if(player instanceof EntityPlayerSP && player == Minecraft.getMinecraft().player && ModConfig.TRINKET_CONF.GLIDE_UP) {
 			EntityPlayerSP playerSp = (EntityPlayerSP) player;

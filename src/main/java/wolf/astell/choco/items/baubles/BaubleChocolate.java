@@ -67,15 +67,8 @@ public class BaubleChocolate extends Item implements IBauble
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
-			if(!player.isSneaking()) {
-				player.removePotionEffect(MobEffects.RESISTANCE);
-				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
-			}
-			else {
-				PotionEffect effect = player.getActivePotionEffect(MobEffects.RESISTANCE);
-				if(effect != null && effect.getAmplifier() == potionLevel)
-					player.removePotionEffect(MobEffects.RESISTANCE);
-			}
+			player.removePotionEffect(MobEffects.RESISTANCE);
+			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
 		}
 	}
 	@Override

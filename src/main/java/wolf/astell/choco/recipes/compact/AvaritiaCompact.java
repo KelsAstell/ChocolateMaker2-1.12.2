@@ -3,17 +3,19 @@ package wolf.astell.choco.recipes.compact;
 import morph.avaritia.init.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import wolf.astell.choco.api.AvaritiaRecipieLoader;
+import wolf.astell.choco.api.AvaritiaUtils;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.register.compact.AvaritiaRegister;
 
+import static wolf.astell.choco.init.register.compact.AvaritiaRegister.infiniteBaubleChocolate;
 import static wolf.astell.choco.init.register.compact.AvaritiaRegister.infiniteChocolate;
 
 public class AvaritiaCompact {
 
     public static void init(){
-        AvaritiaRecipieLoader.addCatalystIngredient(new ItemStack(ItemList.foodEnchantedChocolate));
-        AvaritiaRecipieLoader.addCompressorRecipe(new ItemStack(ItemList.foodChocolateIcecream),300,true,new ItemStack(Blocks.DRAGON_EGG));
-        AvaritiaRecipieLoader.addShapedRecipe(
+        AvaritiaUtils.addCatalystIngredient(new ItemStack(ItemList.foodEnchantedChocolate));
+        AvaritiaUtils.addCompressorRecipe(new ItemStack(AvaritiaRegister.chocolateSingularity),300,true,new ItemStack(ItemList.foodChocolate));
+        AvaritiaUtils.addShapedRecipe(
                 new ItemStack(infiniteChocolate, 1, 0),
                 "    Z    ",
                 " NDDDDDN ",
@@ -28,6 +30,24 @@ public class AvaritiaCompact {
                 'E', ModItems.infinity_catalyst,
                 'D', new ItemStack(ItemList.foodEnchantedChocolate, 1, 0),
                 'Z', new ItemStack(ItemList.flightChocolate, 1, 0)
+        );
+        AvaritiaUtils.addShapedRecipe(
+                new ItemStack(infiniteBaubleChocolate, 1, 0),
+                " A    A  ",
+                "AEA  AFA ",
+                "A  AA  A ",
+                "A      A ",
+                "A C  C A ",
+                "A C  C A ",
+                "A  DD  A ",
+                "A      AA",
+                "A AA AABB",
+                'A', ModItems.neutronium_ingot,
+                'C', Blocks.EMERALD_BLOCK,
+                'D', new ItemStack(ItemList.foodEnchantedChocolate, 1, 0),
+                'B', ModItems.diamond_lattice,
+                'E', new ItemStack(ItemList.baubleChocolate, 1, 0),
+                'F', new ItemStack(ItemList.flightChocolate, 1, 0)
         );
     }
 }
