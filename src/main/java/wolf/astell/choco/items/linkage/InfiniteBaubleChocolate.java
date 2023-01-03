@@ -98,7 +98,7 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 					((EntityPlayer) player).capabilities.isFlying = true;
 					((EntityPlayer) player).sendPlayerAbilities();
 				}
-				if(speed==0 && !player.isSprinting() && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE && player.noClip){
+				if(speed==0 && !player.isSprinting() && abs(player.motionY)==0 && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE && player.noClip){
 					player.noClip = false;
 					((EntityPlayer) player).setGameType(GameType.SURVIVAL);
 					((EntityPlayer) player).sendPlayerAbilities();
