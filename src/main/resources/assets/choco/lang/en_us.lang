@@ -117,7 +117,6 @@ message.choco.power_not_sufficient=Low Battery.
 message.choco.select_world.0=Selected 1
 message.choco.select_world.1=Selected 2
 message.choco.select_world.2=Selected 3
-message.choco.set_spawn=Spawn Point Set.
 
 death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
 death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.

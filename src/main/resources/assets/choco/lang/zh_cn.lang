@@ -117,7 +117,6 @@ message.choco.power_not_sufficient=电量不足.
 message.choco.select_world.0=Selected 1
 message.choco.select_world.1=Selected 2
 message.choco.select_world.2=Selected 3
-message.choco.set_spawn=出生点已设置.
 
 death.attack.infinity_bauble_chocolate.0=%1$s被做成了巧克力.
 death.attack.infinity_bauble_chocolate.1=%1$s试图伤害一位巧克力爱好者.
