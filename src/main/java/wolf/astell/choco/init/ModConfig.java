@@ -47,22 +47,18 @@ public class ModConfig {
 
         @Config.LangKey("config.bauble_chocolate.godmode.name")
         @Config.Comment("Enable Fondant Chocolate God Mode, default true")
-        @Config.RequiresMcRestart
         public boolean GODMODE = true;
 
         @Config.LangKey("config.air_chocolate.descend.name")
         @Config.Comment("Air Chocolate Ascend Rate, default 0.15")
-        @Config.RequiresMcRestart
         public double DESCEND_RATE = 0.15;
 
         @Config.LangKey("config.air_chocolate.glide.name")
         @Config.Comment("Enable Air Chocolate Glide Up, default true")
-        @Config.RequiresMcRestart
         public boolean GLIDE_UP = true;
 
         @Config.LangKey("config.air_chocolate.maxjump.name")
         @Config.Comment("Air Chocolate Max Allowed Jumps, default 5")
-        @Config.RequiresMcRestart
         public int MAX_ALLOWED_JUMPS = 5;
 
         @Config.LangKey("config.flight_chocolate.doExhaust.name")
@@ -91,13 +87,20 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.consumespeed.name")
         @Config.Comment("Set Consume Speed of Chocolate, default 20")
-        @Config.RequiresMcRestart
         public int CONSUME_SPEED = 20;
 
         @Config.LangKey("config.chocolate.isChocoIron.name")
         @Config.Comment("Chocolate Ingot = Iron Ingot. Default true")
         @Config.RequiresMcRestart
         public boolean CHOCO_IRON = true;
+
+        @Config.LangKey("config.chocolate.doWorldTeleport.name")
+        @Config.Comment("Enable World Chocolate World Teleport Function, default true")
+        public boolean WORLD_TRAVELLER = true;
+
+        @Config.LangKey("config.chocolate.customWorldTeleport.name")
+        @Config.Comment("Set a Custom coord for World Chocolate")
+        public int[] CUSTOM_COORDS = {0,100,0};
 
     }
 
@@ -129,22 +132,18 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.tool_attack_damage.name")
         @Config.Comment("A.I.O Attack Damage, default 12")
-        @Config.RequiresMcRestart
         public int TOOL_ATTACK_DAMAGE = 12;
 
         @Config.LangKey("config.chocolate.tool_bedrock_break.name")
         @Config.Comment("Can A.I.O Break Bedrock, default true")
-        @Config.RequiresMcRestart
         public boolean BEDROCK_BREAKER = true;
 
         @Config.LangKey("config.chocolate.tool_teleport.name")
         @Config.Comment("Can A.I.O Teleport UP, default true")
-        @Config.RequiresMcRestart
         public boolean TELEPORT_UP = true;
 
         @Config.LangKey("config.chocolate.tool_time_change.name")
         @Config.Comment("Can A.I.O Change World Time, default false")
-        @Config.RequiresMcRestart
         public boolean TSOT = false;//The Sand of Time
 
         @Config.LangKey("config.chocolate.tool_beheading.name")
@@ -154,7 +153,6 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.tool_beheading_chance.name")
         @Config.Comment("A.I.O Heads Looting Chance, default 0.3")
-        @Config.RequiresMcRestart
         public double BEHEADING_CHANCE = 0.3;
 
         @Config.LangKey("config.chocolate.tool_extra_loot.name")
@@ -164,7 +162,6 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.tool_extra_loot_chance.name")
         @Config.Comment("A.I.O Extra Loot Chance, default 0.5")
-        @Config.RequiresMcRestart
         public double EX_LOOT_CHANCE = 0.5;
 
     }
@@ -187,12 +184,10 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.overpowered_fondant.name")
         @Config.Comment("Enable Infinity Fondant Chocolate 'Anti-Hardcoded Death' Algorithm, MAY NOT WORK!")
-        @Config.RequiresMcRestart
         public boolean FONDANT_PERIMETER_MODE = true;
 
         @Config.LangKey("config.chocolate.fondant_spmode.name")
         @Config.Comment("Enable Infinity Fondant Chocolate Spectator Mode when Dash, default true")
-        @Config.RequiresMcRestart
         public boolean FONDANT_SPECTATOR_MODE = true;
 
         @Config.LangKey("config.chocolate.chocky_catalyst.name")
@@ -208,12 +203,10 @@ public class ModConfig {
 
         @Config.LangKey("config.chocolate.gold_break.name")
         @Config.Comment("When Making Golden Chocolate, the Gold Block Break Chance should be, default 0.07")
-        @Config.RequiresMcRestart
         public double GOLD_BREAK_CHANCE = 0.07;
 
         @Config.LangKey("config.chocolate.enchant_break.name")
         @Config.Comment("When Making Enchanted Chocolate, the Enchanting Table Break Chance should be, default 0.07")
-        @Config.RequiresMcRestart
         public double ENCHANT_BREAK_CHANCE = 0.07;
     }
 

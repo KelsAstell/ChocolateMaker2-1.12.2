@@ -61,7 +61,7 @@ public class ExpChocolate extends Item {
 		if (entity instanceof EntityPlayer && !entity.getEntityWorld().isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
 			player.getEntityWorld().spawnEntity(new EntityXPOrb(player.getEntityWorld(),player.posX,player.posY-1,player.posZ,256));
-			if (stack.getCount() % 12 == 0)
+			if (stack.getCount() % 21 == 0)
 			{
 				getTips(player);
 			}

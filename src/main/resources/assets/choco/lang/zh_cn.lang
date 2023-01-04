@@ -63,9 +63,12 @@ item.infinite_bauble_chocolate.desc.2=§e受到致命攻击时将尝试从代码
 item.infinite_bauble_chocolate.desc.3=§e冲刺时, 切换为旁观模式.
 item.singularity.name=§e奇点-巧克力
 item.singularity.desc=是时候整点好活了!
-item.recall_chocolate.name=§e回忆巧克力
-item.recall_chocolate.desc.0=§e手持巧克力, 左键点击床来合成.
-item.recall_chocolate.desc.1=§e食用后, 传送到你的床上方.
+item.exp_chocolate.name=§e经验巧克力
+item.exp_chocolate.desc.0=§e有知识的味道.
+item.exp_chocolate.desc.1=§e食用后, 获得经验和巧克力相关的知识.
+item.world_chocolate.name=§e三界巧克力
+item.world_chocolate.desc.0=§e尝起来像是世界本身的味道.
+item.world_chocolate.desc.1=§e食用后, 传送到另一个维度.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -111,8 +114,15 @@ message.choco.player_egg=§e你在期待什么呢?
 message.choco.watch_out=§e[A.I.O]§f 小心高空坠物!
 message.choco.powered_chocolate.success=§e[电动巧克力]§f 已恢复生命值和护盾!
 message.choco.power_not_sufficient=电量不足.
-message.choco.noclip.enabled=§f无碰撞模式已启用.
-message.choco.noclip.disabled=§f无碰撞模式已禁用.
+message.choco.select_world.0=Selected 1
+message.choco.select_world.1=Selected 2
+message.choco.select_world.2=Selected 3
+message.choco.set_spawn=出生点已设置.
 
 death.attack.infinity_bauble_chocolate.0=%1$s被做成了巧克力.
 death.attack.infinity_bauble_chocolate.1=%1$s试图伤害一位巧克力爱好者.
+
+tip.choco.0=对着一个金块使用巧克力(左键点击).
+tip.choco.1=对着一个附魔台使用金巧克力(左键点击).
+tip.choco.2=对着一张床使用巧克力(右键点击).
+tip.choco.3=3
