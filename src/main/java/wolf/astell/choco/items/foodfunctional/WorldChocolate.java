@@ -117,8 +117,8 @@ public class WorldChocolate extends Item {
 		FMLCommonHandler.instance().firePlayerChangedDimensionEvent(player, oldDim, dim);
 		worldServer1.playSound(null, x, y + 0.5D, z, SoundEvents.BLOCK_PORTAL_TRAVEL, SoundCategory.MASTER, 0.25F, new Random().nextFloat() * 0.4F + 0.8F);
 		if (!player.capabilities.isCreativeMode) {
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 400, 9, false, false));
-			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 400, 0, false, false));
+			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 120, 9, false, false));
+			player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 120, 0, false, false));
 			player.addPotionEffect(new PotionEffect(MobEffects.LEVITATION, 20, 0, false, false));}
 	}
 
