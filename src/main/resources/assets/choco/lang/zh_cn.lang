@@ -63,6 +63,9 @@ item.infinite_bauble_chocolate.desc.2=§e受到致命攻击时将尝试从代码
 item.infinite_bauble_chocolate.desc.3=§e冲刺时, 切换为旁观模式.
 item.singularity.name=§e奇点-巧克力
 item.singularity.desc=是时候整点好活了!
+item.recall_chocolate.name=§e回忆巧克力
+item.recall_chocolate.desc.0=§e手持巧克力, 左键点击床来合成.
+item.recall_chocolate.desc.1=§e食用后, 传送到你的床上方.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -103,6 +106,7 @@ config.chocolate.fondant_spmode.name=启用无尽翻糖巧克力冲刺特效, �
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.
 message.choco.afday=§c愚人节快乐!
+message.choco.birthday_astell=§e似乎被恶魔狼啃了一口.
 message.choco.player_egg=§e你在期待什么呢?
 message.choco.watch_out=§e[A.I.O]§f 小心高空坠物!
 message.choco.powered_chocolate.success=§e[电动巧克力]§f 已恢复生命值和护盾!

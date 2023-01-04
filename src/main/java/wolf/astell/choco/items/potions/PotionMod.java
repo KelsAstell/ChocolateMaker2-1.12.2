@@ -1,5 +1,5 @@
 
-package wolf.astell.choco.init.potions;
+package wolf.astell.choco.items.potions;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;

@@ -14,9 +14,9 @@ public class InjectDamageSource extends EntityDamageSource {
 
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase entity) {
-        String s = "death.attack.infinity_bauble_chocolate";
+        String s = "death.attack.infinity_bauble_chocolate.";
         int r = entity.getEntityWorld().rand.nextInt(2);
-        s = s + "." + r;
+        s = s + r;
         return new TextComponentTranslation(s, entity.getDisplayName(), null);
     }
 

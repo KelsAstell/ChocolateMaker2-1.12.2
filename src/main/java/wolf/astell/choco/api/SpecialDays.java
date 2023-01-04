@@ -1,3 +1,9 @@
+/*
+Licenced under the [Choco Licence] https://emowolf.fun/choco
+So let's build something awesome from this!
+Author: Kels_Astell
+GitHub: https://github.com/KelsAstell
+*/
 package wolf.astell.choco.api;
 
 import java.util.Calendar;
@@ -12,13 +18,9 @@ public class SpecialDays {
 		}
 		if(calendar.get(Calendar.MONTH) == Calendar.FEBRUARY && calendar.get(Calendar.DAY_OF_MONTH) == 11)
 		{
-			return "BIRTHDAY";
+			return "BIRTHDAY_ASTELL";
 		}
-		if(calendar.get(Calendar.MONTH) == Calendar.DECEMBER && calendar.get(Calendar.DAY_OF_MONTH) == 31)
-		{
-			return "APRIL_FOOLS_DAY";//TODO:Remove DEBUGGING
-		}
-		return "A_PLAIN_NICE_DAY";
+		return "A_GOOD_DAY";
 	}
 
 }

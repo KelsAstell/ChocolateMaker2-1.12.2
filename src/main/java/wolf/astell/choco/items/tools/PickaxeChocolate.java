@@ -19,9 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -116,7 +114,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                 EntityPlayer attacker = (EntityPlayer) event.getSource().getTrueSource();
                 if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate){
                     attacker.world.spawnEntity(new EntityTNTPrimed(attacker.world,attacker.posX, attacker.posY + 100, attacker.posZ,event.getEntityLiving()));
-                    attacker.sendMessage(new TextComponentTranslation("message.choco.watch_out").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                    attacker.sendMessage(new TextComponentTranslation("message.choco.watch_out"));
                     attacker.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0,true,false));
                     attacker.addPotionEffect(new PotionEffect(MobEffects.LEVITATION,100,8,true,false));
                     attacker.setHealth(1);
@@ -188,7 +186,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                 player.swingArm(hand);
                 worldIn.playSound(null,pos,SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT,SoundCategory.PLAYERS,1.0F, 1.0F);
                 player.attemptTeleport(player.posX,72,player.posZ);
-                player.sendMessage(new TextComponentTranslation("message.choco.teleport_confirm").setStyle(new Style().setColor(TextFormatting.YELLOW)));
+                player.sendMessage(new TextComponentTranslation("message.choco.teleport_confirm"));
                 ConfirmTeleport=0;
             }
             ConfirmTeleport++;

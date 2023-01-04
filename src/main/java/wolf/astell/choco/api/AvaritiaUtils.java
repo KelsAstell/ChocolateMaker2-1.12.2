@@ -1,3 +1,9 @@
+/*
+Licenced under the [Choco Licence] https://emowolf.fun/choco
+So let's build something awesome from this!
+Author: Kels_Astell
+GitHub: https://github.com/KelsAstell
+*/
 package wolf.astell.choco.api;
 
 import morph.avaritia.recipe.AvaritiaRecipeManager;

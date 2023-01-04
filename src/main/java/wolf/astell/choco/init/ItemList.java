@@ -11,6 +11,8 @@ import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
 import wolf.astell.choco.items.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
+import wolf.astell.choco.items.foodfunctional.ExpChocolate;
+import wolf.astell.choco.items.foodfunctional.RecallChocolate;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.ArrayList;
@@ -34,6 +36,8 @@ public class ItemList{
     public static Item hazardPotion;
     public static Item animalPotion;
     public static Item travellerPotion;
+    public static Item recallChocolate;
+    public static Item expChocolate;
 
 
     public static void init() {
@@ -57,5 +61,7 @@ public class ItemList{
             hazardPotion = new IsPotion("hazard_potion", new PotionEffect[] {new PotionEffect(EffectRegister.waterCandle, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));
             animalPotion = new IsPotion("animal_potion", new PotionEffect[] {new PotionEffect(EffectRegister.animalBoost, 1200, 0)},new ItemStack(Items.GLASS_BOTTLE));}
         travellerPotion = new IsPotion("chocolate_milk", new PotionEffect[] {new PotionEffect(MobEffects.NIGHT_VISION, 12000, 0), new PotionEffect(MobEffects.JUMP_BOOST, 12000, 1), new PotionEffect(MobEffects.SPEED, 12000, 0), new PotionEffect(MobEffects.SATURATION, 12000, 0)},new ItemStack(Items.GLASS_BOTTLE));
+        recallChocolate = new RecallChocolate("recall_chocolate");
+        expChocolate = new ExpChocolate("exp_chocolate");
     }
 }

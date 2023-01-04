@@ -4,6 +4,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
+import wolf.astell.choco.init.register.compact.AvaritiaRegister;
 
 public class OreDictRegister {
     public static void init(){
@@ -14,10 +15,19 @@ public class OreDictRegister {
             OreDictionary.registerOre("ingotIron", ItemList.ingotChocolate);
             OreDictionary.registerOre("minecraft:beacon_payment_items", ItemList.ingotChocolate);
         }
-        //add gtceu support, jk
-        if (Loader.isModLoaded("GTCEU"))
+        //add gtce/gtceu support
+        if (Loader.isModLoaded("gregtech"))
         {
             OreDictionary.registerOre("chunkGtChocolate", ItemList.ingotChocolate);
+        }
+        //add Nuclear Craft support
+        if (Loader.isModLoaded("NuclearCraft"))
+        {
+            OreDictionary.registerOre("ingotChocolate", ItemList.foodChocolate);
+        }
+        if (Loader.isModLoaded("avaritia"))
+        {
+            OreDictionary.registerOre("singularityChocolate", AvaritiaRegister.chocolateSingularity);
         }
     }
 }

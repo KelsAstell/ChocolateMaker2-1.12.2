@@ -4,7 +4,6 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
-import com.mojang.authlib.GameProfile;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -15,6 +14,10 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -28,11 +31,8 @@ import wolf.astell.choco.api.InjectDamageSource;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static java.lang.Math.abs;
+import java.util.Random;
 
 @Mod.EventBusSubscriber
 public class InfiniteBaubleChocolate extends Item implements IBauble
@@ -67,9 +67,11 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 					Entity attacker = e.getSource().getTrueSource();
 					if(attacker instanceof EntityPlayer && ModConfig.AVARITIA_CONF.FONDANT_PERIMETER_MODE){
 						EntityPlayer victim = (EntityPlayer) attacker;
+						victim.capabilities.disableDamage =false;
+						victim.playSound(SoundEvents.ENTITY_CHICKEN_DEATH, 0.9F, victim.world.rand.nextFloat() * 0.1F + 0.9F);
+						victim.world.spawnEntity(new EntityLightningBolt(victim.world,victim.posX,victim.posY,victim.posZ,true));
+						victim.setHealth(victim.getHealth()-e.getAmount());
 						if(e.getAmount() > e.getEntityLiving().getHealth()-1){
-							victim.playSound(SoundEvents.ENTITY_CHICKEN_DEATH, 0.9F, victim.world.rand.nextFloat() * 0.1F + 0.9F);
-							victim.world.spawnEntity(new EntityLightningBolt(victim.world,victim.posX,victim.posY,victim.posZ,true));
 							victim.getCombatTracker().trackDamage(new InjectDamageSource(e.getEntityLiving()), victim.getHealth(), victim.getHealth());
 							victim.setHealth(0);
 							victim.onDeath(new EntityDamageSource("chocolate", e.getEntityLiving()));
@@ -84,7 +86,6 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		double speed = abs(player.motionX) + abs(player.motionY) + abs(player.motionZ);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
 			if(!((EntityPlayer) player).capabilities.isCreativeMode)
 			{
@@ -92,19 +93,51 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 				{
 					enableFlyingAbility((EntityPlayer) player);
 				}
+				float pitch = player.rotationPitch, yaw = player.rotationYaw;
+				for (int p = 0; p < 3; p++) {
+					float newYaw = yaw + getRand();
+					float newPitch = pitch + getRand();
+					Vec3d shootPosition = new Vec3d(
+							-MathHelper.sin(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F),
+							-MathHelper.sin(newPitch * 0.0174F),
+							MathHelper.cos(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F));
+					player.world.spawnParticle(EnumParticleTypes.TOTEM, player.posX,
+							player.posY + player.getEyeHeight() + 0.8f, player.posZ, shootPosition.x, shootPosition.y , shootPosition.z , 1);
+				}
 				if (player.isSprinting() && !((EntityPlayer) player).isSpectator() && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE){
 					player.noClip = true;
 					((EntityPlayer) player).setGameType(GameType.SPECTATOR);
 					((EntityPlayer) player).capabilities.isFlying = true;
 					((EntityPlayer) player).sendPlayerAbilities();
 				}
-				if(speed==0 && !player.isSprinting() && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE && player.noClip){
+				if(!player.isSprinting() && !isStuck(player) && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE && player.noClip){
 					player.noClip = false;
 					((EntityPlayer) player).setGameType(GameType.SURVIVAL);
 					((EntityPlayer) player).sendPlayerAbilities();
 				}
 			}
 	}
+	}
+	private int getRand()
+	{
+		return new Random().nextInt(30 - -30)+ -30;
+	}
+
+	private boolean isStuck(EntityLivingBase player){//try to prevent player from stuck
+		BlockPos.PooledMutableBlockPos b = BlockPos.PooledMutableBlockPos.retain();
+		for(int i = 0; i < 8; ++i) {
+			int j = MathHelper.floor(player.posY + (double)(((float)((i) % 2) - 0.5F) * 0.1F) + (double)player.getEyeHeight());
+			int k = MathHelper.floor(player.posX + (double)(((float)((i >> 1) % 2) - 0.5F) * player.width * 0.8F));
+			int l = MathHelper.floor(player.posZ + (double)(((float)((i >> 2) % 2) - 0.5F) * player.width * 0.8F));
+			if (b.getX() != k || b.getY() != j || b.getZ() != l) {
+				b.setPos(k, j, l);
+				if (player.world.getBlockState(b).causesSuffocation()) {
+					b.release();
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {

@@ -63,6 +63,12 @@ item.infinite_bauble_chocolate.desc.2=§eWill Attempt to Reflect Coded Damage on
 item.infinite_bauble_chocolate.desc.3=§eWhen Sprinting, Change to Spectator.
 item.singularity.name=§eSingularity-Chocolate
 item.singularity.desc=Time to Make Something Brilliant!
+item.recall_chocolate.name=§eRecall Chocolate
+item.recall_chocolate.desc.0=§eThere should be a way to craft this...
+item.recall_chocolate.desc.1=§eOn Consume, Teleport to Your Bed.
+item.exp_chocolate.name=§eExperience Chocolate
+item.exp_chocolate.desc.0=§eHas a Taste of Knowledge.
+item.exp_chocolate.desc.1=§eOn Consume, Gain Experience and Knowledge About Chocolate.
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -103,6 +109,7 @@ config.chocolate.fondant_spmode.name=Enable Infinity Fondant Chocolate Spectator
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.
 message.choco.afday=§cHappy April Fools!
+message.choco.birthday_astell=§eAn Emowolf took a bite on it!
 message.choco.player_egg=§eSo what do you want?
 message.choco.watch_out=§e[A.I.O]§f TNT Overhead!
 message.choco.powered_chocolate.success=§e[Powered Chocolate]§f Successfully Restored Health and Shield!
@@ -112,3 +119,8 @@ message.choco.noclip.disabled=Noclip Disabled
 
 death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
 death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.
+
+tip.choco.0=Crush a §echocolate §fagainst a §egold block §f(Left Click).
+tip.choco.1=Crush a §egolden chocolate §fagainst an §eenchanted table §f(Left Click).
+tip.choco.2=Crush a §echocolate §fagainst your §ebed §f(Left Click).
+tip.choco.3=3

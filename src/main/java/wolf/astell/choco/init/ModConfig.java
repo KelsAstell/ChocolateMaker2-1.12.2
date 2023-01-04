@@ -200,6 +200,22 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public boolean ADD_CHOCO_TO_CATALYST = true;
     }
+    @Config.LangKey("choco.InWorldCrafting")
+    @Config.Comment("Choco In World Crafting Settings.")
+    public static final InWorldCrafting IN_WORLD_CRAFTING = new InWorldCrafting();
+
+    public static class InWorldCrafting {
+
+        @Config.LangKey("config.chocolate.gold_break.name")
+        @Config.Comment("When Making Golden Chocolate, the Gold Block Break Chance should be, default 0.07")
+        @Config.RequiresMcRestart
+        public double GOLD_BREAK_CHANCE = 0.07;
+
+        @Config.LangKey("config.chocolate.enchant_break.name")
+        @Config.Comment("When Making Enchanted Chocolate, the Enchanting Table Break Chance should be, default 0.07")
+        @Config.RequiresMcRestart
+        public double ENCHANT_BREAK_CHANCE = 0.07;
+    }
 
 }
 

@@ -19,7 +19,6 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.init.ItemList;
 
@@ -136,20 +135,18 @@ public class PoweredChocolate extends ItemMultiRF implements IInitializer {
 
 	@Override
 	public boolean preInit() {
-		ForgeRegistries.ITEMS.register(setRegistryName("powered_chocolate"));
-		ForgeRegistries.ITEMS.register(setCreativeTab(ThermalFoundation.tabUtils));
-		ForgeRegistries.ITEMS.register(setUnlocalizedName(name));
+//		ForgeRegistries.ITEMS.register(setRegistryName("powered_chocolate"));
+//		ForgeRegistries.ITEMS.register(setCreativeTab(ThermalFoundation.tabUtils));
+//		ForgeRegistries.ITEMS.register(setUnlocalizedName(name));
 		poweredChocolate = addEntryItem();
 		return true;
 	}
 	private void addEntry() {
-
-		typeMap.put(0, new TypeEntry("only", 300000, 500));
+		typeMap.put(0, new TypeEntry("powered_chocolate", 300000, 500));
 	}
 	private ItemStack addEntryItem() {
-
 		addEntry();
-		return addItem(0, "only", EnumRarity.EPIC);
+		return addItem(0, "powered_chocolate", EnumRarity.EPIC);
 	}
 
 	@Override

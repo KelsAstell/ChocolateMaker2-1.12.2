@@ -49,7 +49,7 @@ public class AvaritiaCompact {
                 "A AA AABB",
                 'A', ModItems.neutronium_ingot,
                 'C', Blocks.EMERALD_BLOCK,
-                'D', new ItemStack(ItemList.foodEnchantedChocolate, 1, 0),
+                'D', new ItemStack(AvaritiaRegister.chocolateSingularity, 1, 0),
                 'B', ModItems.diamond_lattice,
                 'E', new ItemStack(ItemList.baubleChocolate, 1, 0),
                 'F', new ItemStack(ItemList.flightChocolate, 1, 0)
