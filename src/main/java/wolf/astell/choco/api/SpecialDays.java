@@ -20,7 +20,7 @@ public class SpecialDays {
 		{
 			return "BIRTHDAY_ASTELL";
 		}
-		return "BIRTHDAY_ASTELL";//TODO: DEBUGGING
+		return "A_GOOD_DAY";
 	}
 
 }

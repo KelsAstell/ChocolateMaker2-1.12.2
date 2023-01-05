@@ -16,13 +16,13 @@ import wolf.astell.choco.Main;
 import wolf.astell.choco.api.Log;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
-import wolf.astell.choco.items.linkage.InfiniteBaubleChocolate;
+import wolf.astell.choco.init.register.compact.AvaritiaRegister;
 
 public class DogeCraftRegister {
     public static void init(){
         if(ModConfig.SPECIAL_CONF.LAZY_DOGE_MODE){
             if (Loader.isModLoaded("avaritia")){
-                GameRegistry.addShapedRecipe(new ResourceLocation("lazydoge_ibc"), new ResourceLocation(Main.MODID), new ItemStack (new InfiniteBaubleChocolate("infinite_bauble_chocolate")),
+                GameRegistry.addShapedRecipe(new ResourceLocation("lazydoge_ibc"), new ResourceLocation(Main.MODID), new ItemStack (AvaritiaRegister.infiniteBaubleChocolate),
                         "BAC",
                         "AFA",
                         "DAE",

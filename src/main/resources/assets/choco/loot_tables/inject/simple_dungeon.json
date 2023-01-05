@@ -37,7 +37,8 @@
         "functions": [{ "function": "set_count", "count": { "min": 1, "max": 6 } }]
       },
       {
-        "type": "choco:exp_chocolate",
+        "type": "item",
+        "name": "choco:exp_chocolate",
         "weight": 15
       }
     ]

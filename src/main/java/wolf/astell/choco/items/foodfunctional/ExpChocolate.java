@@ -81,7 +81,7 @@ public class ExpChocolate extends Item {
 
 	private static void getTips(EntityPlayer player){
 		String s = "tip.choco.";
-		int r = player.getEntityWorld().rand.nextInt(4);
+		int r = player.getEntityWorld().rand.nextInt(5);
 		if (!Loader.isModLoaded("avaritia") && r==3){
 			player.sendMessage(new TextComponentTranslation("tip.choco.3"));
 		}
