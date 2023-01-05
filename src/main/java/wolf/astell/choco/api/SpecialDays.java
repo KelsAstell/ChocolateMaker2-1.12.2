@@ -20,7 +20,7 @@ public class SpecialDays {
 		{
 			return "BIRTHDAY_ASTELL";
 		}
-		return "A_GOOD_DAY";
+		return "BIRTHDAY_ASTELL";
 	}
 
 }

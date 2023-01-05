@@ -117,15 +117,13 @@ public class PickaxeChocolate extends ItemPickaxe {
                 EntityItem item = new EntityItem(world, vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.baubleChocolate, 1));
                 item.setDefaultPickupDelay();
                 item.makeFakeItem();
-                item.lifespan = 60;
-                item.motionY = 1.6;
-                item.motionX = Math.random();
-                item.motionZ = Math.random();
+                item.lifespan = 320;
+                item.motionY = 0.4;
                 world.spawnEntity(item);
             }
             if (event.getSource().getTrueSource() instanceof EntityPlayer){
                 EntityPlayer attacker = (EntityPlayer) event.getSource().getTrueSource();
-                if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate){
+                if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemOffhand().getItem()==ItemList.pickaxeChocolate){
                     attacker.world.spawnEntity(new EntityTNTPrimed(attacker.world,attacker.posX, attacker.posY + 100, attacker.posZ,event.getEntityLiving()));
                     attacker.sendMessage(new TextComponentTranslation("message.choco.watch_out"));
                     attacker.addPotionEffect(new PotionEffect(MobEffects.GLOWING,100,0,true,false));
