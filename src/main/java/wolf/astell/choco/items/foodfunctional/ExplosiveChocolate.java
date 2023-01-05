@@ -55,7 +55,8 @@ public class ExplosiveChocolate extends Item {
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull EntityLivingBase entity) {
 		if (entity instanceof EntityPlayer && !entity.getEntityWorld().isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
-			player.getFoodStats().addStats(-12,0);
+			stack.shrink(1);
+			player.getFoodStats().addStats(-12,0.5F);
 			if (player.getFoodStats().getFoodLevel() <= 6){
 				player.getEntityWorld().createExplosion(null, player.posX, player.posY + 0.4, player.posZ, 0.1F, false);
 				player.setHealth(0);
@@ -66,7 +67,6 @@ public class ExplosiveChocolate extends Item {
 			player.world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(16),
 					e -> (!e.equals(player) && e.getDistance(player) > 1f)).forEach(e -> explode(e, player));
 		}
-		stack.shrink(1);
 		return stack;
 	}
 

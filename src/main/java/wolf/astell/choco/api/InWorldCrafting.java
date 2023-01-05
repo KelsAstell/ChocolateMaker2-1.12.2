@@ -70,12 +70,10 @@ public class InWorldCrafting {
             if(event.getSide() == Side.SERVER) {
                 craftExplosiveChocolate(event);
                 stack.shrink(1);
-                if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.BOOKSHELF_BREAK_CHANCE)){
-                    BlockPos pos = event.getPos();
-                    event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.TNT.getDefaultState()));
-                    event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
-                }
+                BlockPos pos = event.getPos();
+                event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.TNT.getDefaultState()));
+                event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
     }

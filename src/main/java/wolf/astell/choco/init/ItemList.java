@@ -45,7 +45,7 @@ public class ItemList{
     public static void init() {
         foodChocolate = new IsFood("chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER, 0.5F, false, false, null,ModConfig.SPECIAL_CONF.CONSUME_SPEED);
         foodGoldenChocolate = new IsFood("golden_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 2, 0.5F, false, true,new PotionEffect[] {new PotionEffect(MobEffects.REGENERATION, 600, 0),new PotionEffect(MobEffects.ABSORPTION, 600, 1)},ModConfig.SPECIAL_CONF.CONSUME_SPEED,64);
-        foodEnchantedChocolate = new IsFood("enchanted_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 5, 0.5F, false, true,new PotionEffect[] {new PotionEffect(MobEffects.STRENGTH, 1800, 1),new PotionEffect(MobEffects.REGENERATION, 1800, 2),new PotionEffect(MobEffects.ABSORPTION, 1800, 3),new PotionEffect(MobEffects.RESISTANCE, 1800, 2)},ModConfig.SPECIAL_CONF.CONSUME_SPEED,64);
+        foodEnchantedChocolate = new IsFood("enchanted_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER * 5, 0.5F, false, true,new PotionEffect[] {new PotionEffect(MobEffects.STRENGTH, 1800, 1),new PotionEffect(MobEffects.REGENERATION, 1800, 2),new PotionEffect(MobEffects.ABSORPTION, 1800, 3),new PotionEffect(MobEffects.RESISTANCE, 1800, 2),new PotionEffect(MobEffects.FIRE_RESISTANCE, 1800, 0)},ModConfig.SPECIAL_CONF.CONSUME_SPEED,64);
         foodHotChocolate = new IsFood("hot_chocolate", ModConfig.SPECIAL_CONF.BASE_HUNGER, 0.5F, false, true,new ItemStack(Items.GLASS_BOTTLE),ModConfig.SPECIAL_CONF.CONSUME_SPEED);
         foodChocolateIcecream = new IsFood("chocolate_icecream", ModConfig.SPECIAL_CONF.BASE_HUNGER, 0.5F, false, true, 20);
         baubleChocolate = new BaubleChocolate("bauble_chocolate");
