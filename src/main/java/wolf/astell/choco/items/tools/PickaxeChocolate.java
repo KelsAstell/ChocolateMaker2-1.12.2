@@ -19,6 +19,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
@@ -27,6 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
+import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
@@ -110,6 +112,17 @@ public class PickaxeChocolate extends ItemPickaxe {
         public void onEntityKilled(LivingDropsEvent event) {
             if (event.getEntityLiving().getEntityWorld().isRemote) return;
             World world = event.getEntityLiving().getEntityWorld();
+            if (SpecialDays.getToday().equals("BIRTHDAY_ASTELL")){
+                Vec3d vector = event.getEntity().getPositionVector();
+                EntityItem item = new EntityItem(world, vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.baubleChocolate, 1));
+                item.setDefaultPickupDelay();
+                item.makeFakeItem();
+                item.lifespan = 60;
+                item.motionY = 1.6;
+                item.motionX = Math.random();
+                item.motionZ = Math.random();
+                world.spawnEntity(item);
+            }
             if (event.getSource().getTrueSource() instanceof EntityPlayer){
                 EntityPlayer attacker = (EntityPlayer) event.getSource().getTrueSource();
                 if (attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate && attacker.getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate){

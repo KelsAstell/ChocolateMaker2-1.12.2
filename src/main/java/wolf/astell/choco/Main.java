@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import wolf.astell.choco.api.Keys;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.register.*;
 import wolf.astell.choco.init.register.compact.AvaritiaRegister;
@@ -55,11 +54,8 @@ public class Main {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         OreDictRegister.init();
-        DogeRegister.init();
+        CraftRegister.init();
         BrewRegister.init();
-        if (Loader.isModLoaded("avaritia")){
-            Keys.init();
-        }
         MinecraftForge.EVENT_BUS.register(new LootRegister());
     }
 }

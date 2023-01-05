@@ -66,9 +66,13 @@ item.singularity.desc=Time to Make Something Brilliant!
 item.exp_chocolate.name=§eExperience Chocolate
 item.exp_chocolate.desc.0=§eHas a Taste of Knowledge.
 item.exp_chocolate.desc.1=§eOn Consume, Gain Experience and Knowledge About Chocolate.
+item.exp_chocolate.desc.2=§eIf You Are Sneaking, Consume All.
 item.world_chocolate.name=§eWorld Chocolate
 item.world_chocolate.desc.0=§eHas a Taste of The World.
 item.world_chocolate.desc.1=§eOn Consume, Teleport to Another Dimension.
+item.explosive_chocolate.name=§eExplosive Chocolate
+item.explosive_chocolate.desc.0=§eOn Consume, Mobs Around You Will Explode.
+item.explosive_chocolate.desc.1=§eBe Aware Not to be Too Hungry.
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -105,6 +109,13 @@ config.chocolate.infinity_bauble_chocolate.name=Enable Infinity Fondant Chocolat
 config.chocolate.overpowered_fondant.name=Enable Infinity Fondant Chocolate 'Anti-Hardcoded Death' Algorithm, MAY NOT WORK!
 config.chocolate.chocky_catalyst.name=Add Chocolate to Infinity Catalyst Recipe, Why Not?
 config.chocolate.fondant_spmode.name=Enable Infinity Fondant Chocolate Spectator Mode when Dash
+choco.InWorldCrafting=Choco In-World Crafting Settings
+config.chocolate.gold_break.name=When Making Golden Chocolate, the Break Chance is
+config.chocolate.enchant_break.name=When Making Enchanted Chocolate, the Break Chance is
+config.chocolate.bookshelf_break.name=When Making Exp Chocolate, the Break Chance is
+config.chocolate.doWorldTeleport.name=Enable World Chocolate World Teleport Function
+config.chocolate.customDim.name=Enable World Chocolate Custom Dim ID. §cCAN CAUSE CRASH IF YOU DON'T EDIT CORRECTLY, DO NOT REPORT THIS AS AN ISSUE
+config.chocolate.customWorldTeleport.name=Set a Custom Coord for World Chocolate
 
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.
@@ -114,14 +125,11 @@ message.choco.player_egg=§eSo what do you want?
 message.choco.watch_out=§e[A.I.O]§f TNT Overhead!
 message.choco.powered_chocolate.success=§e[Powered Chocolate]§f Successfully Restored Health and Shield!
 message.choco.power_not_sufficient=Low Battery.
-message.choco.select_world.0=Selected 1
-message.choco.select_world.1=Selected 2
-message.choco.select_world.2=Selected 3
 
 death.attack.infinity_bauble_chocolate.0=%1$s was made into chocolate.
 death.attack.infinity_bauble_chocolate.1=%1$s was trying to hurt a chocolate lover.
 
 tip.choco.0=Crush a §echocolate §fagainst a §egold block §f(Left Click).
 tip.choco.1=Crush a §egolden chocolate §fagainst an §eenchanted table §f(Left Click).
-tip.choco.2=Crush a §echocolate §fagainst your §ebed §f(Right Click).
-tip.choco.3=3
+tip.choco.2=Crush a §echocolate §fagainst a §ebookshelf §f(Left Click).
+tip.choco.3=Also Try Avaritia with Super Chocolate Maker.

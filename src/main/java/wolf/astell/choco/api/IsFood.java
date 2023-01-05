@@ -50,6 +50,11 @@ public class IsFood extends ItemFood {
                 setMaxStackSize);
     }
 
+    public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, PotionEffect[] effects, int useDuration, int setMaxStackSize) {
+        this(name, food, saturation, wolfFood, setAlwaysEdible, effects, null, useDuration,
+                setMaxStackSize);
+    }
+
     public IsFood(String name, int food, float saturation, boolean wolfFood, boolean setAlwaysEdible, ItemStack returnItem, int useDuration) {
         this(name, food, saturation, wolfFood, setAlwaysEdible, returnItem, useDuration, 64);
     }

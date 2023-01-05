@@ -1,3 +1,9 @@
+/*
+Licenced under the [Choco Licence] https://emowolf.fun/choco
+So let's build something awesome from this!
+Author: Kels_Astell
+GitHub: https://github.com/KelsAstell
+*/
 package wolf.astell.choco.init;
 
 import net.minecraftforge.common.config.Config;
@@ -97,10 +103,12 @@ public class ModConfig {
         @Config.LangKey("config.chocolate.doWorldTeleport.name")
         @Config.Comment("Enable World Chocolate World Teleport Function, default true")
         public boolean WORLD_TRAVELLER = true;
-
+        @Config.LangKey("config.chocolate.customDim.name")
+        @Config.Comment("Enable World Chocolate Custom Dim ID. CAN CAUSE CRASH IF YOU DON'T EDIT CORRECTLY, DO NOT REPORT THIS AS AN ISSUE")
+        public int[] CUSTOM_DIM_ID = {-1,0,1};
         @Config.LangKey("config.chocolate.customWorldTeleport.name")
-        @Config.Comment("Set a Custom coord for World Chocolate")
-        public int[] CUSTOM_COORDS = {0,100,0};
+        @Config.Comment("Set a Custom Coord for World Chocolate")
+        public int[] CUSTOM_COORDS = {0,95,0};
 
     }
 
@@ -196,18 +204,22 @@ public class ModConfig {
         public boolean ADD_CHOCO_TO_CATALYST = true;
     }
     @Config.LangKey("choco.InWorldCrafting")
-    @Config.Comment("Choco In World Crafting Settings.")
+    @Config.Comment("Choco In-World Crafting Settings.")
     public static final InWorldCrafting IN_WORLD_CRAFTING = new InWorldCrafting();
 
     public static class InWorldCrafting {
 
         @Config.LangKey("config.chocolate.gold_break.name")
-        @Config.Comment("When Making Golden Chocolate, the Gold Block Break Chance should be, default 0.07")
-        public double GOLD_BREAK_CHANCE = 0.07;
+        @Config.Comment("When Making Golden Chocolate, the Break Chance should be, default 0.06")
+        public double GOLD_BREAK_CHANCE = 0.06;
 
         @Config.LangKey("config.chocolate.enchant_break.name")
-        @Config.Comment("When Making Enchanted Chocolate, the Enchanting Table Break Chance should be, default 0.07")
-        public double ENCHANT_BREAK_CHANCE = 0.07;
+        @Config.Comment("When Making Enchanted Chocolate, the Break Chance should be, default 0.06")
+        public double ENCHANT_BREAK_CHANCE = 0.06;
+
+        @Config.LangKey("config.chocolate.bookshelf_break.name")
+        @Config.Comment("When Making Exp Chocolate, the Break Chance should be, default 0.06")
+        public double BOOKSHELF_BREAK_CHANCE = 0.06;
     }
 
 }

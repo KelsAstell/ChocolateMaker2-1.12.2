@@ -1,3 +1,9 @@
+/*
+Licenced under the [Choco Licence] https://emowolf.fun/choco
+So let's build something awesome from this!
+Author: Kels_Astell
+GitHub: https://github.com/KelsAstell
+*/
 package wolf.astell.choco.api;
 
 import net.minecraft.block.Block;
@@ -48,6 +54,30 @@ public class InWorldCrafting {
                 }
             }
         }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate")) && isBlock("minecraft:bookshelf", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER) {
+                craftExpChocolate(event);
+                stack.shrink(1);
+                if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.BOOKSHELF_BREAK_CHANCE)){
+                    BlockPos pos = event.getPos();
+                    event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BOOKSHELF.getDefaultState()));
+                    event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
+                }
+            }
+        }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate")) && isBlock("minecraft:tnt", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER) {
+                craftExplosiveChocolate(event);
+                stack.shrink(1);
+                if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.BOOKSHELF_BREAK_CHANCE)){
+                    BlockPos pos = event.getPos();
+                    event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.TNT.getDefaultState()));
+                    event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
+                }
+            }
+        }
     }
 
     private static boolean shouldBreak(double chance) {
@@ -71,6 +101,19 @@ public class InWorldCrafting {
     private static void craftEnchantedChocolate(PlayerInteractEvent.LeftClickBlock event) {
         Vec3d vector = event.getHitVec();
         EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.foodEnchantedChocolate, 1));
+        item.setDefaultPickupDelay();
+        event.getWorld().spawnEntity(item);
+    }
+
+    private static void craftExpChocolate(PlayerInteractEvent.LeftClickBlock event) {
+        Vec3d vector = event.getHitVec();
+        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.expChocolate, 1));
+        item.setDefaultPickupDelay();
+        event.getWorld().spawnEntity(item);
+    }
+    private static void craftExplosiveChocolate(PlayerInteractEvent.LeftClickBlock event) {
+        Vec3d vector = event.getHitVec();
+        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.explosiveChocolate, 1));
         item.setDefaultPickupDelay();
         event.getWorld().spawnEntity(item);
     }

@@ -66,9 +66,13 @@ item.singularity.desc=是时候整点好活了!
 item.exp_chocolate.name=§e经验巧克力
 item.exp_chocolate.desc.0=§e有知识的味道.
 item.exp_chocolate.desc.1=§e食用后, 获得经验和巧克力相关的知识.
+item.exp_chocolate.desc.2=§e潜行食用将吃掉所有的巧克力.
 item.world_chocolate.name=§e三界巧克力
 item.world_chocolate.desc.0=§e尝起来像是世界本身的味道.
 item.world_chocolate.desc.1=§e食用后, 传送到另一个维度.
+item.explosive_chocolate.name=§e好吃到爆炸的巧克力
+item.explosive_chocolate.desc.0=§e食用后, 你身边的生物自爆.
+item.explosive_chocolate.desc.1=§e太饿的时候可不能吃这个.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -105,6 +109,13 @@ config.chocolate.infinity_bauble_chocolate.name=启用无尽翻糖巧克力配�
 config.chocolate.overpowered_fondant.name=启用无尽翻糖巧克力边缘系统, 受到致命伤害时试图从代码层面反击
 config.chocolate.chocky_catalyst.name=将巧克力加入无尽催化剂豪华午餐, 为什么不试试呢
 config.chocolate.fondant_spmode.name=启用无尽翻糖巧克力冲刺特效, 冲刺时会进入旁观模式
+choco.InWorldCrafting=世界内合成设定
+config.chocolate.gold_break.name=制作金巧克力特定方块破坏概率
+config.chocolate.enchant_break.name=制作附魔金巧克力特定方块破坏概率
+config.chocolate.bookshelf_break.name=制作经验巧克力特定方块破坏概率
+config.chocolate.doWorldTeleport.name=允许三界巧克力维度传送功能
+config.chocolate.customDim.name=设定维度ID. §c修改引起的一切问题概不负责
+config.chocolate.customWorldTeleport.name=设置自定义传送坐标
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.
@@ -114,14 +125,11 @@ message.choco.player_egg=§e你在期待什么呢?
 message.choco.watch_out=§e[A.I.O]§f 小心高空坠物!
 message.choco.powered_chocolate.success=§e[电动巧克力]§f 已恢复生命值和护盾!
 message.choco.power_not_sufficient=电量不足.
-message.choco.select_world.0=Selected 1
-message.choco.select_world.1=Selected 2
-message.choco.select_world.2=Selected 3
 
 death.attack.infinity_bauble_chocolate.0=%1$s被做成了巧克力.
 death.attack.infinity_bauble_chocolate.1=%1$s试图伤害一位巧克力爱好者.
 
-tip.choco.0=对着一个金块使用巧克力(左键点击).
-tip.choco.1=对着一个附魔台使用金巧克力(左键点击).
-tip.choco.2=对着一张床使用巧克力(右键点击).
-tip.choco.3=3
+tip.choco.0=对着一个金块使用巧克力(左键点击)会发生什么?
+tip.choco.1=对着一个附魔台使用金巧克力(左键点击)会发生什么?
+tip.choco.2=对着一个书架使用金巧克力(左键点击)会发生什么?
+tip.choco.3=也试试无尽贪婪吧, 或许会让巧克力发生什么变化?

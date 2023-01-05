@@ -21,15 +21,12 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
@@ -56,7 +53,7 @@ public class WorldChocolate extends Item {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack stack) {
-		return 16;
+		return 32;
 	}
 
 	@Nonnull
@@ -80,10 +77,22 @@ public class WorldChocolate extends Item {
 		if (entity instanceof EntityPlayer && !entity.getEntityWorld().isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
 			if (ModConfig.SPECIAL_CONF.WORLD_TRAVELLER) {
-				if(player.dimension == 0){teleport((EntityPlayerMP) player, -1, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
-				else if(player.dimension == 1){teleport((EntityPlayerMP) player, 0, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
-				else if(player.dimension == -1){teleport((EntityPlayerMP) player, 1, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
-
+				int[] worldlist = ModConfig.SPECIAL_CONF.CUSTOM_DIM_ID;//custom teleport algorithm, not tested
+				if (worldlist.length > 1){//to prevent int[] worldlist = {1} issue, or the player will glitch
+					for (int i=1; i<worldlist.length; i++) {
+						if (player.dimension == worldlist[i]) {
+							teleport((EntityPlayerMP) player, worldlist[i-1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());
+							return stack;
+						}else if (player.dimension == worldlist[0]){
+							teleport((EntityPlayerMP) player, worldlist[worldlist.length-1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());
+							return stack;
+						}
+					}
+				}else{//fallback teleport algorithm
+					if(player.dimension == 0){teleport((EntityPlayerMP) player, -1, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
+					else if(player.dimension == 1){teleport((EntityPlayerMP) player, 0, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
+					else if(player.dimension == -1){teleport((EntityPlayerMP) player, 1, ModConfig.SPECIAL_CONF.CUSTOM_COORDS[0], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[1], ModConfig.SPECIAL_CONF.CUSTOM_COORDS[2], Objects.requireNonNull(player.getServer()).getPlayerList());}
+				}
 			}
 		}
 		return stack;

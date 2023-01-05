@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -72,6 +73,12 @@ public class IsPotion extends ItemFood {
 
 		stack.shrink(1);
 		return returnItem != null ? returnItem : stack;
+	}
+
+	@Nonnull
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		return EnumAction.DRINK;
 	}
 
 	@Override
