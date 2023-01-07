@@ -53,6 +53,7 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 	{
 		return BaubleType.AMULET;
 	}
+
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void handleDamage(LivingAttackEvent e)
 	{
@@ -70,7 +71,7 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 						victim.capabilities.disableDamage =false;
 						victim.playSound(SoundEvents.ENTITY_CHICKEN_DEATH, 0.9F, victim.world.rand.nextFloat() * 0.1F + 0.9F);
 						victim.world.spawnEntity(new EntityLightningBolt(victim.world,victim.posX,victim.posY,victim.posZ,true));
-						victim.setHealth(victim.getHealth()-e.getAmount());
+						victim.setHealth(Math.max(victim.getHealth()-victim.getHeldItemMainhand().getMaxDamage(),0));
 						if(e.getAmount() > e.getEntityLiving().getHealth()-1){
 							victim.getCombatTracker().trackDamage(new InjectDamageSource(e.getEntityLiving()), victim.getHealth(), victim.getHealth());
 							victim.setHealth(0);
@@ -113,6 +114,7 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 				if(!player.isSprinting() && !isStuck(player) && ModConfig.AVARITIA_CONF.FONDANT_SPECTATOR_MODE && player.noClip){
 					player.noClip = false;
 					((EntityPlayer) player).setGameType(GameType.SURVIVAL);
+					((EntityPlayer) player).capabilities.isFlying = true;
 					((EntityPlayer) player).sendPlayerAbilities();
 				}
 			}

@@ -31,28 +31,36 @@ public class MiningChocolate extends Item implements IBauble {
 
 		ItemList.ITEM_LIST.add(this);
 	}
-	int potionLevel = ModConfig.POTION_CONF.HASTE_LEVEL - 1;
+	int potionLevelHaste = ModConfig.POTION_CONF.HASTE_LEVEL - 1;
 
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
+		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevelHaste >= 0) {
 			if(!player.isSneaking()) {
 				player.removePotionEffect(MobEffects.HASTE);
-				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, potionLevel, true, false));
+				player.addPotionEffect(new PotionEffect(MobEffects.HASTE, Integer.MAX_VALUE, potionLevelHaste, true, false));
+				player.removePotionEffect(MobEffects.NIGHT_VISION);
+				player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, Integer.MAX_VALUE, 0, true, false));
 			}
 			else {
-				PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-				if(effect != null && effect.getAmplifier() == potionLevel)
+				PotionEffect effectHaste = player.getActivePotionEffect(MobEffects.HASTE);
+				if(effectHaste != null && effectHaste.getAmplifier() == potionLevelHaste)
 					player.removePotionEffect(MobEffects.HASTE);
 				}
 			}
 	}
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		PotionEffect effect = player.getActivePotionEffect(MobEffects.HASTE);
-		if(effect != null && effect.getAmplifier() == potionLevel)
+		PotionEffect effect_h = player.getActivePotionEffect(MobEffects.HASTE);
+		PotionEffect effect_n = player.getActivePotionEffect(MobEffects.NIGHT_VISION);
+		if(effect_h != null && effect_h.getAmplifier() == potionLevelHaste){
 			player.removePotionEffect(MobEffects.HASTE);
+		}
+		if(effect_n != null && effect_n.getAmplifier() == 0){
+			player.removePotionEffect(MobEffects.NIGHT_VISION);
+		}
+
 	}
 
 	@Override
@@ -65,7 +73,7 @@ public class MiningChocolate extends Item implements IBauble {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format("item.mining_chocolate.desc.0"));
-		if (potionLevel >= 0){
+		if (potionLevelHaste >= 0){
 			tooltip.add(I18n.format("item.mining_chocolate.desc.1"));
 		}else{
 			tooltip.add(I18n.format("message.choco.effect_off"));

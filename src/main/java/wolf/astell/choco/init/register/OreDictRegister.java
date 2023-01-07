@@ -31,9 +31,15 @@ public class OreDictRegister {
         {
             OreDictionary.registerOre("ingotChocolate", ItemList.foodChocolate);
         }
+        //add Avaritia support
         if (Loader.isModLoaded("avaritia"))
         {
             OreDictionary.registerOre("singularityChocolate", AvaritiaRegister.chocolateSingularity);
+        }
+        //add TF support
+        if (Loader.isModLoaded("thermalfoundation"))
+        {
+            OreDictionary.registerOre("coinGold", ItemList.foodGoldenChocolate);
         }
     }
 }

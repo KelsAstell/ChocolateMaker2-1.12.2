@@ -40,6 +40,7 @@ public class ItemList{
     public static Item expChocolate;
     public static Item worldChocolate;
     public static Item explosiveChocolate;
+    public static Item mendingChocolate;
 
 
     public static void init() {
@@ -66,5 +67,6 @@ public class ItemList{
         expChocolate = new ExpChocolate("exp_chocolate");
         worldChocolate = new WorldChocolate("world_chocolate");
         explosiveChocolate = new ExplosiveChocolate("explosive_chocolate");
+        mendingChocolate = new MendingChocolate("mending_chocolate");
     }
 }

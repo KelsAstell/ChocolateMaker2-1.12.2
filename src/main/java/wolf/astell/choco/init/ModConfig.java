@@ -33,16 +33,19 @@ public class ModConfig {
         @Config.LangKey("config.mining_chocolate.potion.name")
         @Config.Comment("Mining Chocolate Haste Effect Level, default 2")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 0)
         public int HASTE_LEVEL = 2;
 
         @Config.LangKey("config.speed_chocolate.potion.name")
         @Config.Comment("Speed Chocolate Speeed Effect Level, default 2")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 0)
         public int SPEED_LEVEL = 2;
 
         @Config.LangKey("config.bauble_chocolate.potion.name")
         @Config.Comment("Fondant Chocolate Resistance Effect Level, default 2")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 0)
         public int RESISTANCE_LEVEL = 2;
     }
     @Config.LangKey("choco.TrinketConf")
@@ -57,6 +60,7 @@ public class ModConfig {
 
         @Config.LangKey("config.air_chocolate.descend.name")
         @Config.Comment("Air Chocolate Ascend Rate, default 0.15")
+        @Config.RangeDouble(min = -0.15)
         public double DESCEND_RATE = 0.15;
 
         @Config.LangKey("config.air_chocolate.glide.name")
@@ -65,6 +69,7 @@ public class ModConfig {
 
         @Config.LangKey("config.air_chocolate.maxjump.name")
         @Config.Comment("Air Chocolate Max Allowed Jumps, default 5")
+        @Config.RangeInt(min = 0)
         public int MAX_ALLOWED_JUMPS = 5;
 
         @Config.LangKey("config.flight_chocolate.doExhaust.name")
@@ -74,6 +79,11 @@ public class ModConfig {
         @Config.LangKey("config.flight_chocolate.enable.name")
         @Config.Comment("Enable Flight Chocolate Flight Ability, default true")
         public boolean ENABLE_FLIGHT = true;
+
+        @Config.LangKey("config.mending_chocolate.enable.name")
+        @Config.Comment("Repair Chocolate Repair Amount, 0 to disable")
+        @Config.RangeInt(min = 0)
+        public int REPAIR_AMOUNT = 2;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")
@@ -89,10 +99,12 @@ public class ModConfig {
         @Config.LangKey("config.chocolate.basehunger.name")
         @Config.Comment("Set Base Hunger Provided by Chocolate, default 4")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
         public int BASE_HUNGER = 4;
 
         @Config.LangKey("config.chocolate.consumespeed.name")
         @Config.Comment("Set Consume Speed of Chocolate, default 20")
+        @Config.RangeInt(min = 10)
         public int CONSUME_SPEED = 20;
 
         @Config.LangKey("config.chocolate.isChocoIron.name")
@@ -121,11 +133,13 @@ public class ModConfig {
         @Config.LangKey("config.chocolate.tool_level.name")
         @Config.Comment("Tool Harvest Level, default 3")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
         public int TOOL_LEVEL = 3;
 
         @Config.LangKey("config.chocolate.tool_durability.name")
         @Config.Comment("Tool Durability, default 2560")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
         public int TOOL_DURABILITY = 2560;
 
         @Config.LangKey("config.chocolate.tool_efficiency.name")
@@ -136,10 +150,12 @@ public class ModConfig {
         @Config.LangKey("config.chocolate.tool_enchant_ability.name")
         @Config.Comment("Tool Enchant Ability, default 22")
         @Config.RequiresMcRestart
+        @Config.RangeInt(min = 1)
         public int TOOL_ENCHANT_ABILITY = 22;
 
         @Config.LangKey("config.chocolate.tool_attack_damage.name")
         @Config.Comment("A.I.O Attack Damage, default 12")
+        @Config.RangeInt(min = 2)
         public int TOOL_ATTACK_DAMAGE = 12;
 
         @Config.LangKey("config.chocolate.tool_bedrock_break.name")

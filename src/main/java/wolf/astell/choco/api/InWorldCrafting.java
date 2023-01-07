@@ -7,13 +7,16 @@ GitHub: https://github.com/KelsAstell
 package wolf.astell.choco.api;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -23,6 +26,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
+import java.util.List;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber
@@ -76,6 +80,12 @@ public class InWorldCrafting {
                 event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "pickaxe_chocolate")) && isBlock("minecraft:anvil", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER) {
+                craftMendingChocolate(event);
+
+            }
+        }
     }
 
     private static boolean shouldBreak(double chance) {
@@ -113,6 +123,30 @@ public class InWorldCrafting {
         Vec3d vector = event.getHitVec();
         EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.explosiveChocolate, 1));
         item.setDefaultPickupDelay();
+        item.setGlowing(true);
+        item.setNoGravity(true);
         event.getWorld().spawnEntity(item);
+    }
+    private static void craftMendingChocolate(PlayerInteractEvent.LeftClickBlock event) {
+        BlockPos pos = event.getPos();
+        List<EntityItem> Items = event.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.add(-1, -1, -1), pos.add(1, 1, 1)));
+        for(EntityItem item:Items){
+            if(item.getItem().getUnlocalizedName().equals(ItemList.expChocolate.getUnlocalizedName())){
+                item.setDead();
+                Vec3d vector = item.getPositionVector();
+                event.getWorld().createExplosion(null, vector.x, vector.y + 0.1D, vector.z, 6, false);
+                EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.mendingChocolate, 1));
+                i.setDefaultPickupDelay();
+                i.setInvisible(true);
+                i.setGlowing(true);
+                i.setNoDespawn();
+                i.setNoGravity(true);
+                event.getWorld().spawnEntity(i);
+                event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.ANVIL.getDefaultState()));
+                event.getWorld().setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState());
+                return;
+            }
+        }
+        event.getWorld().playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
     }
 }

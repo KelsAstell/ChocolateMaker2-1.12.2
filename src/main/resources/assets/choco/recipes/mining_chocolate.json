@@ -1,13 +1,17 @@
 {
   "type": "forge:ore_shaped",
   "pattern": [
-    "OOO",
+    "OMO",
     "OWO",
     "OXO"
   ],
   "key": {
     "O": {
       "item": "minecraft:stone",
+      "data": 0
+    },
+    "M": {
+      "item": "choco:carrot_chocolate",
       "data": 0
     },
     "X": {

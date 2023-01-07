@@ -64,8 +64,6 @@ public class ExplosiveChocolate extends Item {
 				player.setHealth(0);
 				return stack;
 			}
-//			player.world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(16),
-//					e -> (!e.equals(player) && e.getDistance(player)>1f)).stream().forEach(this::explode);
 			player.world.getEntitiesWithinAABB(EntityLivingBase.class, player.getEntityBoundingBox().grow(16),
 					e -> (!e.equals(player) && e.getDistance(player) > 1f)).forEach(e -> explode(e, player));
 		}
