@@ -134,8 +134,8 @@ public class InWorldCrafting {
             if(item.getItem().getUnlocalizedName().equals(ItemList.expChocolate.getUnlocalizedName())){
                 item.setDead();
                 Vec3d vector = item.getPositionVector();
-                event.getWorld().createExplosion(null, vector.x, vector.y + 0.1D, vector.z, 6, false);
-                EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.mendingChocolate, 1));
+                event.getWorld().createExplosion(null, vector.x, vector.y + 0.1D, vector.z, 8, false);
+                EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.foodChocolateIcecream, 1));
                 i.setDefaultPickupDelay();
                 i.setInvisible(true);
                 i.setGlowing(true);

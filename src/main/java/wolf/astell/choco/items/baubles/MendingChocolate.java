@@ -21,7 +21,7 @@ public class MendingChocolate extends Item implements IBauble {
 	public MendingChocolate(String name)
 	{
 		this.setMaxStackSize(1);
-		this.setUnlocalizedName("name");
+		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
 		this.setContainerItem(this);
@@ -30,16 +30,17 @@ public class MendingChocolate extends Item implements IBauble {
 	}
 
 	@Override
-	public void onWornTick(ItemStack itemstack, EntityLivingBase entity) {
-		if(entity instanceof EntityPlayer && ModConfig.TRINKET_CONF.REPAIR_AMOUNT > 0)
+	public void onWornTick(ItemStack stack, EntityLivingBase player) {
+		IBauble.super.onWornTick(stack, player);
+		if(ModConfig.TRINKET_CONF.REPAIR_AMOUNT > 0)
 		{
-			EntityPlayer player = (EntityPlayer)entity;
-			if(player.experience >= 1 && player.isSneaking() && player.getEntityWorld().getWorldTime() %4 == 0)
+			EntityPlayer p = (EntityPlayer)player;
+			if(p.experience >= 1 && player.isSneaking() && player.getEntityWorld().getWorldTime() %4 == 0)
 			{
-				ItemStack stack = player.getHeldItemMainhand();
-				if (player.getHeldItemMainhand().isItemDamaged() && stack.isItemEnchantable()){
-					player.addExperience(-1);
-					stack.setItemDamage(stack.getItemDamage() - ModConfig.TRINKET_CONF.REPAIR_AMOUNT);
+				ItemStack mh = player.getHeldItemMainhand();
+				if (mh.isItemEnchantable()&&mh.getItemDamage()<mh.getMaxDamage()){
+					p.addExperience(-1);
+					mh.setItemDamage(mh.getItemDamage() - ModConfig.TRINKET_CONF.REPAIR_AMOUNT);
 				}
 			}
 		}
