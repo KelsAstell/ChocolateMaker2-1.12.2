@@ -7,11 +7,10 @@ GitHub: https://github.com/KelsAstell
 package wolf.astell.choco.api;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -137,7 +136,6 @@ public class InWorldCrafting {
                 event.getWorld().createExplosion(null, vector.x, vector.y + 0.1D, vector.z, 8, false);
                 EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.foodChocolateIcecream, 1));
                 i.setDefaultPickupDelay();
-                i.setInvisible(true);
                 i.setGlowing(true);
                 i.setNoDespawn();
                 i.setNoGravity(true);

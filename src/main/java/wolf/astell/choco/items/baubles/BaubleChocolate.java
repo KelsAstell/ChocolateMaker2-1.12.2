@@ -6,6 +6,7 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -20,8 +21,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
+import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
+import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class BaubleChocolate extends Item implements IBauble
 
 		ItemList.ITEM_LIST.add(this);
 	}
+	public static final String TAG_CHOCO_POWER = "chocolatePower";
 	int potionLevel = ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1;
 
 	@Override
@@ -57,7 +61,16 @@ public class BaubleChocolate extends Item implements IBauble
 				ItemStack stack = h.getStackInSlot(i);
 				if(!e.isCanceled() && !stack.isEmpty() && stack.getItem() instanceof BaubleChocolate)
 				{
-						e.setCanceled(true);
+					int shield = NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0);
+					if (shield > 0){
+						int dmg = shield - (int) Math.min(100, e.getAmount());
+						if (dmg >= 0){
+							e.setCanceled(true);
+							NBTHelper.setInt(stack,TAG_CHOCO_POWER, dmg);
+						}else{
+							NBTHelper.setInt(stack,TAG_CHOCO_POWER, 0);
+						}
+					}
 				}
 			}
 		}
@@ -66,9 +79,12 @@ public class BaubleChocolate extends Item implements IBauble
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
-		if (player instanceof EntityPlayer && !player.world.isRemote && potionLevel >= 0) {
-			player.removePotionEffect(MobEffects.RESISTANCE);
-			player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
+		if (player instanceof EntityPlayer && !player.world.isRemote){
+			if (potionLevel >= 0) {
+				player.removePotionEffect(MobEffects.RESISTANCE);
+				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
+			}
+			NBTHelper.setInt(stack, TAG_CHOCO_POWER, Math.max(NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0) + 1, 10000));
 		}
 	}
 	@Override

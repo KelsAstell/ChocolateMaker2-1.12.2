@@ -28,6 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
+import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
@@ -39,6 +40,7 @@ import java.util.Random;
 public class PickaxeChocolate extends ItemPickaxe {
     public static final Item.ToolMaterial CHOCOLATE = EnumHelper.addToolMaterial("CHOCOLATE", ModConfig.TOOL_CONF.TOOL_LEVEL, ModConfig.TOOL_CONF.TOOL_DURABILITY, ModConfig.TOOL_CONF.TOOL_EFFICIENCY, (float) ModConfig.TOOL_CONF.TOOL_ATTACK_DAMAGE - 2, ModConfig.TOOL_CONF.TOOL_ENCHANT_ABILITY);
     private int ConfirmTeleport = 0;
+    public static final String TAG_CHOCOLATE_COUNT = "chocolateCount";
     public PickaxeChocolate(String name)
     {
         super(CHOCOLATE);//Maker
@@ -117,8 +119,8 @@ public class PickaxeChocolate extends ItemPickaxe {
                 EntityItem item = new EntityItem(world, vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.baubleChocolate, 1));
                 item.setDefaultPickupDelay();
                 item.makeFakeItem();
-                item.lifespan = 320;
-                item.motionY = 0.4;
+                item.lifespan = 620;
+                item.motionY = 0.3;
                 world.spawnEntity(item);
             }
             if (event.getSource().getTrueSource() instanceof EntityPlayer){
@@ -209,14 +211,15 @@ public class PickaxeChocolate extends ItemPickaxe {
 
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, @Nonnull ItemStack par2ItemStack) {
-        return par2ItemStack.getItem() == ItemList.ingotChocolate || super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == ItemList.foodChocolate || super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
+        float bonus = (float) Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0);
         if (state.getMaterial() == Material.GOURD || state.getMaterial() == Material.SAND || state.getMaterial() == Material.CLAY || state.getMaterial() == Material.WOOD){
-            return 32;
+            return 16 + bonus;//32 = 20 + 16 = 4096
         }
-        return 8;
+        return (float) (2 + 0.2 * bonus);
     }
 
     @SideOnly(Side.CLIENT)
@@ -246,6 +249,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                 tooltip.add(I18n.format("item.pickaxe_chocolate_aio.desc"));
             }
         }
-
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.7") + NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0));
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.8") + (float) Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0));
     }
 }

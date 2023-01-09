@@ -35,6 +35,8 @@ item.pickaxe_chocolate.desc.3=§f[Jump + Sneak + RIGHT Click] &2to skip night.
 item.pickaxe_chocolate.desc.4=§bChance to loot mob head when in mainhand.
 item.pickaxe_chocolate.desc.5=§aChance to gain extra mob loot when in offhand.
 item.pickaxe_chocolate.desc.6=§3When in mainhand and offhand, ██████████████.
+item.pickaxe_chocolate.desc.7=§9Chocolate Stored:
+item.pickaxe_chocolate.desc.8=§dOverchoco efficiency bonus:
 
 item.hazard_potion.name=Spicy Hot Chocolate
 item.hazard_potion.desc=§cSpicy. Something bad may happen.
@@ -137,3 +139,5 @@ tip.choco.1=Crush a §egolden chocolate §fagainst an §eenchanted table §f(Lef
 tip.choco.2=Crush a §echocolate §fagainst a §ebookshelf §f(Left Click).
 tip.choco.3=Also Try Avaritia with Super Chocolate Maker.
 tip.choco.4=Crush a §egolden chocolate §fagainst a §eTNT §f(Left Click).
+
+enchantment.choco.overchoco=§5Overchoco
