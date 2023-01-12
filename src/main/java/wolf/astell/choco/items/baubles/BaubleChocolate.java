@@ -63,7 +63,7 @@ public class BaubleChocolate extends Item implements IBauble
 				{
 					int shield = NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0);
 					if (shield > 0){
-						int dmg = shield - (int) Math.min(100, e.getAmount());
+						int dmg = shield - (int) Math.min(100, e.getAmount() * 10);
 						if (dmg >= 0){
 							e.setCanceled(true);
 							NBTHelper.setInt(stack,TAG_CHOCO_POWER, dmg);

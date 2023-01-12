@@ -3,8 +3,10 @@ package wolf.astell.choco.enchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wolf.astell.choco.api.NBTHelper;
@@ -32,11 +34,20 @@ public class OverChoco extends Enchantment {
         if (event.getItem().getItem().getItem() == ItemList.foodChocolate){
             ItemStack chocolate = event.getItem().getItem();
             ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-            boolean isOverchoco = EnchantmentHelper.getEnchantments(stack).containsKey(this);
-            if (stack.getItem() == ItemList.pickaxeChocolate && isOverchoco){
+            if (EnchantmentHelper.getEnchantments(stack).containsKey(this)){
                 NBTHelper.setInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0) + chocolate.getCount() * EnchantmentHelper.getEnchantmentLevel(this,stack));
                 chocolate.shrink(chocolate.getCount());
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onEntityHurt(LivingDamageEvent event) {
+            if (event.getSource().getTrueSource() instanceof EntityPlayer) {
+                ItemStack stack = ((EntityPlayer) event.getSource().getTrueSource()).getHeldItemMainhand();
+                if (EnchantmentHelper.getEnchantments(stack).containsKey(this)){
+                    event.setAmount(event.getAmount() + (float) Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0));
+                }
+            }
     }
 }
