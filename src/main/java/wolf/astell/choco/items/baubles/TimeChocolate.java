@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
@@ -43,12 +44,12 @@ public class TimeChocolate extends Item implements IBauble {
 				NBTHelper.setLong(stack, FROM_YEAR, player.getEntityWorld().getTotalWorldTime());
 			}else{
 				long eclipsed = player.getEntityWorld().getTotalWorldTime() - NBTHelper.getLong(stack, FROM_YEAR, 0);
-				if (eclipsed % 60 == 0){
+				if (eclipsed % 36000 == 0){
 					NBTHelper.setLong(stack, FROM_YEAR, player.getEntityWorld().getTotalWorldTime());
-					NBTHelper.setInt(stack, STATS, NBTHelper.getInt(stack, STATS, 0) + 1);
+					NBTHelper.setInt(stack, STATS, Math.min(NBTHelper.getInt(stack, STATS, 0) + 1, ModConfig.TRINKET_CONF.ABSORB_AMOUNT));
 				}
-				if (eclipsed % 6000 == 0 || true){
-					player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, Integer.MAX_VALUE, NBTHelper.getInt(stack, STATS, 0), true, false));
+				if (eclipsed % 1200 == 0){
+					player.setAbsorptionAmount(NBTHelper.getInt(stack, STATS, 0));
 				}
 			}
 		}
@@ -66,7 +67,13 @@ public class TimeChocolate extends Item implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(I18n.format("item.time_chocolate.desc.0"));
+		if (ModConfig.TRINKET_CONF.ABSORB_AMOUNT ==0){
+			tooltip.add(I18n.format("message.choco.effect_off"));
+		}else{
+			tooltip.add(I18n.format("item.time_chocolate.desc.0"));
+			tooltip.add(I18n.format("item.time_chocolate.desc.1"));
+			tooltip.add(I18n.format("item.time_chocolate.desc.2") + " " + NBTHelper.getLong(stack, SINCE_YEAR, 0)/ 24000 );
+		}
 	}
 
 }

@@ -29,17 +29,6 @@ public class OverChoco extends Enchantment {
         return 10;
     }
 
-    @SubscribeEvent
-    public void onItemPickup(EntityItemPickupEvent event){
-        if (event.getItem().getItem().getItem() == ItemList.foodChocolate){
-            ItemStack chocolate = event.getItem().getItem();
-            ItemStack stack = event.getEntityPlayer().getHeldItemMainhand();
-            if (EnchantmentHelper.getEnchantments(stack).containsKey(this)){
-                NBTHelper.setInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0) + chocolate.getCount() * EnchantmentHelper.getEnchantmentLevel(this,stack));
-                chocolate.shrink(chocolate.getCount());
-            }
-        }
-    }
 
     @SubscribeEvent
     public void onEntityHurt(LivingDamageEvent event) {

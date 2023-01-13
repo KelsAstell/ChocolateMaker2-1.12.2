@@ -7,6 +7,7 @@ GitHub: https://github.com/KelsAstell
 package wolf.astell.choco.api;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -81,7 +82,7 @@ public class InWorldCrafting {
         }
         if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "pickaxe_chocolate")) && isBlock("minecraft:anvil", event.getWorld().getBlockState(event.getPos()).getBlock())) {
             if(event.getSide() == Side.SERVER) {
-                craftMendingChocolate(event);
+                craftTimeChocolate(event);
 
             }
         }
@@ -126,14 +127,13 @@ public class InWorldCrafting {
         item.setNoGravity(true);
         event.getWorld().spawnEntity(item);
     }
-    private static void craftMendingChocolate(PlayerInteractEvent.LeftClickBlock event) {
+    private static void craftTimeChocolate(PlayerInteractEvent.LeftClickBlock event) {
         BlockPos pos = event.getPos();
         List<EntityItem> Items = event.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.add(-1, -1, -1), pos.add(1, 1, 1)));
         for(EntityItem item:Items){
-            if(item.getItem().getUnlocalizedName().equals(ItemList.expChocolate.getUnlocalizedName())){
+            if(item.getItem().getItem().equals(net.minecraft.init.Items.NETHER_STAR)){
                 item.setDead();
                 Vec3d vector = item.getPositionVector();
-                event.getWorld().createExplosion(null, vector.x, vector.y + 0.1D, vector.z, 8, false);
                 EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.foodChocolateIcecream, 1));
                 i.setDefaultPickupDelay();
                 i.setGlowing(true);
@@ -141,7 +141,7 @@ public class InWorldCrafting {
                 i.setNoGravity(true);
                 event.getWorld().spawnEntity(i);
                 event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.ANVIL.getDefaultState()));
-                event.getWorld().setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState());
+                event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
                 return;
             }
         }

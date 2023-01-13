@@ -77,6 +77,8 @@ item.explosive_chocolate.desc.0=§eOn Consume, Mobs Around You Will Explode.
 item.explosive_chocolate.desc.1=§eBe Aware Not to be Too Hungry.
 item.time_chocolate.name=§dTime Chocolate
 item.time_chocolate.desc.0=§eGain Absorbing Based on Time.
+item.time_chocolate.desc.1=§eHard Like Antique.
+item.time_chocolate.desc.2=§eSince MC DAY
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -120,6 +122,7 @@ config.chocolate.bookshelf_break.name=When Making Exp Chocolate, the Break Chanc
 config.chocolate.doWorldTeleport.name=Enable World Chocolate World Teleport Function
 config.chocolate.customDim.name=Enable World Chocolate Custom Dim ID. §cCAN CAUSE CRASH IF YOU DON'T EDIT CORRECTLY, DO NOT REPORT THIS AS AN ISSUE
 config.chocolate.customWorldTeleport.name=Set a Custom Coord for World Chocolate
+config.time_chocolate.enable.name=Time Chocolate MAX Absorption Amount
 
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.
@@ -139,4 +142,4 @@ tip.choco.2=Crush a §echocolate §fagainst a §ebookshelf §f(Left Click).
 tip.choco.3=Also Try Avaritia with Super Chocolate Maker.
 tip.choco.4=Crush a §egolden chocolate §fagainst a §eTNT §f(Left Click).
 
-enchantment.choco.overchoco=§5Overchoco
+enchantment.overchoco=§7Overchoco

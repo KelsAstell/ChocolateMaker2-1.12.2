@@ -6,6 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityTNTPrimed;
@@ -24,6 +27,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -159,9 +164,43 @@ public class PickaxeChocolate extends ItemPickaxe {
             }
             return ItemStack.EMPTY;
         }
-
     }
 
+
+    @Override
+    public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
+        if(!entity.world.isRemote && entity instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entity;
+            int highest = -1;
+            int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
+
+            for(int i = 0; i < counts.length; i++) {
+                ItemStack stack = player.inventory.getStackInSlot(i);
+                if(stack.isEmpty()) {
+                    continue;
+                }
+                if(ItemList.foodChocolate == stack.getItem()) {
+                    counts[i] = stack.getCount();
+                    if(highest == -1)
+                        highest = i;
+                    else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
+                }
+            }
+            if(highest == -1) {
+            } else {
+                for(int i = 0; i < counts.length; i++) {
+                    int count = counts[i];
+                    if(count == 0)
+                        continue;
+                    add(itemstack, count * (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:overchoco"),itemstack)));
+                    player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                }
+            }
+        }
+    }
+    private static void add(ItemStack stack, int count) {
+        NBTHelper.setInt(stack, TAG_CHOCOLATE_COUNT, count + NBTHelper.getInt(stack,TAG_CHOCOLATE_COUNT,0));
+    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
@@ -217,7 +256,7 @@ public class PickaxeChocolate extends ItemPickaxe {
     public float getDestroySpeed(ItemStack stack, IBlockState state) {
         float bonus = (float) Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0);
         if (state.getMaterial() == Material.GOURD || state.getMaterial() == Material.SAND || state.getMaterial() == Material.CLAY || state.getMaterial() == Material.WOOD){
-            return 16 + bonus;//32 = 20 + 16 = 4096
+            return (float) (15 + 0.3 * bonus);
         }
         return (float) (2 + 0.2 * bonus);
     }
@@ -250,6 +289,6 @@ public class PickaxeChocolate extends ItemPickaxe {
             }
         }
         tooltip.add(I18n.format("item.pickaxe_chocolate.desc.7") + NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0));
-        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.8") + (float) Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0));
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.8") + (float) 0.3* Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0));
     }
 }

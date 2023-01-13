@@ -35,6 +35,8 @@ item.pickaxe_chocolate.desc.3=§2在空中潜行右键点击以跳过夜晚.
 item.pickaxe_chocolate.desc.4=§b概率掉落被击败生物的头.
 item.pickaxe_chocolate.desc.5=§a放在副手时概率掉落额外怪物战利品.
 item.pickaxe_chocolate.desc.6=§3同时放在主手和副手时████████.
+item.pickaxe_chocolate.desc.7=§9巧克力储量:
+item.pickaxe_chocolate.desc.8=§d效率增幅:
 
 item.hazard_potion.name=加了胡椒粉的热巧克力
 item.hazard_potion.desc=§c好辣! 感觉要有什么坏事发生了...
@@ -73,9 +75,10 @@ item.world_chocolate.desc.1=§e食用后, 传送到另一个维度.
 item.explosive_chocolate.name=§e易爆巧克力
 item.explosive_chocolate.desc.0=§e好吃到爆炸!
 item.explosive_chocolate.desc.1=§e食用后, 你身边的生物自爆.
-item.mending_chocolate.name=经验修补巧克力
-item.mending_chocolate.desc.0=装备后, 消耗你的经验来修理你手上的物品.
-item.mending_chocolate.desc.1=何以解忧? 可可熬粥.
+item.time_chocolate.name=§d岁月史书巧克力
+item.time_chocolate.desc.0=§e根据时间推移获取伤害吸收效果.
+item.time_chocolate.desc.1=§e极具收藏价值, 这可是82年的§m拉菲§r§e巧克力!
+item.time_chocolate.desc.2=§eSince MC DAY
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -119,6 +122,7 @@ config.chocolate.bookshelf_break.name=制作经验巧克力特定方块破坏概
 config.chocolate.doWorldTeleport.name=允许三界巧克力维度传送功能
 config.chocolate.customDim.name=设定维度ID. §c修改引起的一切问题概不负责
 config.chocolate.customWorldTeleport.name=设置自定义传送坐标
+config.time_chocolate.enable.name=岁月史书巧克力最大伤害吸收量
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.
@@ -137,3 +141,5 @@ tip.choco.1=对着一个附魔台使用金巧克力(左键点击)会发生什么
 tip.choco.2=对着一个书架使用金巧克力(左键点击)会发生什么?
 tip.choco.3=也试试无尽贪婪吧, 或许会让巧克力发生什么变化?
 tip.choco.4=对着一个TNT使用金巧克力(左键点击)会发生什么?
+
+enchantment.overchoco=§7巧克力脆皮

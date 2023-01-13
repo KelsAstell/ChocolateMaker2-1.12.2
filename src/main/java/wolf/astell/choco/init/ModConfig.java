@@ -33,19 +33,19 @@ public class ModConfig {
         @Config.LangKey("config.mining_chocolate.potion.name")
         @Config.Comment("Mining Chocolate Haste Effect Level, default 2")
         @Config.RequiresMcRestart
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = -1)
         public int HASTE_LEVEL = 2;
 
         @Config.LangKey("config.speed_chocolate.potion.name")
         @Config.Comment("Speed Chocolate Speeed Effect Level, default 2")
         @Config.RequiresMcRestart
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = -1)
         public int SPEED_LEVEL = 2;
 
         @Config.LangKey("config.bauble_chocolate.potion.name")
         @Config.Comment("Fondant Chocolate Resistance Effect Level, default 2")
         @Config.RequiresMcRestart
-        @Config.RangeInt(min = 0)
+        @Config.RangeInt(min = -1)
         public int RESISTANCE_LEVEL = 2;
     }
     @Config.LangKey("choco.TrinketConf")
@@ -80,10 +80,10 @@ public class ModConfig {
         @Config.Comment("Enable Flight Chocolate Flight Ability, default true")
         public boolean ENABLE_FLIGHT = true;
 
-        @Config.LangKey("config.mending_chocolate.enable.name")
-        @Config.Comment("Repair Chocolate Repair Amount, 0 to disable")
+        @Config.LangKey("config.time_chocolate.enable.name")
+        @Config.Comment("Time Chocolate MAX Absorption Amount, 0 to disable")
         @Config.RangeInt(min = 0)
-        public int REPAIR_AMOUNT = 2;
+        public int ABSORB_AMOUNT = 10;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")
