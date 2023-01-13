@@ -134,7 +134,7 @@ public class InWorldCrafting {
             if(item.getItem().getItem().equals(net.minecraft.init.Items.NETHER_STAR)){
                 item.setDead();
                 Vec3d vector = item.getPositionVector();
-                EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.foodChocolateIcecream, 1));
+                EntityItem i = new EntityItem(event.getWorld(), vector.x, vector.y + 0.1D, vector.z, new ItemStack(ItemList.timeChocolate, 1));
                 i.setDefaultPickupDelay();
                 i.setGlowing(true);
                 i.setNoDespawn();
