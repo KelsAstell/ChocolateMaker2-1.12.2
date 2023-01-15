@@ -23,12 +23,12 @@
       {
         "type": "item",
         "name": "choco:air_chocolate",
-        "weight": 5
+        "weight": 7
       },
       {
         "type": "item",
-        "name": "choco:bauble_chocolate",
-        "weight": 5
+        "name": "choco:time_chocolate",
+        "weight": 3
       },
       {
         "type": "item",

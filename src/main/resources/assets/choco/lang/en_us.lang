@@ -13,6 +13,7 @@ item.bauble_chocolate.name=Fondant Chocolate
 item.bauble_chocolate.desc.0=§eSo Hard.
 item.bauble_chocolate.desc.1=§eGain Immunity to Most Damage.
 item.bauble_chocolate.desc.2=§eGain Permanent Resistance.
+item.bauble_chocolate.desc.3=§eRemaining Shields:
 item.mining_chocolate.name=Mining Chocolate
 item.mining_chocolate.desc.0=§eThis Game is §bMine§ecraft.
 item.mining_chocolate.desc.1=§eGain Permanent Haste.
@@ -141,5 +142,6 @@ tip.choco.1=Crush a §egolden chocolate §fagainst an §eenchanted table §f(Lef
 tip.choco.2=Crush a §echocolate §fagainst a §ebookshelf §f(Left Click).
 tip.choco.3=Also Try Avaritia with Super Chocolate Maker.
 tip.choco.4=Crush a §egolden chocolate §fagainst a §eTNT §f(Left Click).
+tip.choco.5=Use A.I.O to Smash a Nether Star with Anvil to Discover the Secret of §eTime
 
 enchantment.overchoco=§7Overchoco

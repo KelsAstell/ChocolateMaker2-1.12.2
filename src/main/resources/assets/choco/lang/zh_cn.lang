@@ -13,6 +13,7 @@ item.bauble_chocolate.name=翻糖巧克力
 item.bauble_chocolate.desc.0=§e硬到掉牙, 或许可以用来...?
 item.bauble_chocolate.desc.1=§e装备后免疫常规伤害.
 item.bauble_chocolate.desc.2=§e装备后获得抗性提升效果.
+item.bauble_chocolate.desc.3=§e护盾剩余:
 item.mining_chocolate.name=矿工巧克力
 item.mining_chocolate.desc.0=§e让我们挖穿世界!
 item.mining_chocolate.desc.1=§e装备后获得急迫效果.
@@ -141,5 +142,6 @@ tip.choco.1=对着一个附魔台使用金巧克力(左键点击)会发生什么
 tip.choco.2=对着一个书架使用金巧克力(左键点击)会发生什么?
 tip.choco.3=也试试无尽贪婪吧, 或许会让巧克力发生什么变化?
 tip.choco.4=对着一个TNT使用金巧克力(左键点击)会发生什么?
+tip.choco.5=在铁砧上用A.I.O敲碎一个下界之星会发生什么?
 
 enchantment.overchoco=§7巧克力脆皮
