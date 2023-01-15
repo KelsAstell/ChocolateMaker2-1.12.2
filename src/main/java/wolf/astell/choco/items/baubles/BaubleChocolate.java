@@ -6,7 +6,6 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -24,7 +23,6 @@ import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
-import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.List;
 
@@ -63,7 +61,7 @@ public class BaubleChocolate extends Item implements IBauble
 				{
 					int shield = NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0);
 					if (shield > 0){
-						int dmg = shield - (int) Math.min(100, e.getAmount() * 10);
+						int dmg = shield - (int) Math.min(100, e.getAmount() * 5);
 						if (dmg >= 0){
 							e.setCanceled(true);
 							NBTHelper.setInt(stack,TAG_CHOCO_POWER, dmg);
@@ -84,7 +82,7 @@ public class BaubleChocolate extends Item implements IBauble
 				player.removePotionEffect(MobEffects.RESISTANCE);
 				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
 			}
-			NBTHelper.setInt(stack, TAG_CHOCO_POWER, Math.max(NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0) + 1, 10000));
+			NBTHelper.setInt(stack, TAG_CHOCO_POWER, Math.min(NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0) + 1, 10000));
 		}
 	}
 	@Override
@@ -103,6 +101,7 @@ public class BaubleChocolate extends Item implements IBauble
 		}
 		if(ModConfig.TRINKET_CONF.GODMODE){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));
+			tooltip.add(I18n.format("item.bauble_chocolate.desc.3") + NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0));
 		}
 		if (!ModConfig.TRINKET_CONF.GODMODE && potionLevel < 0){
 			tooltip.add(I18n.format("message.choco.effect_off"));
