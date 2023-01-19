@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "OWO",
+    " N "
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:gold_ingot"
+    },
+    "N": {
+      "item": "minecraft:diamond"
+    },
+    "W": {
+      "type": "forge:ore_dict", "ore": "foodChocolate"
+    }
+  },
+  "result": {
+    "item": "choco:gold_paw_chocolate",
+    "count": 1
+  }
+}

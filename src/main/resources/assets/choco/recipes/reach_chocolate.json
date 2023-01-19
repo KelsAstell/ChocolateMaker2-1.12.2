@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " O ",
+    "OAO",
+    " A "
+  ],
+  "key": {
+    "O": {
+      "item": "choco:gold_paw_chocolate"
+    },
+    "A": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "choco:reach_chocolate",
+    "count": 1
+  }
+}

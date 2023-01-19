@@ -42,7 +42,7 @@ item.gold_paw_chocolate.name=§e金爪巧克力
 item.gold_paw_chocolate.desc.0=§e看起来像是爪子.
 item.gold_paw_chocolate.desc.1=§e每块金爪巧克力能够增加金闪闪巧克力0.01的触及距离
 item.reach_chocolate.name=§d金闪闪巧克力
-item.reach_chocolate.desc.0=§e能够吸收金闪闪巧克力来增加触及距离.
+item.reach_chocolate.desc.0=§e能够吸收金爪巧克力来增加触及距离.
 item.reach_chocolate.desc.1=§e触及距离提升:
 
 item.hazard_potion.name=加了胡椒粉的热巧克力
@@ -85,7 +85,7 @@ item.explosive_chocolate.desc.1=§e食用后, 你身边的生物自爆.
 item.time_chocolate.name=§d岁月史书巧克力
 item.time_chocolate.desc.0=§e根据时间推移获取伤害吸收效果.
 item.time_chocolate.desc.1=§e极具收藏价值, 这可是82年的§m拉菲§r§e巧克力!
-item.time_chocolate.desc.2=§eSince MC DAY
+item.time_chocolate.desc.2=§eSince MC DAY:
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
