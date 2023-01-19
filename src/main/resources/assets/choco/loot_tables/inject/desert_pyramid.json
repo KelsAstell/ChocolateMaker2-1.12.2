@@ -13,13 +13,18 @@
         "type": "item",
         "name": "minecraft:dye",
         "data": 3,
-        "weight": 75,
+        "weight": 55,
         "functions": [{ "function": "set_count", "count": { "min": 1, "max": 5 } }]
       },
       {
         "type": "item",
         "name": "choco:exp_chocolate",
         "weight": 10
+      },
+      {
+        "type": "item",
+        "name": "choco:gold_paw_chocolate",
+        "weight": 20
       },
       {
         "type": "empty",

@@ -38,6 +38,12 @@ item.pickaxe_chocolate.desc.5=§a放在副手时概率掉落额外怪物战利�
 item.pickaxe_chocolate.desc.6=§3同时放在主手和副手时████████.
 item.pickaxe_chocolate.desc.7=§9巧克力储量:
 item.pickaxe_chocolate.desc.8=§d效率增幅:
+item.gold_paw_chocolate.name=§e金爪巧克力
+item.gold_paw_chocolate.desc.0=§e看起来像是爪子.
+item.gold_paw_chocolate.desc.1=§e每块金爪巧克力能够增加金闪闪巧克力0.01的触及距离
+item.reach_chocolate.name=§d金闪闪巧克力
+item.reach_chocolate.desc.0=§e能够吸收金闪闪巧克力来增加触及距离.
+item.reach_chocolate.desc.1=§e触及距离提升:
 
 item.hazard_potion.name=加了胡椒粉的热巧克力
 item.hazard_potion.desc=§c好辣! 感觉要有什么坏事发生了...
@@ -124,6 +130,7 @@ config.chocolate.doWorldTeleport.name=允许三界巧克力维度传送功能
 config.chocolate.customDim.name=设定维度ID. §c修改引起的一切问题概不负责
 config.chocolate.customWorldTeleport.name=设置自定义传送坐标
 config.time_chocolate.enable.name=岁月史书巧克力最大伤害吸收量
+config.reach_chocolate.enable.name=金闪闪巧克力最大扩展范围
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.

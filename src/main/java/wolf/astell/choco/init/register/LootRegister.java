@@ -21,7 +21,7 @@ public final class LootRegister {
 	private static final List<String> TABLES = ImmutableList.of(
 			"inject/abandoned_mineshaft", "inject/desert_pyramid",
 			"inject/simple_dungeon", "inject/spawn_bonus_chest",
-			"inject/village_blacksmith"
+			"inject/village_blacksmith", "inject/jungle_temple"
 			);
 
 	public LootRegister() {
@@ -43,7 +43,8 @@ public final class LootRegister {
 			case "desert_pyramid":
 			case "simple_dungeon":
 			case "spawn_bonus_chest":
-			case "village_blacksmith": evt.getTable().addPool(getInjectPool(file)); break;
+			case "village_blacksmith":
+			case "jungle_temple": evt.getTable().addPool(getInjectPool(file)); break;
 			default: break;
 			}
 		}

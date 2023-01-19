@@ -15,6 +15,7 @@ import wolf.astell.choco.init.register.compact.AvaritiaRegister;
 public class OreDictRegister {
     public static void init(){
         OreDictionary.registerOre("foodChocolatebar", ItemList.foodChocolate);
+        OreDictionary.registerOre("foodChocolate", ItemList.foodChocolate);
         OreDictionary.registerOre("forge:ingots", ItemList.ingotChocolate);
         //should chocolate ingot be iron, for lazydoge like me.
         if (ModConfig.SPECIAL_CONF.CHOCO_IRON){

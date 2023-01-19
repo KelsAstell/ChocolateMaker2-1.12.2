@@ -38,6 +38,12 @@ item.pickaxe_chocolate.desc.5=§aChance to gain extra mob loot when in offhand.
 item.pickaxe_chocolate.desc.6=§3When in mainhand and offhand, ██████████████.
 item.pickaxe_chocolate.desc.7=§9Chocolate Stored:
 item.pickaxe_chocolate.desc.8=§dOverchoco efficiency bonus:
+item.gold_paw_chocolate.name=§eGold Paw Chocolate
+item.gold_paw_chocolate.desc.0=§eLooks Like a Paw.
+item.gold_paw_chocolate.desc.1=§eAdd §f0.01 §eStat Bonus to Reach Chocolate.
+item.reach_chocolate.name=§dRich Chocolate
+item.reach_chocolate.desc.0=§eAbsorb Gold Paw Chocolate and Boost Your Reach(Rich).
+item.reach_chocolate.desc.1=§eCurrent Reach Bonus:
 
 item.hazard_potion.name=Spicy Hot Chocolate
 item.hazard_potion.desc=§cSpicy. Something bad may happen.
@@ -124,6 +130,7 @@ config.chocolate.doWorldTeleport.name=Enable World Chocolate World Teleport Func
 config.chocolate.customDim.name=Enable World Chocolate Custom Dim ID. §cCAN CAUSE CRASH IF YOU DON'T EDIT CORRECTLY, DO NOT REPORT THIS AS AN ISSUE
 config.chocolate.customWorldTeleport.name=Set a Custom Coord for World Chocolate
 config.time_chocolate.enable.name=Time Chocolate MAX Absorption Amount
+config.reach_chocolate.enable.name=Reach Chocolate MAX Reach Bonus Distance
 
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.

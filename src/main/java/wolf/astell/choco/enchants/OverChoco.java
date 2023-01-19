@@ -26,7 +26,7 @@ public class OverChoco extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 10;
+        return 5;
     }
 
 

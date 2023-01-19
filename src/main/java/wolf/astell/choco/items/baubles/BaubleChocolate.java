@@ -24,6 +24,7 @@ import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @EventBusSubscriber

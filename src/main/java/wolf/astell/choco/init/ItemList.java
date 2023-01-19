@@ -9,6 +9,7 @@ import wolf.astell.choco.api.IsFood;
 import wolf.astell.choco.api.IsPotion;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
+import wolf.astell.choco.items.GoldPawChocolate;
 import wolf.astell.choco.items.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
 import wolf.astell.choco.items.foodfunctional.ExpChocolate;
@@ -40,7 +41,9 @@ public class ItemList{
     public static Item expChocolate;
     public static Item worldChocolate;
     public static Item explosiveChocolate;
-    public  static Item timeChocolate;
+    public static Item timeChocolate;
+    public static Item reachChocolate;
+    public static Item goldPawChocolate;
 
 
     public static void init() {
@@ -68,5 +71,7 @@ public class ItemList{
         worldChocolate = new WorldChocolate("world_chocolate");
         explosiveChocolate = new ExplosiveChocolate("explosive_chocolate");
         timeChocolate = new TimeChocolate("time_chocolate");
+        reachChocolate = new ReachChocolate("reach_chocolate");
+        goldPawChocolate = new GoldPawChocolate("gold_paw_chocolate");
     }
 }

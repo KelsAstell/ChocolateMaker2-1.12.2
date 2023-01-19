@@ -84,6 +84,11 @@ public class ModConfig {
         @Config.Comment("Time Chocolate MAX Absorption Amount, 0 to disable")
         @Config.RangeInt(min = 0)
         public int ABSORB_AMOUNT = 10;
+
+        @Config.LangKey("config.reach_chocolate.enable.name")
+        @Config.Comment("Reach Chocolate MAX Reach Bonus Distance")
+        @Config.RangeDouble(min = 0)
+        public double REACH_AMOUNT = 24.0;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")

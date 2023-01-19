@@ -27,8 +27,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -39,6 +37,7 @@ import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
 import javax.annotation.Nonnull;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
 
@@ -46,6 +45,7 @@ public class PickaxeChocolate extends ItemPickaxe {
     public static final Item.ToolMaterial CHOCOLATE = EnumHelper.addToolMaterial("CHOCOLATE", ModConfig.TOOL_CONF.TOOL_LEVEL, ModConfig.TOOL_CONF.TOOL_DURABILITY, ModConfig.TOOL_CONF.TOOL_EFFICIENCY, (float) ModConfig.TOOL_CONF.TOOL_ATTACK_DAMAGE - 2, ModConfig.TOOL_CONF.TOOL_ENCHANT_ABILITY);
     private int ConfirmTeleport = 0;
     public static final String TAG_CHOCOLATE_COUNT = "chocolateCount";
+    DecimalFormat df = new DecimalFormat("#0.00");
     public PickaxeChocolate(String name)
     {
         super(CHOCOLATE);//Maker
@@ -192,7 +192,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                     int count = counts[i];
                     if(count == 0)
                         continue;
-                    add(itemstack, count * (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:overchoco"),itemstack)));
+                    add(itemstack, count * (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:overchoco"),itemstack) + 1));
                     player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
                 }
             }
@@ -288,7 +288,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                 tooltip.add(I18n.format("item.pickaxe_chocolate_aio.desc"));
             }
         }
-        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.7") + NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0));
-        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.8") + (float) 0.3* Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0));
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.7") + " " + df.format(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0)));
+        tooltip.add(I18n.format("item.pickaxe_chocolate.desc.8") + " " + df.format((float) 0.3* Math.pow(NBTHelper.getInt(stack, PickaxeChocolate.TAG_CHOCOLATE_COUNT, 0), 1/3.0)));
     }
 }

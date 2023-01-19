@@ -28,6 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.InjectDamageSource;
+import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
@@ -167,6 +168,7 @@ public class InfiniteBaubleChocolate extends Item implements IBauble
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.0"));
 		tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.bauble_chocolate.desc.3") + '\u221e');
 		if (ModConfig.AVARITIA_CONF.FONDANT_PERIMETER_MODE){
 			tooltip.add(I18n.format("item.infinite_bauble_chocolate.desc.2"));
 		}
