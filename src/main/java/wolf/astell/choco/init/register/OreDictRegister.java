@@ -40,7 +40,7 @@ public class OreDictRegister {
         //add TF support
         if (Loader.isModLoaded("thermalfoundation"))
         {
-            OreDictionary.registerOre("coinGold", ItemList.foodGoldenChocolate);
+            OreDictionary.registerOre("coinDiamond", ItemList.foodGoldenChocolate);
         }
     }
 }

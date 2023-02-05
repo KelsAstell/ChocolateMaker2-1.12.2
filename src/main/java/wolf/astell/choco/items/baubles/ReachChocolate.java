@@ -63,19 +63,13 @@ public class ReachChocolate extends Item implements IBauble {
 //					if(highest == -1)
 //						highest = i;
 //					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
-//				}
+//				}//this is not working
 				if(ItemList.goldPawChocolate == stack.getItem()) {
 					counts[i] = stack.getCount();
 					if(highest == -1)
 						highest = i;
 					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
 				}
-//				if(stack.getItem().getUnlocalizedName().equals("choco:gold_paw_chocolate")) {
-//					counts[i] = stack.getCount();
-//					if(highest == -1)
-//						highest = i;
-//					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
-//				}
 			}
 			if(highest == -1) {
 			} else {

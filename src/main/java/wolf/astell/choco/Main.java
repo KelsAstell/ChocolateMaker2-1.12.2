@@ -38,7 +38,7 @@ public class Main {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         ItemList.init();
-        if (Loader.isModLoaded("redstoneflux")){
+        if (Loader.isModLoaded("redstoneflux") && Loader.isModLoaded(("thermalfoundation"))){
             CoFHRegister.init();
             CoFHCompact.init();
         }
