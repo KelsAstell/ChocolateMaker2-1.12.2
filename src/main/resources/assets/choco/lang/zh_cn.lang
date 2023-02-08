@@ -44,6 +44,9 @@ item.gold_paw_chocolate.desc.1=§e每块金爪巧克力能够增加金闪闪巧�
 item.reach_chocolate.name=§d金闪闪巧克力
 item.reach_chocolate.desc.0=§e能够吸收金爪巧克力来增加触及距离.
 item.reach_chocolate.desc.1=§e触及距离提升:
+item.love_chocolate.name=§d情人节巧克力
+item.love_chocolate.desc.0=§e让我们见证:
+item.love_chocolate.desc.0.ntr=§a让我们见证:
 
 item.hazard_potion.name=加了胡椒粉的热巧克力
 item.hazard_potion.desc=§c好辣! 感觉要有什么坏事发生了...

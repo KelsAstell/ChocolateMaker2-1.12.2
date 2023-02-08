@@ -44,6 +44,9 @@ item.gold_paw_chocolate.desc.1=§eAdd §f0.01 §eStat Bonus to Reach Chocolate.
 item.reach_chocolate.name=§dRich Chocolate
 item.reach_chocolate.desc.0=§eAbsorb Gold Paw Chocolate and Boost Your Reach(Rich).
 item.reach_chocolate.desc.1=§eCurrent Reach Bonus:
+item.love_chocolate.name=§dLove Chocolate
+item.love_chocolate.desc.0=§eSymbol of Love Between:
+item.love_chocolate.desc.0.ntr=§aSymbol of Love Between:
 
 item.hazard_potion.name=Spicy Hot Chocolate
 item.hazard_potion.desc=§cSpicy. Something bad may happen.

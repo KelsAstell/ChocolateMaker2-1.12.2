@@ -12,13 +12,17 @@ public class SpecialDays {
 	public static String getToday(){
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(System.currentTimeMillis());
-		if(calendar.get(Calendar.MONTH) == Calendar.APRIL && calendar.get(Calendar.DAY_OF_MONTH) == 1)
-		{
-			return "APRIL_FOOLS_DAY";
-		}
 		if(calendar.get(Calendar.MONTH) == Calendar.FEBRUARY && calendar.get(Calendar.DAY_OF_MONTH) == 11)
 		{
 			return "BIRTHDAY_ASTELL";
+		}
+		if(calendar.get(Calendar.MONTH) == Calendar.FEBRUARY && calendar.get(Calendar.DAY_OF_MONTH) == 14)
+		{
+			return "VALENTINES_DAY";
+		}
+		if(calendar.get(Calendar.MONTH) == Calendar.APRIL && calendar.get(Calendar.DAY_OF_MONTH) == 1)
+		{
+			return "APRIL_FOOLS_DAY";
 		}
 		return "A_GOOD_DAY";
 	}
