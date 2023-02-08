@@ -12,6 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -22,6 +25,7 @@ import wolf.astell.choco.init.ItemList;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class LoveChocolate extends Item {
 
@@ -90,15 +94,31 @@ public class LoveChocolate extends Item {
 	public ItemStack onItemUseFinish(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull EntityLivingBase entity) {
 		if (entity instanceof EntityPlayer && !entity.getEntityWorld().isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
-			stack.shrink(1);
 			if (NBTHelper.getBoolean(stack, NTR, false)){
 				player.getEntityWorld().createExplosion(null, player.posX, player.posY + 0.2, player.posZ, 0.5F, false);
 				player.setHealth(0);
+			}else{
+				float pitch = player.rotationPitch, yaw = player.rotationYaw;
+				for (int p = 0; p < 3; p++) {
+					float newYaw = yaw + getRand();
+					float newPitch = pitch + getRand();
+					Vec3d shootPosition = new Vec3d(
+							-MathHelper.sin(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F),
+							-MathHelper.sin(newPitch * 0.0174F),
+							MathHelper.cos(newYaw * 0.0174F) * MathHelper.cos(newPitch * 0.0174F));
+					player.world.spawnParticle(EnumParticleTypes.HEART, player.posX,
+							player.posY + player.getEyeHeight() - 0.8f, player.posZ, shootPosition.x, shootPosition.y , shootPosition.z , 1);
+				}
+				player.setAbsorptionAmount(2);
 			}
 		}
+		stack.shrink(1);
 		return stack;
 	}
-
+	private int getRand()
+	{
+		return new Random().nextInt(20 - -20)+ -20;
+	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
