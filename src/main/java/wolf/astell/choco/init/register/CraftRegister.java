@@ -13,6 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.Log;
+import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 
 public class CraftRegister {
@@ -26,6 +27,15 @@ public class CraftRegister {
                 'B', Items.NETHER_STAR,
                 'C', Blocks.END_STONE,
                 'D', ItemList.foodGoldenChocolate);
+        if (SpecialDays.getToday().equals("VALENTINES_DAY")){
+            GameRegistry.addShapedRecipe(new ResourceLocation("love_chocolate"), new ResourceLocation(Main.MODID), new ItemStack(ItemList.loveChocolate),
+                    "AAA",
+                    "ABA",
+                    "ACA",
+                    'A', Items.PAPER,
+                    'C', Items.DIAMOND,
+                    'B', ItemList.foodChocolate);
+        }
         Log.i("Crafting Recipe Inject Succeed.");
     }
 }

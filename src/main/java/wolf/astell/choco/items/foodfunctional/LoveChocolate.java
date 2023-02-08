@@ -64,11 +64,11 @@ public class LoveChocolate extends Item {
 		if(!entity.world.isRemote && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
 			String name = player.getName();
-			if (NBTHelper.getDouble(itemstack, GIFTER, 0) == 0){
+			if (Objects.equals(NBTHelper.getString(itemstack, GIFTER, NONE), "none")){
 				addGifterName(itemstack, name);
 			}
 			if (!Objects.equals(NBTHelper.getString(itemstack, GIFTER, NONE), name)){
-				if (NBTHelper.getDouble(itemstack, RECEIVER, 0) == 0){
+				if (Objects.equals(NBTHelper.getString(itemstack, RECEIVER, NONE), "none")){
 					addReceiverName(itemstack, name);
 				}
 				if (!Objects.equals(NBTHelper.getString(itemstack, RECEIVER, NONE), name)){
