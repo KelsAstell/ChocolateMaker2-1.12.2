@@ -24,7 +24,6 @@ import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 @EventBusSubscriber
@@ -33,7 +32,7 @@ public class BaubleChocolate extends Item implements IBauble
 	public BaubleChocolate(String name)
 	{
 		this.setMaxStackSize(1);
-		this.setMaxDamage(1);
+//		this.setMaxDamage(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
@@ -106,12 +105,12 @@ public class BaubleChocolate extends Item implements IBauble
 		if(potionLevel >= 0){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
 		}
+		if (stack.getItemDamage() == 1){
+			tooltip.add("§bAhoge Installed Successfully. -40% Energy Cost.");
+		}
 		if(ModConfig.TRINKET_CONF.GODMODE){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.3") + NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0));
-			if (stack.getItemDamage() == 1){
-				tooltip.add(I18n.format("item.bauble_chocolate.desc.4"));
-			}
 		}
 		if (!ModConfig.TRINKET_CONF.GODMODE && potionLevel < 0){
 			tooltip.add(I18n.format("message.choco.effect_off"));

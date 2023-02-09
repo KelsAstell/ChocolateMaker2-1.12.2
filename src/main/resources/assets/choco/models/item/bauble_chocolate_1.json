@@ -2,7 +2,7 @@
   {
     "parent": "item/generated",
     "textures": {
-      "layer0": "choco:item/chocolate"
+      "layer0": "choco:item/ahoge_bauble_chocolate"
     }
   }
   
