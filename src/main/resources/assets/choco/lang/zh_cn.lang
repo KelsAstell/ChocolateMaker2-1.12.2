@@ -14,6 +14,7 @@ item.bauble_chocolate.desc.0=§e硬到掉牙, 或许可以用来...?
 item.bauble_chocolate.desc.1=§e装备后免疫常规伤害.
 item.bauble_chocolate.desc.2=§e装备后获得抗性提升效果.
 item.bauble_chocolate.desc.3=§e护盾能量剩余:
+item.bauble_chocolate.desc.4=§b已正确安装呆毛, 能量消耗减少40%.
 item.mining_chocolate.name=矿工巧克力
 item.mining_chocolate.desc.0=§e让我们挖穿世界!
 item.mining_chocolate.desc.1=§e装备后获得急迫效果.
@@ -89,6 +90,9 @@ item.time_chocolate.name=§d岁月史书巧克力
 item.time_chocolate.desc.0=§e根据时间推移获取伤害吸收效果.
 item.time_chocolate.desc.1=§e极具收藏价值, 这可是82年的§m拉菲§r§e巧克力!
 item.time_chocolate.desc.2=§eSince MC DAY:
+item.ahoge.name=§b呆毛
+item.ahoge.desc.0=§e看起来是普通的呆毛.
+item.ahoge.desc.1=§e或许可以插在...
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

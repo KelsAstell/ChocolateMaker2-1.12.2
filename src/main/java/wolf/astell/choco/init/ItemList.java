@@ -9,6 +9,7 @@ import wolf.astell.choco.api.IsFood;
 import wolf.astell.choco.api.IsPotion;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
+import wolf.astell.choco.items.Ahoge;
 import wolf.astell.choco.items.GoldPawChocolate;
 import wolf.astell.choco.items.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class ItemList{
     public static final List<Item> ITEM_LIST = new ArrayList<>();
+    public static final List<Item> VARIED_ITEM_LIST = new ArrayList<>();
     public static Item foodChocolate;
     public static Item foodGoldenChocolate;
     public static Item foodEnchantedChocolate;
@@ -46,6 +48,7 @@ public class ItemList{
     public static Item reachChocolate;
     public static Item goldPawChocolate;
     public static Item loveChocolate;
+    public static Item ahoge;
 
 
     public static void init() {
@@ -77,5 +80,6 @@ public class ItemList{
         reachChocolate = new ReachChocolate("reach_chocolate");
         goldPawChocolate = new GoldPawChocolate("gold_paw_chocolate");
         loveChocolate = new LoveChocolate("love_chocolate");
+        ahoge = new Ahoge("ahoge");
     }
 }

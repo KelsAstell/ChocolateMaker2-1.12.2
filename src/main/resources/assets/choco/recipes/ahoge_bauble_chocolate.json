@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " O",
+    " B "
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:slime_ball"
+    },
+    "A": {
+      "item": "choco:ahoge"
+    },
+    "B": {
+      "item": "choco:bauble_chocolate",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "choco:bauble_chocolate",
+    "data": 1,
+    "count": 1
+  }
+}

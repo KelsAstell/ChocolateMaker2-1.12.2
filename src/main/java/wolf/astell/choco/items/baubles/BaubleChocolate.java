@@ -33,16 +33,18 @@ public class BaubleChocolate extends Item implements IBauble
 	public BaubleChocolate(String name)
 	{
 		this.setMaxStackSize(1);
+		this.setMaxDamage(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
 		this.setContainerItem(this);
 
 		ItemList.ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST.add(this);
 	}
 	public static final String TAG_CHOCO_POWER = "chocolatePower";
 	int potionLevel = ModConfig.POTION_CONF.RESISTANCE_LEVEL - 1;
-
+	static int dmg;
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack)
 	{
@@ -62,7 +64,11 @@ public class BaubleChocolate extends Item implements IBauble
 				{
 					int shield = NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0);
 					if (shield > 0){
-						int dmg = shield - (int) Math.min(100, e.getAmount() * 5);
+						if (stack.getItemDamage()==1){
+							dmg = shield - (int) Math.min(60, e.getAmount() * 3);
+						}else{
+							dmg = shield - (int) Math.min(100, e.getAmount() * 5);
+						}
 						if (dmg >= 0){
 							e.setCanceled(true);
 							NBTHelper.setInt(stack,TAG_CHOCO_POWER, dmg);
@@ -103,6 +109,9 @@ public class BaubleChocolate extends Item implements IBauble
 		if(ModConfig.TRINKET_CONF.GODMODE){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.3") + NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0));
+			if (stack.getItemDamage() == 1){
+				tooltip.add(I18n.format("item.bauble_chocolate.desc.4"));
+			}
 		}
 		if (!ModConfig.TRINKET_CONF.GODMODE && potionLevel < 0){
 			tooltip.add(I18n.format("message.choco.effect_off"));

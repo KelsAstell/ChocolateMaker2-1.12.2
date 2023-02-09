@@ -19,5 +19,8 @@ public class ItemRenderHelper {
         for (Item item : ItemList.ITEM_LIST) {
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), "inventory"));
         }
+        for (Item item : ItemList.VARIED_ITEM_LIST) {
+            ModelLoader.setCustomModelResourceLocation(item, 1, new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()) + "_1", "inventory"));
+        }
     }
 }
