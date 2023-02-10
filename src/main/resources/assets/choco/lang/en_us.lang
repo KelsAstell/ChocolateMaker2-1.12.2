@@ -93,6 +93,7 @@ item.time_chocolate.desc.2=§eSince MC DAY:
 item.ahoge.name=§bAhoge
 item.ahoge.desc.0=§eLooks Like an Ahoge.
 item.ahoge.desc.1=§eCan be Plugged into...
+item.ahoge_bauble_chocolate.name=Ahoged Bauble Chocolate
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level

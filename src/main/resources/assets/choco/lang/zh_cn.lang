@@ -93,6 +93,7 @@ item.time_chocolate.desc.2=§eSince MC DAY:
 item.ahoge.name=§b呆毛
 item.ahoge.desc.0=§e看起来是普通的呆毛.
 item.ahoge.desc.1=§e或许可以插在...
+item.ahoge_bauble_chocolate.name=插上呆毛的翻糖巧克力
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

@@ -13,17 +13,17 @@
       {
         "type": "item",
         "name": "choco:golden_chocolate",
-        "weight": 9
+        "weight": 6
       },
       {
         "type": "item",
         "name": "choco:ahoge",
-        "weight": 5
+        "weight": 10
       },
       {
         "type": "item",
         "name": "choco:air_chocolate",
-        "weight": 5
+        "weight": 3
       },
       {
         "type": "item",

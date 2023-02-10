@@ -101,6 +101,7 @@ public class BaubleChocolate extends Item implements IBauble
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
+		stack.setTranslatableName("item.ahoge_bauble_chocolate.name");
 		tooltip.add(I18n.format("item.bauble_chocolate.desc.0"));
 		if(potionLevel >= 0){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
