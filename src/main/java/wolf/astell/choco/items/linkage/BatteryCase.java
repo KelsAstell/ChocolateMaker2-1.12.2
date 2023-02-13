@@ -114,7 +114,7 @@ public class BatteryCase extends Item implements IBauble {
 			tooltip.add(I18n.format("message.choco.effect_off"));
 		}else{
 			tooltip.add(I18n.format("item.battery_case.desc.0"));
-			tooltip.add(I18n.format("item.battery_case.desc.1") + " " + NBTHelper.getInt(stack,ENERGY,0)+ " RF/t");
+			tooltip.add(I18n.format("item.battery_case.desc.1") + " " + Math.min(NBTHelper.getInt(stack,ENERGY,0),ModConfig.TRINKET_CONF.MAX_OUTPUT)+ " RF/t");
 			if(NBTHelper.getInt(stack,ENERGY,0) >= ModConfig.TRINKET_CONF.MAX_OUTPUT){
 				tooltip.add(I18n.format("item.battery_case.desc.maxed"));
 			}
