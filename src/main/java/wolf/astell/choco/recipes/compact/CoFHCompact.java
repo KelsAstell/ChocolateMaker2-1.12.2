@@ -1,5 +1,6 @@
 package wolf.astell.choco.recipes.compact;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -28,5 +29,12 @@ public class CoFHCompact {
                 'A', Items.IRON_NUGGET,
                 'B', Items.IRON_INGOT,
                 'C', ItemList.ringOfAir);
+        GameRegistry.addShapedRecipe(new ResourceLocation("battery_case"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase,1,1),
+                " B ",
+                "CAC",
+                " B ",
+                'A', batteryCase,
+                'B', Blocks.WOOL,
+                'C', Blocks.YELLOW_FLOWER);
     }
 }

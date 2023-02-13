@@ -40,7 +40,7 @@ public class BatteryCase extends Item implements IBauble {
 		this.setNoRepair();
 
 		ItemList.ITEM_LIST.add(this);
-		ItemList.VARIED_ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST_2.add(this);
 	}
 	public static final String ENERGY = "energy";
 	DecimalFormat df = new DecimalFormat("#0.0");

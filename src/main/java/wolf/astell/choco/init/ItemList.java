@@ -26,6 +26,7 @@ import java.util.List;
 public class ItemList{
     public static final List<Item> ITEM_LIST = new ArrayList<>();
     public static final List<Item> VARIED_ITEM_LIST = new ArrayList<>();
+    public static final List<Item> VARIED_ITEM_LIST_2 = new ArrayList<>();
     public static Item foodChocolate;
     public static Item foodGoldenChocolate;
     public static Item foodEnchantedChocolate;

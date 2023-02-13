@@ -22,5 +22,10 @@ public class ItemRenderHelper {
         for (Item item : ItemList.VARIED_ITEM_LIST) {
             ModelLoader.setCustomModelResourceLocation(item, 1, new ModelResourceLocation(item.getRegistryName() + "_1", "inventory"));
         }
+        for (Item item : ItemList.VARIED_ITEM_LIST_2) {
+            for(int i = 1; i < 3; i++){
+                ModelLoader.setCustomModelResourceLocation(item, i, new ModelResourceLocation(item.getRegistryName() + "_" + i, "inventory"));
+            }
+        }
     }
 }
