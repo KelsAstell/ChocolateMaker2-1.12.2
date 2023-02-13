@@ -24,17 +24,35 @@ public class CoFHCompact {
                 'D', ItemList.foodChocolate);
         GameRegistry.addShapedRecipe(new ResourceLocation("battery_case"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase),
                 "BBB",
-                "A C",
+                "ADC",
                 "BBB",
                 'A', Items.IRON_NUGGET,
                 'B', Items.IRON_INGOT,
-                'C', ItemList.ringOfAir);
-        GameRegistry.addShapedRecipe(new ResourceLocation("battery_case"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase,1,1),
-                " B ",
-                "CAC",
-                " B ",
-                'A', batteryCase,
-                'B', Blocks.WOOL,
-                'C', Blocks.YELLOW_FLOWER);
+                'C', ItemList.ringOfAir,
+                'D', Items.MELON_SEEDS);
+        GameRegistry.addShapedRecipe(new ResourceLocation("battery_case_1"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase,1,1),
+                "BBB",
+                "ADC",
+                "BBB",
+                'A', Items.IRON_NUGGET,
+                'B', Items.IRON_INGOT,
+                'C', ItemList.ringOfAir,
+                'D', Blocks.OBSIDIAN);
+        GameRegistry.addShapedRecipe(new ResourceLocation("battery_case_2"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase,1,2),
+                "BBB",
+                "ADC",
+                "BBB",
+                'A', Items.IRON_NUGGET,
+                'B', Items.IRON_INGOT,
+                'C', ItemList.ringOfAir,
+                'D', Items.FEATHER);
+        GameRegistry.addShapedRecipe(new ResourceLocation("battery_case_3"), new ResourceLocation(Main.MODID), new ItemStack(batteryCase,1,3),
+                "BBB",
+                "ADC",
+                "BBB",
+                'A', Items.IRON_NUGGET,
+                'B', Items.IRON_INGOT,
+                'C', ItemList.ringOfAir,
+                'D', Items.GOLDEN_APPLE);
     }
 }

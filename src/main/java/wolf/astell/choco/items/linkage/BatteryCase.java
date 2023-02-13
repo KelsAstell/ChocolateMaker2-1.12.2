@@ -24,7 +24,6 @@ import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 import wolf.astell.choco.init.register.compact.CoFHRegister;
 
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,14 +35,12 @@ public class BatteryCase extends Item implements IBauble {
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
 		this.setContainerItem(this);
-		this.setMaxDamage(10000);
 		this.setNoRepair();
 
 		ItemList.ITEM_LIST.add(this);
-		ItemList.VARIED_ITEM_LIST_2.add(this);
+		ItemList.VARIED_ITEM_LIST_3.add(this);
 	}
 	public static final String ENERGY = "energy";
-	DecimalFormat df = new DecimalFormat("#0.0");
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
@@ -70,7 +67,6 @@ public class BatteryCase extends Item implements IBauble {
 	public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
 		if(!entity.world.isRemote && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
-			itemstack.setItemDamage(NBTHelper.getInt(itemstack,ENERGY,0) / (ModConfig.TRINKET_CONF.MAX_OUTPUT / 10000));
 			int highest = -1;
 			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
 
@@ -122,6 +118,9 @@ public class BatteryCase extends Item implements IBauble {
 			if(NBTHelper.getInt(stack,ENERGY,0) >= ModConfig.TRINKET_CONF.MAX_OUTPUT){
 				tooltip.add(I18n.format("item.battery_case.desc.maxed"));
 			}
+		}
+		if (stack.getItemDamage() != 0){
+			stack.setTranslatableName("item.battery_case.name." + stack.getItemDamage());
 		}
 	}
 
