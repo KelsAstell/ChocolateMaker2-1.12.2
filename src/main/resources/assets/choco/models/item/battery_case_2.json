@@ -2,7 +2,7 @@
   {
     "parent": "item/generated",
     "textures": {
-      "layer0": "choco:item/battery_case_1"
+      "layer0": "choco:item/battery_case_2"
     }
   }
   
