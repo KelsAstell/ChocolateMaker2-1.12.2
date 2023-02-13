@@ -32,7 +32,6 @@ public class BaubleChocolate extends Item implements IBauble
 	public BaubleChocolate(String name)
 	{
 		this.setMaxStackSize(1);
-//		this.setMaxDamage(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
@@ -101,13 +100,13 @@ public class BaubleChocolate extends Item implements IBauble
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		stack.setTranslatableName("item.ahoge_bauble_chocolate.name");
 		tooltip.add(I18n.format("item.bauble_chocolate.desc.0"));
 		if(potionLevel >= 0){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.2"));
 		}
 		if (stack.getItemDamage() == 1){
 			tooltip.add("§bAhoge Installed Successfully. -40% Energy Cost.");
+			stack.setTranslatableName("item.ahoge_bauble_chocolate.name");
 		}
 		if(ModConfig.TRINKET_CONF.GODMODE){
 			tooltip.add(I18n.format("item.bauble_chocolate.desc.1"));

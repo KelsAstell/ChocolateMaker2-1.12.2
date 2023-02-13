@@ -89,6 +89,11 @@ public class ModConfig {
         @Config.Comment("Reach Chocolate MAX Reach Bonus Distance")
         @Config.RangeDouble(min = 0)
         public double REACH_AMOUNT = 24.0;
+
+        @Config.LangKey("config.battery_case.enable.name")
+        @Config.Comment("Battery Case MAX Output")
+        @Config.RangeInt(min = 0)
+        public int MAX_OUTPUT = 100000;
     }
     @Config.LangKey("choco.SpecialConf")
     @Config.Comment("DANGER Zone! Edit at your own risk.")

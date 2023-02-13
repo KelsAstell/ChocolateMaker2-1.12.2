@@ -1,8 +1,12 @@
 
-package wolf.astell.choco.items.baubles;
+package wolf.astell.choco.items.linkage;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
+import cofh.core.util.helpers.BaublesHelper;
+import cofh.core.util.helpers.EnergyHelper;
+import cofh.redstoneflux.api.IEnergyContainerItem;
+import com.google.common.collect.Iterables;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -11,38 +15,54 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
+import wolf.astell.choco.init.register.compact.CoFHRegister;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.List;
 
-public class ReachChocolate extends Item implements IBauble {
+public class BatteryCase extends Item implements IBauble {
 
-	public ReachChocolate(String name) {
+	public BatteryCase(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
 		this.setContainerItem(this);
+		this.setMaxDamage(10000);
+		this.setNoRepair();
 
 		ItemList.ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST.add(this);
 	}
-	public static final String BONUS = "bonus";
-	public static final String BASE = "base";
-	DecimalFormat df = new DecimalFormat("#0.00");
+	public static final String ENERGY = "energy";
+	DecimalFormat df = new DecimalFormat("#0.0");
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			if (NBTHelper.getDouble(stack, BASE, 0) == 0){
-				NBTHelper.setDouble(stack, BASE, player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getBaseValue());
+			Iterable<ItemStack> stackIterable;
+			stackIterable = Iterables.concat(Arrays.asList(((EntityPlayer) player).inventory.mainInventory, ((EntityPlayer) player).inventory.armorInventory, ((EntityPlayer) player).inventory.offHandInventory, BaublesHelper.getBaubles(player)));
+			for (ItemStack current : stackIterable) {
+				if (current.equals(stack)) {
+					continue;
+				}
+				if (EnergyHelper.isEnergyContainerItem(current)) {
+					((IEnergyContainerItem) current.getItem()).receiveEnergy(current, Math.min(NBTHelper.getInt(stack,ENERGY,0),ModConfig.TRINKET_CONF.MAX_OUTPUT), false);
+				} else if (EnergyHelper.isEnergyHandler(current)) {
+					IEnergyStorage handler = EnergyHelper.getEnergyHandler(current);
+					if (handler != null) {
+						handler.receiveEnergy(Math.min(NBTHelper.getInt(stack,ENERGY,0),ModConfig.TRINKET_CONF.MAX_OUTPUT),false);
+					}
+				}
 			}
-			player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).setBaseValue(NBTHelper.getDouble(stack, BASE, 0) + NBTHelper.getDouble(stack,BONUS,0));
 		}
 	}
 
@@ -50,6 +70,7 @@ public class ReachChocolate extends Item implements IBauble {
 	public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
 		if(!entity.world.isRemote && entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) entity;
+			itemstack.setItemDamage(NBTHelper.getInt(itemstack,ENERGY,0) / (ModConfig.TRINKET_CONF.MAX_OUTPUT / 10000));
 			int highest = -1;
 			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
 
@@ -58,7 +79,7 @@ public class ReachChocolate extends Item implements IBauble {
 				if(stack.isEmpty()) {
 					continue;
 				}
-				if(ItemList.goldPawChocolate == stack.getItem()) {
+				if(CoFHRegister.battery == stack.getItem()) {
 					counts[i] = stack.getCount();
 					if(highest == -1)
 						highest = i;
@@ -71,7 +92,7 @@ public class ReachChocolate extends Item implements IBauble {
 					int count = counts[i];
 					if(count == 0)
 						continue;
-					if (NBTHelper.getDouble(itemstack,BONUS,0) < ModConfig.TRINKET_CONF.REACH_AMOUNT){
+					if (NBTHelper.getInt(itemstack,ENERGY,0) < ModConfig.TRINKET_CONF.MAX_OUTPUT){
 						add(itemstack, count);
 						player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
 					}
@@ -79,12 +100,9 @@ public class ReachChocolate extends Item implements IBauble {
 			}
 		}
 	}
+
 	private static void add(ItemStack stack, int count) {
-		NBTHelper.setDouble(stack, BONUS, count * 0.01 + NBTHelper.getDouble(stack,BONUS,0));
-	}
-	@Override
-	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).setBaseValue(NBTHelper.getDouble(stack, BASE, 0));
+		NBTHelper.setInt(stack, ENERGY, count + NBTHelper.getInt(stack,ENERGY,0));
 	}
 
 	@Override
@@ -96,11 +114,14 @@ public class ReachChocolate extends Item implements IBauble {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if (ModConfig.TRINKET_CONF.REACH_AMOUNT == 0){
+		if (ModConfig.TRINKET_CONF.MAX_OUTPUT == 0){
 			tooltip.add(I18n.format("message.choco.effect_off"));
 		}else{
-			tooltip.add(I18n.format("item.reach_chocolate.desc.0"));
-			tooltip.add(I18n.format("item.reach_chocolate.desc.1") + " " +df.format(NBTHelper.getDouble(stack,BONUS,0)));
+			tooltip.add(I18n.format("item.battery_case.desc.0"));
+			tooltip.add(I18n.format("item.battery_case.desc.1") + " " + NBTHelper.getInt(stack,ENERGY,0)+ " RF/t");
+			if(NBTHelper.getInt(stack,ENERGY,0) >= ModConfig.TRINKET_CONF.MAX_OUTPUT){
+				tooltip.add(I18n.format("item.battery_case.desc.maxed"));
+			}
 		}
 	}
 

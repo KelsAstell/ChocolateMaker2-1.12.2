@@ -169,7 +169,7 @@ public class PickaxeChocolate extends ItemPickaxe {
 
     @Override
     public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
-        if(!entity.world.isRemote && entity instanceof EntityPlayer) {
+        if(!entity.world.isRemote && entity instanceof EntityPlayer && ((EntityPlayer) entity).getHeldItemMainhand().getItem()==ItemList.pickaxeChocolate) {
             EntityPlayer player = (EntityPlayer) entity;
             int highest = -1;
             int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];

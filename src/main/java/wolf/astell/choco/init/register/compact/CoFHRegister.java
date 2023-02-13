@@ -7,11 +7,14 @@ GitHub: https://github.com/KelsAstell
 package wolf.astell.choco.init.register.compact;
 
 import net.minecraft.item.Item;
-import wolf.astell.choco.items.linkage.PoweredChocolate;
+import wolf.astell.choco.items.linkage.BatteryCase;
+import wolf.astell.choco.items.linkage.Battery;
 
 public class CoFHRegister {
-    public static Item poweredChocolate;
+    public static Item battery;
+    public static Item batteryCase;
     public static void init() {
-        poweredChocolate = new PoweredChocolate("powered_chocolate");
+        battery = new Battery("battery");
+        batteryCase = new BatteryCase("battery_case");
     }
 }

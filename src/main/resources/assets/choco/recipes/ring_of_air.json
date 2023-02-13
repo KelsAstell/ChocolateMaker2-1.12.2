@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "choco:air_chocolate"
+    }
+  ],
+  "result": {
+    "item": "choco:ring_of_air",
+    "count": 16
+  }
+}

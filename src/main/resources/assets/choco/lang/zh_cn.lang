@@ -93,6 +93,15 @@ item.ahoge.name=§b呆毛
 item.ahoge.desc.0=§e看起来是普通的呆毛.
 item.ahoge.desc.1=§e或许可以插在...
 item.ahoge_bauble_chocolate.name=插上呆毛的翻糖巧克力
+item.ring_of_air.name=§e艾尔的环
+item.ring_of_air.desc=§e或许可以替代电池上的聚能环?
+item.battery.name=§e电池
+item.battery.desc.0=§e可以放在电池盒里
+item.battery.desc.1=§e一节更比六节强
+item.battery_case.name=§d电池盒
+item.battery_case.desc.0=§e永恒的能量源.
+item.battery_case.desc.1=§e当前能量输出:
+item.battery_case.desc.maxed=§c输§6出§e效§2率§a已§b达§3最§9大§d!
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -138,6 +147,7 @@ config.chocolate.customDim.name=设定维度ID. §c修改引起的一切问题�
 config.chocolate.customWorldTeleport.name=设置自定义传送坐标
 config.time_chocolate.enable.name=岁月史书巧克力最大伤害吸收量
 config.reach_chocolate.enable.name=金闪闪巧克力最大扩展范围
+config.battery_case.enable.name=电池盒的最大输出
 
 message.choco.teleport_confirm=§e[A.I.O]§f 已传送
 message.choco.effect_off=§c该物品的效果已被服务端配置文件禁止.

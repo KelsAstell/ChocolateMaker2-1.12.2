@@ -93,6 +93,15 @@ item.ahoge.name=§bAhoge
 item.ahoge.desc.0=§eLooks Like an Ahoge.
 item.ahoge.desc.1=§eCan be Plugged into...
 item.ahoge_bauble_chocolate.name=Ahoged Bauble Chocolate
+item.ring_of_air.name=§eRing of Air
+item.ring_of_air.desc=§eShould Be Useful For Crafting A Battery
+item.battery.name=§eBattery
+item.battery.desc.0=§eCan Be Put Into A Case
+item.battery.desc.1=§eOne Is Better Than Six
+item.battery_case.name=§dBattery Case
+item.battery_case.desc.0=§eEverlasting Energy Source.
+item.battery_case.desc.1=§eCurrent Energy Output:
+item.battery_case.desc.maxed=§cM§6A§eX§2E§aD §bO§3U§9T§d!
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -138,6 +147,7 @@ config.chocolate.customDim.name=Enable World Chocolate Custom Dim ID. §cCAN CAU
 config.chocolate.customWorldTeleport.name=Set a Custom Coord for World Chocolate
 config.time_chocolate.enable.name=Time Chocolate MAX Absorption Amount
 config.reach_chocolate.enable.name=Reach Chocolate MAX Reach Bonus Distance
+config.battery_case.enable.name=Battery Case MAX Output
 
 message.choco.teleport_confirm=§e[A.I.O]§f Teleported
 message.choco.effect_off=§cEffect Suspended by Server Settings.
