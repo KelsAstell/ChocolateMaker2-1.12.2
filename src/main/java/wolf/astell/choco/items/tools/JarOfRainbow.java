@@ -1,21 +1,18 @@
 package wolf.astell.choco.items.tools;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
@@ -23,21 +20,16 @@ import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
-import javax.annotation.Nonnull;
-import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Random;
 
 import static net.minecraft.block.BlockStainedGlass.COLOR;
 
-public class JarOfRainbow extends ItemPickaxe {
-    public static final ToolMaterial CHOCOLATE = EnumHelper.addToolMaterial("CHOCOLATE", ModConfig.TOOL_CONF.TOOL_LEVEL, ModConfig.TOOL_CONF.TOOL_DURABILITY, ModConfig.TOOL_CONF.TOOL_EFFICIENCY, (float) ModConfig.TOOL_CONF.TOOL_ATTACK_DAMAGE - 2, ModConfig.TOOL_CONF.TOOL_ENCHANT_ABILITY);
+public class JarOfRainbow extends ItemShears {
     public static final String TAG_GLASS_COUNT = "glassCount";
     public static final String TAG_WOOL_COUNT = "woolCount";
-    DecimalFormat df = new DecimalFormat("#0.00");
 
     public JarOfRainbow(String name) {
-        super(CHOCOLATE);//Maker
+        super();
         this.setUnlocalizedName(name);
         this.setCreativeTab(Main.ProjectChocolate);
         this.setContainerItem(this);
@@ -60,7 +52,7 @@ public class JarOfRainbow extends ItemPickaxe {
                 if (stack.isEmpty()) {
                     continue;
                 }
-                if (getItemFromBlock(Blocks.GLASS) == stack.getItem()) {
+                if (getItemFromBlock(Blocks.GLASS) == stack.getItem() || getItemFromBlock(Blocks.STAINED_GLASS) == stack.getItem()) {
                     glass_counts[i] = stack.getCount();
                     if (highest == -1)
                         highest = i;
@@ -99,25 +91,22 @@ public class JarOfRainbow extends ItemPickaxe {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-        if (!world.isRemote && world.getWorldTime() % 20 == 0) {
-            ItemStack stack = player.getHeldItemMainhand();
-            if (player.isSneaking() && NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) > 0) {
-                if (NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) >= 64) {
-                    NBTHelper.setInt(stack, TAG_WOOL_COUNT, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) - 64);
-                    player.addItemStackToInventory(new ItemStack(Blocks.WOOL, 64, stack.getItemDamage()));
-                } else {
-                    player.addItemStackToInventory(new ItemStack(Blocks.WOOL, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0), stack.getItemDamage()));
-                    NBTHelper.setInt(stack, TAG_WOOL_COUNT, 0);
-                }
-            } else if(NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) > 0) {
-                if (NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) >= 64) {
-                    NBTHelper.setInt(stack, TAG_GLASS_COUNT, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) - 64);
-                    player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, 64, stack.getItemDamage()));
-                } else {
-                    player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0), stack.getItemDamage()));
-                    NBTHelper.setInt(stack, TAG_GLASS_COUNT, 0);
-                }
-
+        ItemStack stack = player.getHeldItemOffhand();
+        if (player.isSneaking() && NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) > 0) {
+            if (NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) >= 64) {
+                NBTHelper.setInt(stack, TAG_WOOL_COUNT, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) - 64);
+                player.addItemStackToInventory(new ItemStack(Blocks.WOOL, 64, stack.getItemDamage()));
+            } else {
+                player.addItemStackToInventory(new ItemStack(Blocks.WOOL, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0), stack.getItemDamage()));
+                NBTHelper.setInt(stack, TAG_WOOL_COUNT, 0);
+            }
+        } else if(NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) > 0) {
+            if (NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) >= 64) {
+                NBTHelper.setInt(stack, TAG_GLASS_COUNT, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) - 64);
+                player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, 64, stack.getItemDamage()));
+            } else {
+                player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0), stack.getItemDamage()));
+                NBTHelper.setInt(stack, TAG_GLASS_COUNT, 0);
             }
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
@@ -159,7 +148,7 @@ public class JarOfRainbow extends ItemPickaxe {
         tooltip.add(I18n.format("item.jar_of_rainbow.desc.3") +
                 " " + NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) +
                 " " + I18n.format("item.jar_of_rainbow.desc.5") +
-                " | " + NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) +
+                " | §f" + NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) +
                 I18n.format("item.jar_of_rainbow.desc.4"));
         stack.setTranslatableName("item.jar_of_rainbow.name." + stack.getItemDamage());
     }
