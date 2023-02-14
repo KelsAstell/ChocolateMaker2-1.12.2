@@ -18,6 +18,7 @@ import wolf.astell.choco.items.foodfunctional.ExplosiveChocolate;
 import wolf.astell.choco.items.foodfunctional.LoveChocolate;
 import wolf.astell.choco.items.foodfunctional.WorldChocolate;
 import wolf.astell.choco.items.material.RingOfAir;
+import wolf.astell.choco.items.tools.JarOfRainbow;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class ItemList{
     public static Item loveChocolate;
     public static Item ahoge;
     public static Item ringOfAir;
+    public static Item jarOfRainbow;
 
 
     public static void init() {
@@ -84,5 +86,6 @@ public class ItemList{
         loveChocolate = new LoveChocolate("love_chocolate");
         ahoge = new Ahoge("ahoge");
         ringOfAir = new RingOfAir("ring_of_air");
+        jarOfRainbow = new JarOfRainbow("jar_of_rainbow");
     }
 }

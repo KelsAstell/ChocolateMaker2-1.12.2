@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CDE",
+    "B F",
+    "AGH"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    "B": {
+      "item": "minecraft:dye",
+      "data": 14
+    },
+    "C": {
+      "item": "minecraft:dye",
+      "data": 11
+    },
+    "D": {
+      "item": "minecraft:dye",
+      "data": 9
+    },
+    "E": {
+      "item": "minecraft:dye",
+      "data": 6
+    },
+    "F": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "G": {
+      "item": "minecraft:glass_bottle"
+    },
+    "H": {
+      "item": "minecraft:dye",
+      "data": 5
+    }
+  },
+  "result": {
+    "item": "choco:jar_of_rainbow",
+    "count": 1
+  }
+}

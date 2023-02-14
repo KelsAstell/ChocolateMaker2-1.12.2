@@ -179,7 +179,9 @@ public class ModConfig {
         @Config.LangKey("config.chocolate.tool_time_change.name")
         @Config.Comment("Can A.I.O Change World Time, default false")
         public boolean TSOT = false;//The Sand of Time
-
+        @Config.LangKey("config.chocolate.tool_color_change.name")
+        @Config.Comment("Can Jar Of Rainbow Change Color of Blocks, default true")
+        public boolean COLOR_CHANGE = true;
         @Config.LangKey("config.chocolate.tool_beheading.name")
         @Config.Comment("Can A.I.O Loot Mob Heads, default true")
         @Config.RequiresMcRestart

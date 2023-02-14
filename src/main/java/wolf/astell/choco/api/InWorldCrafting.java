@@ -83,7 +83,15 @@ public class InWorldCrafting {
         if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "pickaxe_chocolate")) && isBlock("minecraft:anvil", event.getWorld().getBlockState(event.getPos()).getBlock())) {
             if(event.getSide() == Side.SERVER) {
                 craftTimeChocolate(event);
-
+            }
+        }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "jar_of_rainbow")) && isBlock("minecraft:crafting_table", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER) {
+                if(stack.getItemDamage() < 15){
+                    stack.setItemDamage(stack.getItemDamage() + 1);
+                }else{
+                    stack.setItemDamage(0);
+                }
             }
         }
     }
