@@ -7,13 +7,16 @@
   ],
   "key": {
     "O": {
-      "item": "minecraft:slime_ball"
+      "item": "minecraft:slime_ball",
+      "count": 1
     },
     "A": {
-      "item": "choco:ahoge"
+      "item": "choco:ahoge",
+      "count": 1
     },
     "B": {
       "item": "choco:bauble_chocolate",
+      "count": 1,
       "data": 0
     }
   },
