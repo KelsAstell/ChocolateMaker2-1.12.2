@@ -128,10 +128,12 @@ item.jar_of_rainbow.desc.2=§e[左键点击] 工作台来更换颜色.
 item.jar_of_rainbow.desc.3=§f已储存:
 item.jar_of_rainbow.desc.4=§e羊毛
 item.jar_of_rainbow.desc.5=§e玻璃
-item.machine_gun.name=§dChoco Machine Gun
-item.machine_gun.desc.0=§eCan Store Arrows While On Offhand. Chocolate is Better!
-item.machine_gun.desc.1=§eAdvanced Biotech Make Arrows Use 100% Renewable Materials
-item.machine_gun.desc.2=§eStored Arrows:
+item.machine_gun.name=§d可可机枪
+item.machine_gun.desc.0=§e放置在副手时能够储存背包中的箭, 巧克力效果更佳.
+item.machine_gun.desc.1=§e全新生物燃料(巧克力)驱动, 百分百可再生.
+item.machine_gun.desc.2=§e已储存的弹药数量:
+item.machine_gun.desc.3=§e当前热量:
+item.machine_gun.overheat=机枪过热!
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

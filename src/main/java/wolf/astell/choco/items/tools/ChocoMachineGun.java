@@ -8,11 +8,14 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,6 +24,7 @@ import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ChocoMachineGun extends Item {
     public ChocoMachineGun(String name) {
@@ -34,73 +38,82 @@ public class ChocoMachineGun extends Item {
         ItemList.ITEM_LIST.add(this);
     }
     public static final String TAG_ARROW_COUNT = "arrowCount";
+    public static final String COOL_DOWN = "coolDown";
     @Override
     public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
-        if(!entity.world.isRemote && entity instanceof EntityPlayer && ((EntityPlayer) entity).getHeldItemMainhand().getItem()==ItemList.chocoMachineGun) {
-            EntityPlayer player = (EntityPlayer) entity;
-            int highest = -1;
-            int[] arrow_count = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
-            int[] choco_count = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
-
-            for(int i = 0; i < arrow_count.length; i++) {
-                ItemStack stack = player.inventory.getStackInSlot(i);
-                if(stack.isEmpty()) {
-                    continue;
-                }
-                if(Items.ARROW == stack.getItem()) {
-                    arrow_count[i] = stack.getCount();
-                    if(highest == -1)
-                        highest = i;
-                    else highest = arrow_count[i] > arrow_count[highest] && highest > 8 ? i : highest;
-                }
-                if(Items.ARROW == stack.getItem()) {
-                    choco_count[i] = stack.getCount();
-                    if(highest == -1)
-                        highest = i;
-                    else highest = choco_count[i] > choco_count[highest] && highest > 8 ? i : highest;
-                }
-
+        if (!entity.world.isRemote && entity instanceof EntityPlayer ){
+            if (NBTHelper.getInt(itemstack,COOL_DOWN,0) > 0 && world.getTotalWorldTime() % 10 == 0){
+                NBTHelper.setInt(itemstack,COOL_DOWN,NBTHelper.getInt(itemstack,COOL_DOWN,0) - 1);
             }
-            if(highest == -1) {
-            } else {
+            if(((EntityPlayer) entity).getHeldItemOffhand().getItem()==ItemList.chocoMachineGun) {
+                EntityPlayer player = (EntityPlayer) entity;
+                int highest = -1;
+                int[] arrow_count = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
+                int[] choco_count = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
                 for(int i = 0; i < arrow_count.length; i++) {
-                    int count = arrow_count[i];
-                    if(count == 0)
+                    ItemStack stack = player.inventory.getStackInSlot(i);
+                    if(stack.isEmpty()) {
                         continue;
-                    NBTHelper.setInt(itemstack, TAG_ARROW_COUNT, count + NBTHelper.getInt(itemstack, TAG_ARROW_COUNT,0));
-                    player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                    }
+                    if(Items.ARROW == stack.getItem()) {
+                        arrow_count[i] = stack.getCount();
+                        if(highest == -1)
+                            highest = i;
+                        else highest = arrow_count[i] > arrow_count[highest] && highest > 8 ? i : highest;
+                    }
+                    if(ItemList.foodChocolate == stack.getItem()) {
+                        choco_count[i] = stack.getCount();
+                        if(highest == -1)
+                            highest = i;
+                        else highest = choco_count[i] > choco_count[highest] && highest > 8 ? i : highest;
+                    }
+
                 }
-                for(int i = 0; i < choco_count.length; i++) {
-                    int count = choco_count[i];
-                    if(count == 0)
-                        continue;
-                    NBTHelper.setInt(itemstack, TAG_ARROW_COUNT, count * 4 + NBTHelper.getInt(itemstack, TAG_ARROW_COUNT,0));
-                    player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                if(highest == -1) {
+                } else {
+                    for(int i = 0; i < arrow_count.length; i++) {
+                        int count = arrow_count[i];
+                        if(count == 0)
+                            continue;
+                        NBTHelper.setInt(itemstack, TAG_ARROW_COUNT, count + NBTHelper.getInt(itemstack, TAG_ARROW_COUNT,0));
+                        player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                    }
+                    for(int i = 0; i < choco_count.length; i++) {
+                        int count = choco_count[i];
+                        if(count == 0)
+                            continue;
+                        NBTHelper.setInt(itemstack, TAG_ARROW_COUNT, count * 3 + NBTHelper.getInt(itemstack, TAG_ARROW_COUNT,0));
+                        player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                    }
                 }
             }
         }
+
     }
 
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack itemstack = player.getHeldItem(hand);
         int count = NBTHelper.getInt(itemstack, TAG_ARROW_COUNT,0);
-        if (!player.capabilities.isCreativeMode && count > 0) {
-            NBTHelper.setInt(itemstack, TAG_ARROW_COUNT,  count - 1);
+        if ((count > 0 || player.capabilities.isCreativeMode) && NBTHelper.getInt(itemstack,COOL_DOWN,0) <= 100) {
+            if (!player.capabilities.isCreativeMode){
+                NBTHelper.setInt(itemstack, TAG_ARROW_COUNT,  count - 1);
+                NBTHelper.setInt(itemstack,COOL_DOWN,3 + NBTHelper.getInt(itemstack,COOL_DOWN,0));
+            }
             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
             if (!world.isRemote) {
-                EntityArrow arrow = new EntityArrow(world, player) {
-                    @Override
-                    protected ItemStack getArrowStack() {
-                        return null;
-                    }
-                };
+                ItemArrow itemarrow = (ItemArrow) (Items.ARROW);
+                EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
+                arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                 arrow.setDamage(10);
                 arrow.setNoGravity(true);
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
                 world.spawnEntity(arrow);
             }
-//            player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));
+            player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));
             return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
+        }
+        if (NBTHelper.getInt(itemstack,COOL_DOWN,0) > 100){
+            player.sendMessage(new TextComponentTranslation("item.machine_gun.overheat"));
         }
         return new ActionResult<>(EnumActionResult.PASS, itemstack);
     }
@@ -111,6 +124,7 @@ public class ChocoMachineGun extends Item {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(I18n.format("item.machine_gun.desc.0"));
         tooltip.add(I18n.format("item.machine_gun.desc.1"));
+        tooltip.add(I18n.format("item.machine_gun.desc.3") + " " + NBTHelper.getInt(stack, COOL_DOWN,0) + "%");
         tooltip.add(I18n.format("item.machine_gun.desc.2") + " " + NBTHelper.getInt(stack, TAG_ARROW_COUNT,0));
     }
 }

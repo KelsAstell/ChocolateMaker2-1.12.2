@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AOA",
+    "OWO",
+    "RNR"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "N": {
+      "item": "minecraft:gunpowder"
+    },
+    "R": {
+      "item": "choco:ring_of_air"
+    },
+    "A": {
+      "item": "choco:ahoge",
+      "count": -1
+    },
+    "W": {
+      "type": "forge:ore_dict", "ore": "foodChocolate"
+    }
+  },
+  "result": {
+    "item": "choco:machine_gun",
+    "count": 1
+  }
+}

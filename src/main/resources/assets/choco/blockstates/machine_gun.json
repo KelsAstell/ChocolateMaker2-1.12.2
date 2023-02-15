@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "choco:machine_gun" }
+  }
+}

@@ -1,8 +1,10 @@
-
-  {
-    "parent": "item/generated",
-    "textures": {
-      "layer0": "choco:item/machine_gun"
-    }
-  }
-  
+{
+	"parent": "choco:block/machine_gun",
+	"display": {
+		"thirdperson": {
+			"rotation": [ 10, 45, 170 ],
+			"translation": [ 0, 1.5, -2.75 ],
+			"scale": [ 1, 1, 1 ]
+		}
+	}
+}
