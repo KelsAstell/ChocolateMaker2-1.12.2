@@ -7,10 +7,8 @@ GitHub: https://github.com/KelsAstell
 package wolf.astell.choco.api;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;

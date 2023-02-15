@@ -128,6 +128,10 @@ item.jar_of_rainbow.desc.2=§e[Left Click] A Workbench To Change Color.
 item.jar_of_rainbow.desc.3=§fStored Blocks:
 item.jar_of_rainbow.desc.4=§eWool
 item.jar_of_rainbow.desc.5=§eGlass
+item.machine_gun.name=§dChoco Machine Gun
+item.machine_gun.desc.0=§eCan Store Arrows While On Offhand. Chocolate is Better!
+item.machine_gun.desc.1=§eAdvanced Biotech Make Arrows Use 100% Renewable Materials
+item.machine_gun.desc.2=§eStored Arrows:
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level

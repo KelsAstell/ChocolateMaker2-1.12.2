@@ -9,15 +9,16 @@ import wolf.astell.choco.api.IsFood;
 import wolf.astell.choco.api.IsPotion;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.register.EffectRegister;
-import wolf.astell.choco.items.material.Ahoge;
-import wolf.astell.choco.items.material.GoldPawChocolate;
-import wolf.astell.choco.items.material.IngotChocolate;
 import wolf.astell.choco.items.baubles.*;
 import wolf.astell.choco.items.foodfunctional.ExpChocolate;
 import wolf.astell.choco.items.foodfunctional.ExplosiveChocolate;
 import wolf.astell.choco.items.foodfunctional.LoveChocolate;
 import wolf.astell.choco.items.foodfunctional.WorldChocolate;
+import wolf.astell.choco.items.material.Ahoge;
+import wolf.astell.choco.items.material.GoldPawChocolate;
+import wolf.astell.choco.items.material.IngotChocolate;
 import wolf.astell.choco.items.material.RingOfAir;
+import wolf.astell.choco.items.tools.ChocoMachineGun;
 import wolf.astell.choco.items.tools.JarOfRainbow;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
@@ -54,6 +55,7 @@ public class ItemList{
     public static Item ahoge;
     public static Item ringOfAir;
     public static Item jarOfRainbow;
+    public static Item chocoMachineGun;
 
 
     public static void init() {
@@ -87,5 +89,6 @@ public class ItemList{
         ahoge = new Ahoge("ahoge");
         ringOfAir = new RingOfAir("ring_of_air");
         jarOfRainbow = new JarOfRainbow("jar_of_rainbow");
+        chocoMachineGun = new ChocoMachineGun("machine_gun");
     }
 }

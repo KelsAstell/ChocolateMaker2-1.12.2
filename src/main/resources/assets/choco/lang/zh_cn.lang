@@ -128,6 +128,10 @@ item.jar_of_rainbow.desc.2=§e[左键点击] 工作台来更换颜色.
 item.jar_of_rainbow.desc.3=§f已储存:
 item.jar_of_rainbow.desc.4=§e羊毛
 item.jar_of_rainbow.desc.5=§e玻璃
+item.machine_gun.name=§dChoco Machine Gun
+item.machine_gun.desc.0=§eCan Store Arrows While On Offhand. Chocolate is Better!
+item.machine_gun.desc.1=§eAdvanced Biotech Make Arrows Use 100% Renewable Materials
+item.machine_gun.desc.2=§eStored Arrows:
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
