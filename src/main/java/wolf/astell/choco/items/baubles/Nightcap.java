@@ -106,7 +106,6 @@ public class Nightcap extends Item implements IBauble
 					}
 					EntityItem item = new EntityItem(world, e.getEntityLiving().posX, e.getEntityLiving().posY + 1.2D, e.getEntityLiving().posZ, bonus);
 					item.setDefaultPickupDelay();
-					item.setNoGravity(true);
 					item.setGlowing(true);
 					item.setAlwaysRenderNameTag(true);
 					e.getEntityLiving().getEntityWorld().spawnEntity(item);
