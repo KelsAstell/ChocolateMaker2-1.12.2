@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    " O ",
+    "ABA"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:totem_of_undying",
+      "count": 1
+    },
+    "A": {
+      "item": "minecraft:diamond_block",
+      "count": 1
+    },
+    "B": {
+      "item": "choco:ahoge",
+      "count": 1
+    }
+  },
+  "result": {
+    "item": "choco:undying_chocolate",
+    "data": 1,
+    "count": 1
+  }
+}

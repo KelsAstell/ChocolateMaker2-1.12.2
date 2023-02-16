@@ -17,6 +17,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -90,6 +91,17 @@ public class InWorldCrafting {
                 }else{
                     stack.setItemDamage(0);
                 }
+                event.getEntityPlayer().sendMessage(new TextComponentTranslation("item.jar_of_rainbow.name." + stack.getItemDamage()));
+            }
+        }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "undying_chocolate")) && isBlock("minecraft:beacon", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER && stack.getItemDamage() < 3) {
+                craftUndyingChocolate(event);
+                stack.shrink(1);
+                BlockPos pos = event.getPos();
+                event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BEACON.getDefaultState()));
+                event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
     }
@@ -128,6 +140,15 @@ public class InWorldCrafting {
     private static void craftExplosiveChocolate(PlayerInteractEvent.LeftClickBlock event) {
         Vec3d vector = event.getHitVec();
         EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.explosiveChocolate, 1));
+        item.setDefaultPickupDelay();
+        item.setGlowing(true);
+        item.setNoGravity(true);
+        event.getWorld().spawnEntity(item);
+    }
+
+    private static void craftUndyingChocolate(PlayerInteractEvent.LeftClickBlock event) {
+        Vec3d vector = event.getHitVec();
+        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.undyingChocolate, 1,event.getItemStack().getItemDamage() + 1));
         item.setDefaultPickupDelay();
         item.setGlowing(true);
         item.setNoGravity(true);

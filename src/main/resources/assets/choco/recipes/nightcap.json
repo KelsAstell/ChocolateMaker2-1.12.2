@@ -1,0 +1,25 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    " P ",
+    "PCP",
+    "WWW"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:wool",
+      "data": 9
+    },
+    "W": {
+      "item": "minecraft:wool",
+      "data": 15
+    },
+    "C": {
+      "type": "forge:ore_dict", "ore": "foodChocolate"
+    }
+  },
+  "result": {
+    "item": "choco:nightcap",
+    "count": 1
+  }
+}

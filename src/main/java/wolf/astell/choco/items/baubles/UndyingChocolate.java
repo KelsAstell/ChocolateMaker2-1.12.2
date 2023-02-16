@@ -7,28 +7,30 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.init.ModConfig;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
-public class ReachChocolate extends Item implements IBauble {
+public class UndyingChocolate extends Item implements IBauble {
 
-	public ReachChocolate(String name) {
+	public UndyingChocolate(String name) {
 		this.setMaxStackSize(1);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
@@ -36,7 +38,11 @@ public class ReachChocolate extends Item implements IBauble {
 		this.setContainerItem(this);
 
 		ItemList.ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST.add(this);
 	}
+	public static final String TIMES = "times";
+	public static final String COOLDOWN = "coolDown";
+
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
 			IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
@@ -57,76 +63,65 @@ public class ReachChocolate extends Item implements IBauble {
 
 		return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
-	public static final String BONUS = "bonus";
-	public static final String BASE = "base";
-	DecimalFormat df = new DecimalFormat("#0.00");
 	@Override
 	public void onWornTick(ItemStack stack, EntityLivingBase player) {
 		IBauble.super.onWornTick(stack, player);
 		if (player instanceof EntityPlayer && !player.world.isRemote) {
-			if (NBTHelper.getDouble(stack, BASE, 0) == 0){
-				NBTHelper.setDouble(stack, BASE, player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getBaseValue());
+			if (NBTHelper.getInt(stack,TIMES,0) < stack.getItemDamage()){
+				if (NBTHelper.getInt(stack,COOLDOWN,0) == 0){
+					NBTHelper.setInt(stack,TIMES, 1 + NBTHelper.getInt(stack,TIMES,0));
+					NBTHelper.setInt(stack,COOLDOWN,100);
+				}else{
+					NBTHelper.setInt(stack,COOLDOWN,NBTHelper.getInt(stack,COOLDOWN,0) - 1);
+				}
 			}
-			player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).setBaseValue(NBTHelper.getDouble(stack, BASE, 0) + NBTHelper.getDouble(stack,BONUS,0));
 		}
 	}
 
-	@Override
-	public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
-		if(!entity.world.isRemote && entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			int highest = -1;
-			int[] counts = new int[player.inventory.getSizeInventory() - player.inventory.armorInventory.size()];
-
-			for(int i = 0; i < counts.length; i++) {
-				ItemStack stack = player.inventory.getStackInSlot(i);
-				if(stack.isEmpty()) {
-					continue;
-				}
-				if(ItemList.goldPawChocolate == stack.getItem()) {
-					counts[i] = stack.getCount();
-					if(highest == -1)
-						highest = i;
-					else highest = counts[i] > counts[highest] && highest > 8 ? i : highest;
-				}
-			}
-			if(highest == -1) {
-			} else {
-				for(int i = 0; i < counts.length; i++) {
-					int count = counts[i];
-					if(count == 0)
-						continue;
-					if (NBTHelper.getDouble(itemstack,BONUS,0) < ModConfig.TRINKET_CONF.REACH_AMOUNT){
-						add(itemstack, count);
-						player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+	@SubscribeEvent(priority = EventPriority.LOWEST)
+	public static void EscapeDeath(LivingDeathEvent e)
+	{
+		if(e.getEntityLiving() instanceof EntityPlayer)
+		{
+			IBaublesItemHandler h = BaublesApi.getBaublesHandler((EntityPlayer) e.getEntityLiving());
+			for(int i : BaubleType.CHARM.getValidSlots())
+			{
+				ItemStack stack = h.getStackInSlot(i);
+				if(!e.isCanceled() && !stack.isEmpty() && stack.getItem() instanceof UndyingChocolate)
+				{
+					int times = NBTHelper.getInt(stack, TIMES, 0);
+					if (times > 0){
+						NBTHelper.setInt(stack,TIMES, -1 + NBTHelper.getInt(stack,TIMES,0));
+						e.setCanceled(true);
+						EntityLivingBase player = e.getEntityLiving();
+						player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 3, true, false));
+						player.setAbsorptionAmount(6);
+						player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 600, 0, true, true));
+						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1, true, false));
 					}
 				}
 			}
 		}
 	}
-	private static void add(ItemStack stack, int count) {
-		NBTHelper.setDouble(stack, BONUS, count * 0.01 + NBTHelper.getDouble(stack,BONUS,0));
-	}
+
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).setBaseValue(NBTHelper.getDouble(stack, BASE, 0));
 	}
 
 	@Override
 	public BaubleType getBaubleType(ItemStack arg0) {
-		return BaubleType.TRINKET;
+		return BaubleType.CHARM;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if (ModConfig.TRINKET_CONF.REACH_AMOUNT == 0){
-			tooltip.add(I18n.format("message.choco.effect_off"));
-		}else{
-			tooltip.add(I18n.format("item.reach_chocolate.desc.0"));
-			tooltip.add(I18n.format("item.reach_chocolate.desc.1") + " " +df.format(NBTHelper.getDouble(stack,BONUS,0)));
-		}
+		tooltip.add(I18n.format("item.undying_chocolate.desc.0"));
+		tooltip.add(I18n.format("item.undying_chocolate.desc.1"));
+		tooltip.add(I18n.format("item.undying_chocolate.desc.2")
+				+ " " + NBTHelper.getInt(stack, TIMES, 0) +
+				" / " + (stack.getItemDamage()));
 	}
 
 }

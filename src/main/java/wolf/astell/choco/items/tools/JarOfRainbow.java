@@ -89,31 +89,6 @@ public class JarOfRainbow extends ItemShears {
         NBTHelper.setInt(stack, tag, count + NBTHelper.getInt(stack, tag, 0));
     }
 
-//    @Override
-//    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
-//        ItemStack stack = player.getHeldItemOffhand();
-//        if (player.isSneaking() && NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) > 0) {
-//            if (NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) >= 64) {
-//                NBTHelper.setInt(stack, TAG_WOOL_COUNT, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0) - 64);
-//                player.addItemStackToInventory(new ItemStack(Blocks.WOOL, 64, stack.getItemDamage()));
-//            } else {
-//                player.addItemStackToInventory(new ItemStack(Blocks.WOOL, NBTHelper.getInt(stack, TAG_WOOL_COUNT, 0), stack.getItemDamage()));
-//                NBTHelper.setInt(stack, TAG_WOOL_COUNT, 0);
-//            }
-//        } else if(NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) > 0) {
-//            if (NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) >= 64) {
-//                NBTHelper.setInt(stack, TAG_GLASS_COUNT, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0) - 64);
-//                player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, 64, stack.getItemDamage()));
-//            } else {
-//                player.addItemStackToInventory(new ItemStack(Blocks.STAINED_GLASS, NBTHelper.getInt(stack, TAG_GLASS_COUNT, 0), stack.getItemDamage()));
-//                NBTHelper.setInt(stack, TAG_GLASS_COUNT, 0);
-//            }
-//        }
-//        return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
-//    }
-
-
-
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItemMainhand();

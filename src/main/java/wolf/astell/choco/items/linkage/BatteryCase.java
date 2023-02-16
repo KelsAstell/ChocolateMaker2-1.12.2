@@ -9,11 +9,13 @@ import cofh.redstoneflux.api.IEnergyContainerItem;
 import com.google.common.collect.Iterables;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
@@ -99,6 +101,14 @@ public class BatteryCase extends Item implements IBauble {
 
 	private static void add(ItemStack stack, int count) {
 		NBTHelper.setInt(stack, ENERGY, count + NBTHelper.getInt(stack,ENERGY,0));
+	}
+
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (this.isInCreativeTab(tab)) {
+			for (int i=0;i<4;i++){
+				list.add(new ItemStack(this, 1, i));
+			}
+		}
 	}
 
 	@Override

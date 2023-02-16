@@ -134,6 +134,12 @@ item.machine_gun.desc.1=§e全新生物燃料(巧克力)驱动, 百分百可再�
 item.machine_gun.desc.2=§e已储存的弹药数量:
 item.machine_gun.desc.3=§e当前热量:
 item.machine_gun.overheat=机枪过热!
+item.undying_chocolate.name=§dUndying Chocolate
+item.undying_chocolate.desc.0=§eCan Prevent You From Death Like A Totem.
+item.undying_chocolate.desc.1=§eRecharge Over Time.
+item.undying_chocolate.desc.2=§eLeft Chance:
+item.nightcap.name=§e睡帽
+item.nightcap.desc.0=§e早上醒来时会获得一些小礼物.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级

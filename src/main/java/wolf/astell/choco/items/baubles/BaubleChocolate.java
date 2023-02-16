@@ -6,12 +6,17 @@ import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -47,6 +52,27 @@ public class BaubleChocolate extends Item implements IBauble
 	public BaubleType getBaubleType(ItemStack itemstack)
 	{
 		return BaubleType.AMULET;
+	}
+
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote) {
+			IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
+
+			for(int i = 0; i < baubles.getSlots(); ++i) {
+				baubles.getStackInSlot(i);
+				if (baubles.getStackInSlot(i).isEmpty() && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
+					baubles.setStackInSlot(i, player.getHeldItem(hand).copy());
+					if (!player.capabilities.isCreativeMode) {
+						player.inventory.setInventorySlotContents(player.inventory.currentItem, ItemStack.EMPTY);
+					}
+
+					this.onEquipped(player.getHeldItem(hand), player);
+					break;
+				}
+			}
+		}
+
+		return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
@@ -88,6 +114,14 @@ public class BaubleChocolate extends Item implements IBauble
 				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, Integer.MAX_VALUE, potionLevel, true, false));
 			}
 			NBTHelper.setInt(stack, TAG_CHOCO_POWER, Math.min(NBTHelper.getInt(stack, TAG_CHOCO_POWER, 0) + 1, 10000));
+		}
+	}
+
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (this.isInCreativeTab(tab)) {
+			for (int i=0;i<2;i++){
+				list.add(new ItemStack(this, 1, i));
+			}
 		}
 	}
 	@Override
