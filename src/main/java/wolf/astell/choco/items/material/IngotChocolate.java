@@ -5,7 +5,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
@@ -14,7 +13,6 @@ import wolf.astell.choco.init.ModConfig;
 
 import java.util.List;
 
-@EventBusSubscriber
 public class IngotChocolate extends Item
 {
 	public IngotChocolate(String name)

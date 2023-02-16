@@ -105,8 +105,8 @@ public class ChocoMachineGun extends Item {
                 EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                 arrow.setDamage(10);
-                arrow.setNoGravity(true);
-                arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 2.0F, 1.0F);
+//                arrow.setNoGravity(true);
+                arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
             }
             player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));

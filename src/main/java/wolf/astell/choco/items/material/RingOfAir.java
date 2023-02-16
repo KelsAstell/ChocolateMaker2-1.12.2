@@ -25,7 +25,6 @@ public class RingOfAir extends Item
 		this.setContainerItem(this);
 
 		ItemList.ITEM_LIST.add(this);
-//		ItemList.VARIED_ITEM_LIST.add(this);
 	}
 
 	@SideOnly(Side.CLIENT)
