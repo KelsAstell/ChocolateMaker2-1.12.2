@@ -94,16 +94,6 @@ public class InWorldCrafting {
                 event.getEntityPlayer().sendMessage(new TextComponentTranslation("item.jar_of_rainbow.name." + stack.getItemDamage()));
             }
         }
-        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "undying_chocolate")) && isBlock("minecraft:beacon", event.getWorld().getBlockState(event.getPos()).getBlock())) {
-            if(event.getSide() == Side.SERVER && stack.getItemDamage() < 3) {
-                craftUndyingChocolate(event);
-                stack.shrink(1);
-                BlockPos pos = event.getPos();
-                event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BEACON.getDefaultState()));
-                event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
-            }
-        }
     }
 
     private static boolean shouldBreak(double chance) {
@@ -146,14 +136,14 @@ public class InWorldCrafting {
         event.getWorld().spawnEntity(item);
     }
 
-    private static void craftUndyingChocolate(PlayerInteractEvent.LeftClickBlock event) {
-        Vec3d vector = event.getHitVec();
-        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.undyingChocolate, 1,event.getItemStack().getItemDamage() + 1));
-        item.setDefaultPickupDelay();
-        item.setGlowing(true);
-        item.setNoGravity(true);
-        event.getWorld().spawnEntity(item);
-    }
+//    private static void craftUndyingChocolate(PlayerInteractEvent.LeftClickBlock event) {
+//        Vec3d vector = event.getHitVec();
+//        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.undyingChocolate, 1,event.getItemStack().getItemDamage() + 1));
+//        item.setDefaultPickupDelay();
+//        item.setGlowing(true);
+//        item.setNoGravity(true);
+//        event.getWorld().spawnEntity(item);
+//    }
     private static void craftTimeChocolate(PlayerInteractEvent.LeftClickBlock event) {
         BlockPos pos = event.getPos();
         List<EntityItem> Items = event.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.add(-1, -1, -1), pos.add(1, 1, 1)));

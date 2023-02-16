@@ -90,6 +90,7 @@ public class Nightcap extends Item implements IBauble
 				ItemStack stack = h.getStackInSlot(i);
 				if(!stack.isEmpty() && stack.getItem() instanceof Nightcap)
 				{
+
 					World world = e.getEntityLiving().getEntityWorld();
 					Random rand = world.rand;
 					ItemStack bonus;
@@ -103,12 +104,13 @@ public class Nightcap extends Item implements IBauble
 					if (bonus.isEmpty()){
 						bonus = new ItemStack(ItemList.foodChocolateIcecream);
 					}
-					EntityItem item = new EntityItem(world, e.getEntityLiving().posX, e.getEntityLiving().posY + 3.5D, e.getEntityLiving().posZ, bonus);
+					EntityItem item = new EntityItem(world, e.getEntityLiving().posX, e.getEntityLiving().posY + 1.2D, e.getEntityLiving().posZ, bonus);
 					item.setDefaultPickupDelay();
 					item.setNoGravity(true);
 					item.setGlowing(true);
 					item.setAlwaysRenderNameTag(true);
 					e.getEntityLiving().getEntityWorld().spawnEntity(item);
+					stack.shrink(1);
 				}
 			}
 		}

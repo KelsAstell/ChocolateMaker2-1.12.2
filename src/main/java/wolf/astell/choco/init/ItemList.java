@@ -56,7 +56,6 @@ public class ItemList{
     public static Item ringOfAir;
     public static Item jarOfRainbow;
     public static Item chocoMachineGun;
-    public static Item undyingChocolate;
     public static Item nightCap;
 
 
@@ -92,7 +91,6 @@ public class ItemList{
         ringOfAir = new RingOfAir("ring_of_air");
         jarOfRainbow = new JarOfRainbow("jar_of_rainbow");
         chocoMachineGun = new ChocoMachineGun("machine_gun");
-        undyingChocolate = new UndyingChocolate("undying_chocolate");
         nightCap = new Nightcap("nightcap");
     }
 }
