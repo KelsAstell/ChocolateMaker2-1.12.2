@@ -7,22 +7,16 @@ import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -32,7 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
-import wolf.astell.choco.init.ModConfig;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,14 +43,15 @@ public class Nightcap extends Item implements IBauble
 		this.setContainerItem(this);
 
 		ItemList.ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST.add(this);
 	}
 
-	private static ResourceLocation lootTable = new ResourceLocation("minecraft", "chests/end_city_treasure");
+	public static final String IS_NEW = "isNew";
+	private static final ResourceLocation lootTable = new ResourceLocation("minecraft", "chests/end_city_treasure");
 
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
 			IBaublesItemHandler baubles = BaublesApi.getBaublesHandler(player);
-
 			for(int i = 0; i < baubles.getSlots(); ++i) {
 				baubles.getStackInSlot(i);
 				if (baubles.getStackInSlot(i).isEmpty() && baubles.isItemValidForSlot(i, player.getHeldItem(hand), player)) {
@@ -70,10 +64,15 @@ public class Nightcap extends Item implements IBauble
 				}
 			}
 		}
-
 		return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
-
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> list) {
+		if (this.isInCreativeTab(tab)) {
+			for (int i=0;i<2;i++){
+				list.add(new ItemStack(this, 1, i));
+			}
+		}
+	}
 	@Override
 	public BaubleType getBaubleType(ItemStack itemstack)
 	{
@@ -116,9 +115,28 @@ public class Nightcap extends Item implements IBauble
 	}
 
 	@Override
-	public void onWornTick(ItemStack stack, EntityLivingBase player) {
-		IBauble.super.onWornTick(stack, player);
+	public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
+		if (!entity.world.isRemote && entity instanceof EntityPlayer) {
+			EntityPlayer player = (EntityPlayer) entity;
+			if (NBTHelper.getBoolean(itemstack, IS_NEW,true)){
+				NBTHelper.setBoolean(itemstack, IS_NEW,false);
+				if (player.getEntityWorld().rand.nextInt(10) >= 5){
+					itemstack.setItemDamage(1);
+				}
+			}
+		}
 	}
+
+//	@Override
+//	public void onWornTick(ItemStack stack, EntityLivingBase player) {
+//		IBauble.super.onWornTick(stack, player);
+//		if (NBTHelper.getBoolean(stack, IS_NEW,true)){
+//			NBTHelper.setBoolean(stack, IS_NEW,false);
+//			if (player.getEntityWorld().rand.nextInt(10) >= 5){
+//				stack.setItemDamage(1);
+//			}
+//		}
+//	}
 
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {

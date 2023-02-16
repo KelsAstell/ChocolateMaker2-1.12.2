@@ -8,11 +8,11 @@
   "key": {
     "P": {
       "item": "minecraft:wool",
-      "data": 9
+      "data": 5
     },
     "W": {
       "item": "minecraft:wool",
-      "data": 15
+      "data": 0
     },
     "C": {
       "type": "forge:ore_dict", "ore": "foodChocolate"

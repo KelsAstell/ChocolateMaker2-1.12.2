@@ -38,7 +38,7 @@ public class UndyingChocolate extends Item implements IBauble {
 		this.setContainerItem(this);
 
 		ItemList.ITEM_LIST.add(this);
-		ItemList.VARIED_ITEM_LIST.add(this);
+		ItemList.VARIED_ITEM_LIST_3.add(this);
 	}
 	public static final String TIMES = "times";
 	public static final String COOLDOWN = "coolDown";
