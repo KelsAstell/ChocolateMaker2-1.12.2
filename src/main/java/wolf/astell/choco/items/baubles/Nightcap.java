@@ -120,7 +120,7 @@ public class Nightcap extends Item implements IBauble
 			EntityPlayer player = (EntityPlayer) entity;
 			if (NBTHelper.getBoolean(itemstack, IS_NEW,true)){
 				NBTHelper.setBoolean(itemstack, IS_NEW,false);
-				if (player.getEntityWorld().rand.nextInt(10) >= 5){
+				if (player.getEntityWorld().rand.nextInt(10) == 9){
 					itemstack.setItemDamage(1);
 				}
 			}

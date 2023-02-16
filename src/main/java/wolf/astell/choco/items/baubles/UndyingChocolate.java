@@ -17,7 +17,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -79,7 +79,7 @@ public class UndyingChocolate extends Item implements IBauble {
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public static void EscapeDeath(LivingDeathEvent e)
+	public static void EscapeDeath(LivingAttackEvent e)
 	{
 		if(e.getEntityLiving() instanceof EntityPlayer)
 		{
@@ -87,17 +87,18 @@ public class UndyingChocolate extends Item implements IBauble {
 			for(int i : BaubleType.CHARM.getValidSlots())
 			{
 				ItemStack stack = h.getStackInSlot(i);
-				if(!e.isCanceled() && !stack.isEmpty() && stack.getItem() instanceof UndyingChocolate)
+				if(e.getAmount() >= e.getEntityLiving().getHealth() && !stack.isEmpty() && stack.getItem() instanceof UndyingChocolate)
 				{
 					int times = NBTHelper.getInt(stack, TIMES, 0);
 					if (times > 0){
 						NBTHelper.setInt(stack,TIMES, -1 + NBTHelper.getInt(stack,TIMES,0));
-						e.setCanceled(true);
+
 						EntityLivingBase player = e.getEntityLiving();
 						player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 3, true, false));
 						player.setAbsorptionAmount(6);
 						player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 600, 0, true, true));
 						player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1, true, false));
+						e.setCanceled(true);
 					}
 				}
 			}
