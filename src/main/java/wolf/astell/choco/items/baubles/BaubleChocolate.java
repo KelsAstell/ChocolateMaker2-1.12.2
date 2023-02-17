@@ -4,19 +4,20 @@ import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.cap.IBaublesItemHandler;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -26,10 +27,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
+import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 
+import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Objects;
 
 @EventBusSubscriber
 public class BaubleChocolate extends Item implements IBauble
@@ -41,6 +45,7 @@ public class BaubleChocolate extends Item implements IBauble
 		this.setRegistryName(name);
 		this.setCreativeTab(Main.ProjectChocolate);
 		this.setContainerItem(this);
+		this.setNoRepair();
 
 		ItemList.ITEM_LIST.add(this);
 		ItemList.VARIED_ITEM_LIST.add(this);

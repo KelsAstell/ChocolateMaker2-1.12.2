@@ -52,7 +52,7 @@ public class Nightcap extends Item implements IBauble
 		ItemList.ITEM_LIST.add(this);
 	}
 
-	private static ResourceLocation lootTable = new ResourceLocation("minecraft", "chests/end_city_treasure");
+	private static final ResourceLocation lootTable = new ResourceLocation("minecraft", "chests/end_city_treasure");
 
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		if (!world.isRemote) {
