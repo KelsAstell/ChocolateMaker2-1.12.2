@@ -37,12 +37,11 @@ public class ChocoFlux extends Enchantment {
         return stack.isItemStackDamageable() || super.canApply(stack);
     }
 
-
     @SubscribeEvent
     public void onItemUse(LivingEntityUseItemEvent event) {
         if (event.getEntity() instanceof EntityPlayer) {
             ItemStack stack = (((EntityPlayer) event.getEntity()).getHeldItemMainhand());
-            if (EnchantmentHelper.getEnchantments(stack).containsKey(this)){
+            if (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:flux"),stack) != 0){
                 if(NBTHelper.getBoolean(stack,IS_NEW,true)){
                     NBTHelper.setBoolean(stack,IS_NEW,false);
                     NBTHelper.setInt(stack,ORIGINAL_DAMAGE,stack.getItemDamage());

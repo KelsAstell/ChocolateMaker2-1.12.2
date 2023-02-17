@@ -119,8 +119,8 @@ public class ChocoMachineGun extends Item {
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
                 if (NBTHelper.getInt(itemstack,TAG_ARROW_COUNT,0) % 8 == 0){
-                    ItemArrow potato = (ItemArrow) (Items.BAKED_POTATO);
-                    EntityArrow arrotato = potato.createArrow(world,itemstack,player);
+                    ItemArrow spectralArrow = (ItemArrow) (Items.SPECTRAL_ARROW);
+                    EntityArrow arrotato = spectralArrow.createArrow(world,itemstack,player);
                     arrotato.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                     arrotato.setIsCritical(true);
                     arrotato.setKnockbackStrength(2);
@@ -187,6 +187,7 @@ public class ChocoMachineGun extends Item {
         tooltip.add(I18n.format("item.machine_gun.desc.0"));
         tooltip.add(I18n.format("item.machine_gun.desc.1"));
         tooltip.add(I18n.format("item.machine_gun.desc.4"));
+        tooltip.add(I18n.format("item.machine_gun.desc.5"));
         tooltip.add(I18n.format("item.machine_gun.desc.3") + " " + NBTHelper.getInt(stack, COOL_DOWN,0) + "%");
         tooltip.add(I18n.format("item.machine_gun.desc.2") + " " + NBTHelper.getInt(stack, TAG_ARROW_COUNT,0));
     }
