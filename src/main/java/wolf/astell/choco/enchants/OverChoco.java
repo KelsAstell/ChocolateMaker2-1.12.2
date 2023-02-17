@@ -29,6 +29,11 @@ public class OverChoco extends Enchantment {
         return 5;
     }
 
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return stack.getItem() instanceof PickaxeChocolate;
+    }
+
 
     @SubscribeEvent
     public void onEntityHurt(LivingDamageEvent event) {

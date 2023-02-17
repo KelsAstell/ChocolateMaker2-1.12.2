@@ -18,7 +18,7 @@ import wolf.astell.choco.Main;
 
 public class Eternity extends Enchantment {
     public Eternity() {
-        super(Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
         this.setRegistryName("eternity");
         this.setName("eternity");
     }
@@ -36,6 +36,11 @@ public class Eternity extends Enchantment {
         return true;
     }
 
+    @Override
+    public boolean isTreasureEnchantment() {
+        return true;
+    }
+
     @SubscribeEvent
     public void setEternal(ItemExpireEvent e) {
         ItemStack stack = e.getEntityItem().getItem();
@@ -46,7 +51,7 @@ public class Eternity extends Enchantment {
     }
 
     @SubscribeEvent
-    public void itemSpawn(ItemTossEvent e) {
+    public void setInvulnerable(ItemTossEvent e) {
         ItemStack stack = ((EntityItem) e.getEntity()).getItem();
         if (EnchantmentHelper.getEnchantments(stack).containsKey(this)) {
             ObfuscationReflectionHelper.setPrivateValue(Entity.class,e.getEntity(),true,"field_83001_bt");

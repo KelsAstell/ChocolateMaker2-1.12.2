@@ -124,7 +124,7 @@ public class ChocoMachineGun extends Item {
                     arrotato.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                     arrotato.setIsCritical(true);
                     arrotato.setKnockbackStrength(2);
-                    arrotato.setDamage(10);
+                    arrotato.setDamage(12);
                     arrotato.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 }
             }

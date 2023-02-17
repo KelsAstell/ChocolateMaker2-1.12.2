@@ -207,4 +207,6 @@ tip.choco.5=Use A.I.O to Smash a Nether Star with Anvil to Discover the Secret o
 enchantment.overchoco=§7Overchoco
 enchantment.choco.overchoco.desc=Gain More Stats From Choco.
 enchantment.flux=§7Chocoflux
-enchantment.choco.flux.desc=Gain One-Time Extra Durability From Your Item.
+enchantment.choco.flux.desc=Gain One-Time Extra Durability On Your Item.
+enchantment.eternity=§7Eternity
+enchantment.choco.eternity.desc=Immune to Environmental Damage and Natural Despawn.
