@@ -5,6 +5,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntitySpectralArrow;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -104,10 +105,18 @@ public class ChocoMachineGun extends Item {
                 ItemArrow itemarrow = (ItemArrow) (Items.ARROW);
                 EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
-                arrow.setDamage(10);
-//                arrow.setNoGravity(true);
+                arrow.setDamage(6);
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
+                if (NBTHelper.getInt(itemstack,TAG_ARROW_COUNT,0) % 8 == 0){
+                    ItemArrow potato = (ItemArrow) (Items.BAKED_POTATO);
+                    EntityArrow arrotato = potato.createArrow(world,itemstack,player);
+                    arrotato.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+                    arrotato.setIsCritical(true);
+                    arrotato.setKnockbackStrength(2);
+                    arrotato.setDamage(10);
+                    arrotato.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
+                }
             }
             player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));
             return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
