@@ -128,17 +128,6 @@ public class Nightcap extends Item implements IBauble
 		}
 	}
 
-//	@Override
-//	public void onWornTick(ItemStack stack, EntityLivingBase player) {
-//		IBauble.super.onWornTick(stack, player);
-//		if (NBTHelper.getBoolean(stack, IS_NEW,true)){
-//			NBTHelper.setBoolean(stack, IS_NEW,false);
-//			if (player.getEntityWorld().rand.nextInt(10) >= 5){
-//				stack.setItemDamage(1);
-//			}
-//		}
-//	}
-
 	@Override
 	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
 	}
