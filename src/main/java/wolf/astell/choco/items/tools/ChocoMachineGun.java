@@ -186,6 +186,7 @@ public class ChocoMachineGun extends Item {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(I18n.format("item.machine_gun.desc.0"));
         tooltip.add(I18n.format("item.machine_gun.desc.1"));
+        tooltip.add(I18n.format("item.machine_gun.desc.4"));
         tooltip.add(I18n.format("item.machine_gun.desc.3") + " " + NBTHelper.getInt(stack, COOL_DOWN,0) + "%");
         tooltip.add(I18n.format("item.machine_gun.desc.2") + " " + NBTHelper.getInt(stack, TAG_ARROW_COUNT,0));
     }
