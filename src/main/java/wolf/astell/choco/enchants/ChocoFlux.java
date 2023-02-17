@@ -16,8 +16,8 @@ public class ChocoFlux extends Enchantment {
         this.setRegistryName("flux");
         this.setName("flux");
     }
-    public static final String IS_NEW = "new";
-    public static final String ORIGINAL_DAMAGE = "original";
+    public static final String IS_NEW = "isNew";
+    public static final String ORIGINAL_DAMAGE = "originalDamage";
     public static final String EXTRA_USAGE = "extraUsage";
     @Override
     public int getMinLevel() {
