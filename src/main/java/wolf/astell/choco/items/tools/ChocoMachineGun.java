@@ -151,6 +151,14 @@ public class ChocoMachineGun extends Item {
             }
             event.setCanceled(true);
         }
+        if (entity.getCustomNameTag().equals("choco_arrotato")) {
+            if (entity.ticksExisted > 200) {
+                entity.setDead();
+            }
+            if(event.getRayTraceResult().typeOfHit == RayTraceResult.Type.BLOCK){
+                event.setCanceled(true);
+            }
+        }
 //        if (entity instanceof EntityArrow) {
 //            EntityArrow arrow = (EntityArrow)entity;
 //            BlockPos pos = event.getRayTraceResult().getBlockPos();
@@ -172,7 +180,6 @@ public class ChocoMachineGun extends Item {
     private static boolean isPlant(Block block){
         return block instanceof BlockMelon || block instanceof BlockCocoa || block instanceof BlockPumpkin;
     }
-
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
