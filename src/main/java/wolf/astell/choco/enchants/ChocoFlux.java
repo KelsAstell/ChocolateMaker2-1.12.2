@@ -7,8 +7,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
+
+@Mod.EventBusSubscriber(modid = Main.MODID)
 
 public class ChocoFlux extends Enchantment {
     public ChocoFlux() {

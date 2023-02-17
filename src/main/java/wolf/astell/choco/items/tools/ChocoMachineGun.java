@@ -1,5 +1,9 @@
 package wolf.astell.choco.items.tools;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCocoa;
+import net.minecraft.block.BlockMelon;
+import net.minecraft.block.BlockPumpkin;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -16,8 +20,12 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
@@ -106,6 +114,8 @@ public class ChocoMachineGun extends Item {
                 EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                 arrow.setDamage(6);
+                arrow.setCustomNameTag("choco_arrow");
+                arrow.setAlwaysRenderNameTag(false);
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
                 if (NBTHelper.getInt(itemstack,TAG_ARROW_COUNT,0) % 8 == 0){
@@ -125,6 +135,42 @@ public class ChocoMachineGun extends Item {
             player.sendMessage(new TextComponentTranslation("item.machine_gun.overheat"));
         }
         return new ActionResult<>(EnumActionResult.PASS, itemstack);
+    }
+
+    @SubscribeEvent
+    public static void arrowHit(ProjectileImpactEvent event) {
+        Entity entity = event.getEntity();
+        if (entity.getCustomNameTag().equals("choco_arrow")) {
+            EntityArrow arrow = (EntityArrow)entity;
+            BlockPos pos = event.getRayTraceResult().getBlockPos();
+            EntityPlayer player = (EntityPlayer)arrow.shootingEntity;
+            Block block = entity.world.getBlockState(pos).getBlock();
+            if (isPlant(block) && player.canHarvestBlock(entity.world.getBlockState(pos))){
+                entity.world.destroyBlock(pos,true);
+                entity.setDead();
+            }
+            event.setCanceled(true);
+        }
+//        if (entity instanceof EntityArrow) {
+//            EntityArrow arrow = (EntityArrow)entity;
+//            BlockPos pos = event.getRayTraceResult().getBlockPos();
+//            Entity shooter = arrow.shootingEntity;
+//            if (!(shooter instanceof EntityPlayer))return;
+//            EntityPlayer player = (EntityPlayer) shooter;
+//            if (player.getHeldItemMainhand().getItem() instanceof ChocoMachineGun){
+//                Block block = entity.world.getBlockState(pos).getBlock();
+//                if (isPlant(block) && player.canHarvestBlock(entity.world.getBlockState(pos))){
+//                    entity.world.destroyBlock(pos,true);
+//                    entity.setDead();
+//                }
+//                event.setCanceled(true);
+//            }
+//        }
+
+    }
+
+    private static boolean isPlant(Block block){
+        return block instanceof BlockMelon || block instanceof BlockCocoa || block instanceof BlockPumpkin;
     }
 
     @SideOnly(Side.CLIENT)
