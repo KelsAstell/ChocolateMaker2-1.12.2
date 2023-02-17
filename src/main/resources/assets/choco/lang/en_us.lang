@@ -134,11 +134,8 @@ item.machine_gun.desc.1=§eAdvanced Biotech Make Arrows Use 100% Renewable Mater
 item.machine_gun.desc.2=§eStored Arrows:
 item.machine_gun.desc.3=§eCurrent Heat:
 item.machine_gun.overheat=Your Machine Gun Is Overheating!
-item.undying_chocolate.name=§dUndying Chocolate
-item.undying_chocolate.desc.0=§eCan Prevent You From Death Like A Totem.
-item.undying_chocolate.desc.1=§eRecharge Over Time.
-item.undying_chocolate.desc.2=§eLeft Chance:
 item.nightcap.name=§eNightcap
+item.nightcap.name.pink=§dPink Nightcap
 item.nightcap.desc.0=§eGain a Little Gift The Next Morning.
 
 choco.PotionConf=Choco Trinkets Potion Settings
