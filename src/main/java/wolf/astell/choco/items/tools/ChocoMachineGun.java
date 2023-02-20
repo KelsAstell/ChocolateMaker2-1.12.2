@@ -113,19 +113,21 @@ public class ChocoMachineGun extends Item {
                 ItemArrow itemarrow = (ItemArrow) (Items.ARROW);
                 EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+                if (player.getDisplayName().getFormattedText().equals("Kels_Astell")){
+                    arrow.setGlowing(true);
+                }
                 arrow.setDamage(6);
-                arrow.setCustomNameTag("choco_arrow");
                 arrow.setAlwaysRenderNameTag(false);
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
                 if (NBTHelper.getInt(itemstack,TAG_ARROW_COUNT,0) % 8 == 0){
-                    ItemArrow spectralArrow = (ItemArrow) (Items.SPECTRAL_ARROW);
-                    EntityArrow arrotato = spectralArrow.createArrow(world,itemstack,player);
-                    arrotato.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
-                    arrotato.setIsCritical(true);
-                    arrotato.setKnockbackStrength(2);
-                    arrotato.setDamage(12);
-                    arrotato.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
+                    ItemArrow spectralArrow = (ItemArrow) (Items.ARROW);
+                    EntityArrow arrow1 = spectralArrow.createArrow(world,itemstack,player);
+                    arrow1.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
+                    arrow1.setIsCritical(true);
+                    arrow1.setKnockbackStrength(2);
+                    arrow1.setDamage(12);
+                    arrow1.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 }
             }
             player.addStat(Objects.requireNonNull(StatList.getObjectUseStats(this)));
