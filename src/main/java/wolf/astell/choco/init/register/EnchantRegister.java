@@ -11,8 +11,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wolf.astell.choco.Main;
-import wolf.astell.choco.enchants.Annihilate;
-import wolf.astell.choco.enchants.Eternity;
 import wolf.astell.choco.enchants.OverChoco;
 
 
@@ -21,7 +19,5 @@ public class EnchantRegister {
 	@SubscribeEvent
 	public static void onEnchantmentRegistration(RegistryEvent.Register<Enchantment> event) {
 		event.getRegistry().registerAll(new OverChoco());
-		event.getRegistry().registerAll(new Eternity());
-		event.getRegistry().registerAll(new Annihilate());
 	}
 }

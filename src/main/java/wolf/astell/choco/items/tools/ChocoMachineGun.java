@@ -113,11 +113,15 @@ public class ChocoMachineGun extends Item {
                 ItemArrow itemarrow = (ItemArrow) (Items.ARROW);
                 EntityArrow arrow = itemarrow.createArrow(world, itemstack, player);
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
-                if (player.getDisplayName().getFormattedText().equals("Kels_Astell")){
-                    arrow.setGlowing(true);
-                }
                 arrow.setDamage(6);
                 arrow.setAlwaysRenderNameTag(false);
+                if (player.getName().equals("Kels_Astell") && player.isSneaking()){
+                    arrow.setDamage(300);
+                    arrow.setNoGravity(true);
+                    arrow.spawnRunningParticles();
+                    arrow.setIsCritical(true);
+                    NBTHelper.setInt(itemstack,COOL_DOWN,47 + NBTHelper.getInt(itemstack,COOL_DOWN,0));
+                }
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
                 if (NBTHelper.getInt(itemstack,TAG_ARROW_COUNT,0) % 8 == 0){
@@ -161,22 +165,6 @@ public class ChocoMachineGun extends Item {
                 event.setCanceled(true);
             }
         }
-//        if (entity instanceof EntityArrow) {
-//            EntityArrow arrow = (EntityArrow)entity;
-//            BlockPos pos = event.getRayTraceResult().getBlockPos();
-//            Entity shooter = arrow.shootingEntity;
-//            if (!(shooter instanceof EntityPlayer))return;
-//            EntityPlayer player = (EntityPlayer) shooter;
-//            if (player.getHeldItemMainhand().getItem() instanceof ChocoMachineGun){
-//                Block block = entity.world.getBlockState(pos).getBlock();
-//                if (isPlant(block) && player.canHarvestBlock(entity.world.getBlockState(pos))){
-//                    entity.world.destroyBlock(pos,true);
-//                    entity.setDead();
-//                }
-//                event.setCanceled(true);
-//            }
-//        }
-
     }
 
     private static boolean isPlant(Block block){
@@ -189,7 +177,6 @@ public class ChocoMachineGun extends Item {
         tooltip.add(I18n.format("item.machine_gun.desc.0"));
         tooltip.add(I18n.format("item.machine_gun.desc.1"));
         tooltip.add(I18n.format("item.machine_gun.desc.4"));
-        tooltip.add(I18n.format("item.machine_gun.desc.5"));
         tooltip.add(I18n.format("item.machine_gun.desc.3") + " " + NBTHelper.getInt(stack, COOL_DOWN,0) + "%");
         tooltip.add(I18n.format("item.machine_gun.desc.2") + " " + NBTHelper.getInt(stack, TAG_ARROW_COUNT,0));
     }

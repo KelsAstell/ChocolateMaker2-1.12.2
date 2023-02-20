@@ -6,6 +6,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -37,11 +39,6 @@ public class OnePunch extends ItemSword {
 
     @Override
     public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
-        if(!entity.world.isRemote && entity instanceof EntityPlayer && ((EntityPlayer) entity).getHeldItemMainhand().getItem()==ItemList.onePunch) {
-            if (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:annihilate"),itemstack) != 1){
-                itemstack.addEnchantment(Objects.requireNonNull(Enchantment.getEnchantmentByLocation("choco:annihilate")),1);
-            }
-        }
     }
 
     @Override
@@ -73,7 +70,7 @@ public class OnePunch extends ItemSword {
                 return true;
             }
         }
-        if (!entity.world.isRemote && !entity.isDead) {
+        if (!entity.world.isRemote && !entity.isDead && !((entity instanceof EntityMob || entity instanceof EntityAnimal))) {
             entity.setDead();
             stack.shrink(1);
             return true;
