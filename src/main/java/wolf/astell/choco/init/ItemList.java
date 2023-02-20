@@ -20,6 +20,7 @@ import wolf.astell.choco.items.material.IngotChocolate;
 import wolf.astell.choco.items.material.RingOfAir;
 import wolf.astell.choco.items.tools.ChocoMachineGun;
 import wolf.astell.choco.items.tools.JarOfRainbow;
+import wolf.astell.choco.items.tools.OnePunch;
 import wolf.astell.choco.items.tools.PickaxeChocolate;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class ItemList{
     public static Item jarOfRainbow;
     public static Item chocoMachineGun;
     public static Item nightCap;
+    public static Item onePunch;
 
 
     public static void init() {
@@ -92,5 +94,6 @@ public class ItemList{
         jarOfRainbow = new JarOfRainbow("jar_of_rainbow");
         chocoMachineGun = new ChocoMachineGun("machine_gun");
         nightCap = new Nightcap("nightcap");
+        onePunch = new OnePunch("one_punch");
     }
 }

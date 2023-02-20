@@ -7,17 +7,19 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import wolf.astell.choco.Main;
 
 @Mod.EventBusSubscriber(modid = Main.MODID)
 
-public class Eternity extends Enchantment {
-    public Eternity() {
+public class Annihilate extends Enchantment {
+    public Annihilate() {
         super(Rarity.VERY_RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND});
-        this.setRegistryName("eternity");
-        this.setName("eternity");
+        this.setRegistryName("annihilate");
+        this.setName("annihilate");
     }
     @Override
     public int getMinLevel() {
@@ -34,8 +36,13 @@ public class Eternity extends Enchantment {
     }
 
     @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+    public boolean isCurse(){
         return true;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return false;
     }
 
     @Override
@@ -43,16 +50,14 @@ public class Eternity extends Enchantment {
         return true;
     }
 
-    @SubscribeEvent
-    public void setEternal(ItemExpireEvent e) {
-        ItemStack stack = e.getEntityItem().getItem();
-        if (EnchantmentHelper.getEnchantments(stack).containsKey(this)) {
-            e.setExtraLife(Integer.MAX_VALUE);
-            double d0 = (float)e.getEntity().posX + e.getEntity().getEntityWorld().rand.nextFloat();
-            double d1 = e.getEntity().posY - 0.05D;
-            double d2 = (float)e.getEntity().posZ + e.getEntity().getEntityWorld().rand.nextFloat();
-            e.getEntity().getEntityWorld().spawnParticle(EnumParticleTypes.TOTEM,d0,d1,d2,0,0,0,1);
-            e.setCanceled(true);
+    @SubscribeEvent(priority= EventPriority.HIGHEST)
+    public void doAnnihilate(ItemTossEvent e) {
+        if (e.getEntity() != null){
+            ItemStack stack = e.getEntityItem().getItem();
+            if (EnchantmentHelper.getEnchantmentLevel(this,stack) != 0) {
+                e.getEntityItem().setDead();
+            }
         }
+
     }
 }

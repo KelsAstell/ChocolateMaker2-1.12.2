@@ -139,6 +139,9 @@ item.machine_gun.overheat=机枪过热!
 item.nightcap.name=§e睡帽
 item.nightcap.name.pink=§d粉色睡帽
 item.nightcap.desc.0=§e早上醒来时会获得一些小礼物.
+item.one_punch.name=§d一拳
+item.one_punch.desc.0=§e能够击败任何实体.
+item.one_punch.desc.1=§e只能使用一次.
 
 choco.PotionConf=巧克力饰品药水效果
 config.mining_chocolate.potion.name=急迫巧克力急迫等级
@@ -208,7 +211,7 @@ tip.choco.5=在铁砧上用A.I.O敲碎一个下界之星来探索§e时间的奥
 
 enchantment.overchoco=§7巧克力脆皮
 enchantment.choco.overchoco.desc=从巧克力中获得更多加成, 只对A.I.O工具生效.
-enchantment.flux=§7流心溶解
-enchantment.choco.flux.desc=获得[附魔等级*基础耐久]的额外耐久值, 物品受损时优先扣除.
+enchantment.annihilate=§7湮灭
+enchantment.choco.annihilate.desc=具有该附魔的物品被丢弃时消失.
 enchantment.eternity=§7永恒
-enchantment.choco.eternity.desc=使你的物品免疫环境伤害, 掉落物不会被原版机制清理.
+enchantment.choco.eternity.desc=使你的掉落物不会被原版机制清理.

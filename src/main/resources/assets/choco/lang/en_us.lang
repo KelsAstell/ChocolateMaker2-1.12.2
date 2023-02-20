@@ -139,6 +139,9 @@ item.machine_gun.overheat=Your Machine Gun Is Overheating!
 item.nightcap.name=§eNightcap
 item.nightcap.name.pink=§dPink Nightcap
 item.nightcap.desc.0=§eGain a Little Gift The Next Morning.
+item.one_punch.name=§dOne Punch
+item.one_punch.desc.0=§eKill Any Entity.
+item.one_punch.desc.1=§eCan Only Use One Time.
 
 choco.PotionConf=Choco Trinkets Potion Settings
 config.mining_chocolate.potion.name=Mining Chocolate Haste Effect Level
@@ -208,7 +211,7 @@ tip.choco.5=Use A.I.O to Smash a Nether Star with Anvil to Discover the Secret o
 
 enchantment.overchoco=§7Overchoco
 enchantment.choco.overchoco.desc=Gain More Stats From Choco.
-enchantment.flux=§7Chocoflux
-enchantment.choco.flux.desc=Gain One-Time Extra Durability On Your Item.
+enchantment.annihilate=§7Annihilate
+enchantment.choco.annihilate.desc=Disappear When Drop.
 enchantment.eternity=§7Eternity
-enchantment.choco.eternity.desc=Immune to Environmental Damage and Natural Despawn.
+enchantment.choco.eternity.desc=Immune to Natural Despawn.
