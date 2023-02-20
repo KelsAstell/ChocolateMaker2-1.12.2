@@ -49,12 +49,4 @@ public class Eternity extends Enchantment {
             e.setCanceled(true);
         }
     }
-
-    @SubscribeEvent
-    public void setInvulnerable(ItemTossEvent e) {
-        ItemStack stack = ((EntityItem) e.getEntity()).getItem();
-        if (EnchantmentHelper.getEnchantments(stack).containsKey(this)) {
-            ObfuscationReflectionHelper.setPrivateValue(Entity.class,e.getEntity(),true,"field_83001_bt");
-        }
-    }
 }
