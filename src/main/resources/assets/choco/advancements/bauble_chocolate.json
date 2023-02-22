@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:bauble_chocolate",
+      "data": 0
+    },
+    "title": {
+      "translate": "advancement.bauble_chocolate"
+    },
+    "description": {
+      "translate": "advancement.bauble_chocolate.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:bauble_chocolate",
+            "data": 0
+          }
+        ]
+      }
+    }
+  }
+}

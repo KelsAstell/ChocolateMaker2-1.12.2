@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:ring_of_air"
+    },
+    "title": {
+      "translate": "advancement.ring_of_air"
+    },
+    "description": {
+      "translate": "advancement.ring_of_air.desc"
+    }
+  },
+  "parent": "choco:root",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:ring_of_air"
+          }
+        ]
+      }
+    }
+  }
+}

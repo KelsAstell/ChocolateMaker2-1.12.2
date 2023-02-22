@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:tnt"
+    },
+    "title": {
+      "translate": "advancement.explosive_chocolate"
+    },
+    "description": {
+      "translate": "advancement.explosive_chocolate.desc"
+    }
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:explosive_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

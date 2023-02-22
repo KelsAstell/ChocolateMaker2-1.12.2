@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:air_chocolate"
+    },
+    "title": {
+      "translate": "advancement.air_chocolate"
+    },
+    "description": {
+      "translate": "advancement.air_chocolate.desc"
+    }
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:air_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

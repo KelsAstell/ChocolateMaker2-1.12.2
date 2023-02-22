@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:time_chocolate"
+    },
+    "title": {
+      "translate": "advancement.time_chocolate"
+    },
+    "description": {
+      "translate": "advancement.time_chocolate.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:time_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

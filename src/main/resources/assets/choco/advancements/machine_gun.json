@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:machine_gun"
+    },
+    "title": {
+      "translate": "advancement.machine_gun"
+    },
+    "description": {
+      "translate": "advancement.machine_gun.desc"
+    }
+  },
+  "parent": "choco:ahoge",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:machine_gun",
+            "data": 0
+          }
+        ]
+      }
+    }
+  }
+}

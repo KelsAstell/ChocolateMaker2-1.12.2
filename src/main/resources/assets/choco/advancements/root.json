@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:chocolate"
+    },
+    "title": {
+      "translate": "itemGroup.ProjectChocolate"
+    },
+    "description": {
+      "translate": "advancement.choco.desc"
+    },
+    "background": "choco:textures/block/choco_brick.png",
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

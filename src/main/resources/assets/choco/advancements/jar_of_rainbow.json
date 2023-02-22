@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:jar_of_rainbow"
+    },
+    "title": {
+      "translate": "advancement.jar_of_rainbow"
+    },
+    "description": {
+      "translate": "advancement.jar_of_rainbow.desc"
+    }
+  },
+  "parent": "choco:root",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:jar_of_rainbow"
+          }
+        ]
+      }
+    }
+  }
+}

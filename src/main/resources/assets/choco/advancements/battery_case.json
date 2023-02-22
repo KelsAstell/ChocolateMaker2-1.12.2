@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:battery_case"
+    },
+    "title": {
+      "translate": "advancement.battery_case"
+    },
+    "description": {
+      "translate": "advancement.battery_case.desc"
+    }
+  },
+  "parent": "choco:ring_of_air",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:battery_case",
+            "data": 0
+          }
+        ]
+      }
+    }
+  }
+}

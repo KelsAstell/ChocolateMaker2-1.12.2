@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:mining_chocolate"
+    },
+    "title": {
+      "translate": "advancement.mining_chocolate"
+    },
+    "description": {
+      "translate": "advancement.mining_chocolate.desc"
+    }
+  },
+  "parent": "choco:carrot_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:mining_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

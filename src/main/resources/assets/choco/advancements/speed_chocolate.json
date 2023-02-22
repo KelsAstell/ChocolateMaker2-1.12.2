@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:speed_chocolate"
+    },
+    "title": {
+      "translate": "advancement.speed_chocolate"
+    },
+    "description": {
+      "translate": "advancement.speed_chocolate.desc"
+    }
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:speed_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}
