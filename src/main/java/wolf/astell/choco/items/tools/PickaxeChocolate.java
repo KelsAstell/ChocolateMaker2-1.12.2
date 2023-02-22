@@ -97,7 +97,7 @@ public class PickaxeChocolate extends ItemPickaxe {
             } else if(entity instanceof EntityCreeper) {
                 return new ItemStack(Items.SKULL, 1, 4);
             } else if(entity instanceof EntityPlayer) {
-                if (entity.getDisplayName().getFormattedText().equals("Kels_Astell")){
+                if (entity.getName().equals("Kels_Astell")){
                     ItemStack chocolate = new ItemStack(ItemList.foodEnchantedChocolate);
                     chocolate.addEnchantment(Enchantments.UNBREAKING,1);
                     chocolate.setTranslatableName("item.true_enchanted_chocolate.name");

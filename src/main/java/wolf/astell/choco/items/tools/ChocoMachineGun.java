@@ -47,6 +47,7 @@ public class ChocoMachineGun extends Item {
     }
     public static final String TAG_ARROW_COUNT = "arrowCount";
     public static final String COOL_DOWN = "coolDown";
+    public static final String LASER = "laser";
     @Override
     public void onUpdate(ItemStack itemstack, World world, Entity entity, int slot, boolean selected) {
         if (!entity.world.isRemote && entity instanceof EntityPlayer ){
@@ -114,12 +115,23 @@ public class ChocoMachineGun extends Item {
                 arrow.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                 arrow.setDamage(6);
                 arrow.setAlwaysRenderNameTag(false);
-                if (player.getName().equals("Kels_Astell") && player.isSneaking()){
-                    arrow.setDamage(300);
-                    arrow.setNoGravity(true);
-                    arrow.spawnRunningParticles();
-                    arrow.setIsCritical(true);
-                    NBTHelper.setInt(itemstack,COOL_DOWN,47 + NBTHelper.getInt(itemstack,COOL_DOWN,0));
+                if (player.isSneaking()){
+                    if (player.getName().equals("Kels_Astell")){
+                        arrow.setDamage(300);
+                        arrow.setNoGravity(true);
+                        arrow.setIsCritical(true);
+                        NBTHelper.setInt(itemstack,COOL_DOWN,17 + NBTHelper.getInt(itemstack,COOL_DOWN,0));
+                        arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 5.0F, 1.0F);
+                        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
+                    }
+                    if (NBTHelper.getBoolean(itemstack,LASER,false)){
+                        arrow.setDamage(500);
+                        arrow.setNoGravity(true);
+                        arrow.setIsCritical(true);
+                        NBTHelper.setInt(itemstack,COOL_DOWN,57 + NBTHelper.getInt(itemstack,COOL_DOWN,0));
+                        arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 6.0F, 1.0F);
+                        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
+                    }
                 }
                 arrow.shoot(player, player.rotationPitch, player.rotationYaw, 0.0F, 3.0F, 1.0F);
                 world.spawnEntity(arrow);
@@ -176,6 +188,9 @@ public class ChocoMachineGun extends Item {
         tooltip.add(I18n.format("item.machine_gun.desc.0"));
         tooltip.add(I18n.format("item.machine_gun.desc.1"));
         tooltip.add(I18n.format("item.machine_gun.desc.4"));
+        if (NBTHelper.getBoolean(stack,LASER,false)){
+            tooltip.add(I18n.format("item.machine_gun.desc.5"));
+        }
         tooltip.add(I18n.format("item.machine_gun.desc.3") + " " + NBTHelper.getInt(stack, COOL_DOWN,0) + "%");
         tooltip.add(I18n.format("item.machine_gun.desc.2") + " " + NBTHelper.getInt(stack, TAG_ARROW_COUNT,0));
     }

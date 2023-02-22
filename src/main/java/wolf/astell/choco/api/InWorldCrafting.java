@@ -28,6 +28,8 @@ import wolf.astell.choco.init.ModConfig;
 import java.util.List;
 import java.util.Objects;
 
+import static wolf.astell.choco.items.tools.ChocoMachineGun.LASER;
+
 @Mod.EventBusSubscriber
 public class InWorldCrafting {
     @SubscribeEvent
@@ -45,38 +47,36 @@ public class InWorldCrafting {
                 }
             }
         }
-        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate")) && isBlock("minecraft:enchanting_table", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate"))) {
             if(event.getSide() == Side.SERVER) {
-                craftEnchantedChocolate(event);
-                stack.shrink(1);
-                if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.ENCHANT_BREAK_CHANCE)){
+                if (isBlock("minecraft:bookshelf", event.getWorld().getBlockState(event.getPos()).getBlock())){
+                    craftExpChocolate(event);
+                    stack.shrink(1);
+                    if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.BOOKSHELF_BREAK_CHANCE)){
+                        BlockPos pos = event.getPos();
+                        event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BOOKSHELF.getDefaultState()));
+                        event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
+                    }
+                }
+                if (isBlock("minecraft:enchanting_table", event.getWorld().getBlockState(event.getPos()).getBlock())){
+                    craftEnchantedChocolate(event);
+                    stack.shrink(1);
+                    if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.ENCHANT_BREAK_CHANCE)){
+                        BlockPos pos = event.getPos();
+                        event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.ENCHANTING_TABLE.getDefaultState()));
+                        event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
+                    }
+                }
+                if (isBlock("minecraft:tnt", event.getWorld().getBlockState(event.getPos()).getBlock())){
+                    craftExplosiveChocolate(event);
+                    stack.shrink(1);
                     BlockPos pos = event.getPos();
                     event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.ENCHANTING_TABLE.getDefaultState()));
+                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.TNT.getDefaultState()));
                     event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
                 }
-            }
-        }
-        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate")) && isBlock("minecraft:bookshelf", event.getWorld().getBlockState(event.getPos()).getBlock())) {
-            if(event.getSide() == Side.SERVER) {
-                craftExpChocolate(event);
-                stack.shrink(1);
-                if (shouldBreak(ModConfig.IN_WORLD_CRAFTING.BOOKSHELF_BREAK_CHANCE)){
-                    BlockPos pos = event.getPos();
-                    event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BOOKSHELF.getDefaultState()));
-                    event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
-                }
-            }
-        }
-        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "golden_chocolate")) && isBlock("minecraft:tnt", event.getWorld().getBlockState(event.getPos()).getBlock())) {
-            if(event.getSide() == Side.SERVER) {
-                craftExplosiveChocolate(event);
-                stack.shrink(1);
-                BlockPos pos = event.getPos();
-                event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.TNT.getDefaultState()));
-                event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
             }
         }
         if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "pickaxe_chocolate")) && isBlock("minecraft:anvil", event.getWorld().getBlockState(event.getPos()).getBlock())) {
@@ -92,6 +92,17 @@ public class InWorldCrafting {
                     stack.setItemDamage(0);
                 }
                 event.getEntityPlayer().sendMessage(new TextComponentTranslation("item.jar_of_rainbow.name." + stack.getItemDamage()));
+            }
+        }
+        if(Objects.equals(stack.getItem().getRegistryName(), new ResourceLocation("choco", "machine_gun")) && isBlock("minecraft:beacon", event.getWorld().getBlockState(event.getPos()).getBlock())) {
+            if(event.getSide() == Side.SERVER) {
+                if(!NBTHelper.getBoolean(stack, LASER, false)){
+                    BlockPos pos = event.getPos();
+                    event.getWorld().playSound(null, pos, SoundEvents.BLOCK_METAL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    event.getWorld().playEvent(2001, pos, Block.getStateId(Blocks.BEACON.getDefaultState()));
+                    event.getWorld().setBlockState(pos, Blocks.AIR.getDefaultState());
+                    NBTHelper.setBoolean(stack,LASER,true);
+                }
             }
         }
     }
@@ -132,18 +143,9 @@ public class InWorldCrafting {
         EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.explosiveChocolate, 1));
         item.setDefaultPickupDelay();
         item.setGlowing(true);
-        item.setNoGravity(true);
         event.getWorld().spawnEntity(item);
     }
 
-//    private static void craftUndyingChocolate(PlayerInteractEvent.LeftClickBlock event) {
-//        Vec3d vector = event.getHitVec();
-//        EntityItem item = new EntityItem(event.getWorld(), vector.x, vector.y + 0.5D, vector.z, new ItemStack(ItemList.undyingChocolate, 1,event.getItemStack().getItemDamage() + 1));
-//        item.setDefaultPickupDelay();
-//        item.setGlowing(true);
-//        item.setNoGravity(true);
-//        event.getWorld().spawnEntity(item);
-//    }
     private static void craftTimeChocolate(PlayerInteractEvent.LeftClickBlock event) {
         BlockPos pos = event.getPos();
         List<EntityItem> Items = event.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos.add(-1, -1, -1), pos.add(1, 1, 1)));
