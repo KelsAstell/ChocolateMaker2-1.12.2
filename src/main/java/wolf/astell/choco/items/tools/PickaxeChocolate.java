@@ -113,11 +113,11 @@ public class PickaxeChocolate extends ItemPickaxe {
         }
 
     }
-
     public static class AIOExtraLoot {
         @SubscribeEvent
         public void onEntityKilled(LivingDropsEvent event) {
             if (event.getEntityLiving().getEntityWorld().isRemote) return;
+
             World world = event.getEntityLiving().getEntityWorld();
             if (SpecialDays.getToday().equals("BIRTHDAY_ASTELL")){
                 Vec3d vector = event.getEntity().getPositionVector();
