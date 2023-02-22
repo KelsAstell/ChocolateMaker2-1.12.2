@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:tnt"
+      "item": "choco:explosive_chocolate"
     },
     "title": {
       "translate": "advancement.explosive_chocolate"

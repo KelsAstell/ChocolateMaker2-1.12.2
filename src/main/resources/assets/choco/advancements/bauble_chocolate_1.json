@@ -5,10 +5,10 @@
       "data": 1
     },
     "title": {
-      "translate": "advancement.bauble_chocolate"
+      "translate": "advancement.ahoged_bauble_chocolate"
     },
     "description": {
-      "translate": "advancement.bauble_chocolate.desc"
+      "translate": "advancement.ahoged_bauble_chocolate.desc"
     }
   },
   "parent": "choco:ahoge",

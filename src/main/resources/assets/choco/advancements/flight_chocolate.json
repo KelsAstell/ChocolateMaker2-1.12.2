@@ -1,26 +1,24 @@
 {
   "display": {
     "icon": {
-      "item": "choco:bauble_chocolate",
-      "data": 0
+      "item": "choco:flight_chocolate"
     },
     "title": {
-      "translate": "advancement.bauble_chocolate"
+      "translate": "advancement.flight_chocolate"
     },
     "description": {
-      "translate": "advancement.bauble_chocolate.desc"
+      "translate": "advancement.flight_chocolate.desc"
     },
     "frame": "challenge"
   },
-  "parent": "choco:time_chocolate",
+  "parent": "choco:air_chocolate",
   "criteria": {
     "map": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "choco:bauble_chocolate",
-            "data": 0
+            "item": "choco:air_chocolate"
           }
         ]
       }
