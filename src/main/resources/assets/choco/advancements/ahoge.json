@@ -8,7 +8,8 @@
     },
     "description": {
       "translate": "advancement.ahoge.desc"
-    }
+    },
+    "frame": "challenge"
   },
   "parent": "choco:root",
   "criteria": {
