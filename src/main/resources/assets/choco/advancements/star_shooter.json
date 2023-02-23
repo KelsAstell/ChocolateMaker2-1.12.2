@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:nether_star"
+    },
+    "title": {
+      "translate": "advancement.star_shooter"
+    },
+    "description": {
+      "translate": "advancement.star_shooter.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "choco:machine_gun",
+  "criteria": {
+    "code_triggered": {
+      "trigger": "choco:star_shooter"
+    }
+  }
+}

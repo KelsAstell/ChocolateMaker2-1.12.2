@@ -56,6 +56,7 @@ public class Main {
         OreDictRegister.init();
         CraftRegister.init();
         BrewRegister.init();
+        AdvancementRegister.init();
         MinecraftForge.EVENT_BUS.register(new LootRegister());
     }
 }

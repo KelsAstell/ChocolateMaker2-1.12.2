@@ -14,6 +14,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
@@ -35,6 +36,7 @@ import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
+import wolf.astell.choco.init.register.AdvancementRegister;
 
 import javax.annotation.Nonnull;
 import java.text.DecimalFormat;
@@ -194,6 +196,9 @@ public class PickaxeChocolate extends ItemPickaxe {
                         continue;
                     add(itemstack, count * (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:overchoco"),itemstack) + 1));
                     player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
+                }
+                if (NBTHelper.getInt(itemstack,TAG_CHOCOLATE_COUNT,0) >= 101){
+                    AdvancementRegister.SHI_NA_LAI.trigger((EntityPlayerMP) player);
                 }
             }
         }

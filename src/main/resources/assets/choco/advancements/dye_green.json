@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:dye",
+      "data": 10
+    },
+    "title": {
+      "translate": "advancement.dye_green"
+    },
+    "description": {
+      "translate": "advancement.dye_green.desc"
+    },
+    "frame": "challenge"
+  },
+  "parent": "choco:root",
+  "criteria": {
+    "code_triggered": {
+      "trigger": "choco:dye_green"
+    }
+  }
+}

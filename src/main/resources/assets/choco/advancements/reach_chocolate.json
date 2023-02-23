@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:reach_chocolate"
+    },
+    "title": {
+      "translate": "advancement.reach_chocolate"
+    },
+    "description": {
+      "translate": "advancement.reach_chocolate.desc"
+    }
+  },
+  "parent": "choco:golden_chocolate",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:reach_chocolate"
+          }
+        ]
+      }
+    }
+  }
+}

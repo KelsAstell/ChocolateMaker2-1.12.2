@@ -6,6 +6,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
+import wolf.astell.choco.init.register.AdvancementRegister;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -95,6 +97,7 @@ public class LoveChocolate extends Item {
 		if (entity instanceof EntityPlayer && !entity.getEntityWorld().isRemote) {
 			EntityPlayer player = (EntityPlayer) entity;
 			if (NBTHelper.getBoolean(stack, NTR, false)){
+				AdvancementRegister.NTR.trigger((EntityPlayerMP) player);
 				player.getEntityWorld().createExplosion(null, player.posX, player.posY + 0.2, player.posZ, 0.5F, false);
 				player.setHealth(0);
 			}else{

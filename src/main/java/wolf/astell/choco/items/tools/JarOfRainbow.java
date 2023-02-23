@@ -5,6 +5,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumDyeColor;
@@ -19,6 +20,7 @@ import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
+import wolf.astell.choco.init.register.AdvancementRegister;
 
 import java.util.List;
 
@@ -92,6 +94,9 @@ public class JarOfRainbow extends ItemShears {
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItemMainhand();
+        if (stack.getItemDamage() == 5){
+            AdvancementRegister.DYE_GREEN.trigger((EntityPlayerMP) player);
+        }
         if (!worldIn.isRemote && (worldIn.getBlockState(pos).getBlock() == Blocks.GLASS || worldIn.getBlockState(pos).getBlock() == Blocks.STAINED_GLASS)) {
             if (ModConfig.TOOL_CONF.COLOR_CHANGE) {
                 worldIn.playSound(null, pos, SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
