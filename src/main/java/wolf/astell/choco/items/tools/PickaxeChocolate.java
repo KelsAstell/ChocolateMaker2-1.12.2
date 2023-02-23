@@ -197,7 +197,7 @@ public class PickaxeChocolate extends ItemPickaxe {
                     add(itemstack, count * (EnchantmentHelper.getEnchantmentLevel(Enchantment.getEnchantmentByLocation("choco:overchoco"),itemstack) + 1));
                     player.inventory.setInventorySlotContents(i, ItemStack.EMPTY);
                 }
-                if (NBTHelper.getInt(itemstack,TAG_CHOCOLATE_COUNT,0) >= 101){
+                if (NBTHelper.getInt(itemstack,TAG_CHOCOLATE_COUNT,0) >= 1000001){
                     AdvancementRegister.SHI_NA_LAI.trigger((EntityPlayerMP) player);
                 }
             }
