@@ -18,12 +18,12 @@
       {
         "type": "item",
         "name": "choco:ahoge",
-        "weight": 10
+        "weight": 32
       },
       {
         "type": "item",
         "name": "choco:air_chocolate",
-        "weight": 3
+        "weight": 1
       },
       {
         "type": "item",
@@ -39,7 +39,7 @@
       {
         "type": "item",
         "name": "choco:exp_chocolate",
-        "weight": 40
+        "weight": 20
       }
     ]
   }]

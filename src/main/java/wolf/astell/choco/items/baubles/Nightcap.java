@@ -90,7 +90,6 @@ public class Nightcap extends Item implements IBauble
 				ItemStack stack = h.getStackInSlot(i);
 				if(!stack.isEmpty() && stack.getItem() instanceof Nightcap)
 				{
-
 					World world = e.getEntityLiving().getEntityWorld();
 					Random rand = world.rand;
 					ItemStack bonus;

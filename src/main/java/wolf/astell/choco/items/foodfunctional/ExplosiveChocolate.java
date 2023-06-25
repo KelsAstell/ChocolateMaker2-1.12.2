@@ -4,6 +4,7 @@ package wolf.astell.choco.items.foodfunctional;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -71,7 +72,7 @@ public class ExplosiveChocolate extends Item {
 	}
 
 	private void explode(EntityLivingBase e, EntityPlayer player) {
-		if (!(e instanceof EntityPlayer)){
+		if (!(e instanceof EntityPlayer || e instanceof EntityAnimal)){
 			e.getEntityWorld().createExplosion(player, e.posX, e.posY+1, e.posZ, 2, false);
 		}
 	}

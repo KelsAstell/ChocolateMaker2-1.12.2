@@ -18,10 +18,7 @@ import wolf.astell.choco.items.material.Ahoge;
 import wolf.astell.choco.items.material.GoldPawChocolate;
 import wolf.astell.choco.items.material.IngotChocolate;
 import wolf.astell.choco.items.material.RingOfAir;
-import wolf.astell.choco.items.tools.ChocoMachineGun;
-import wolf.astell.choco.items.tools.JarOfRainbow;
-import wolf.astell.choco.items.tools.OnePunch;
-import wolf.astell.choco.items.tools.PickaxeChocolate;
+import wolf.astell.choco.items.tools.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +52,7 @@ public class ItemList{
     public static Item loveChocolate;
     public static Item ahoge;
     public static Item ringOfAir;
+    public static Item voidChocoBag;
     public static Item jarOfRainbow;
     public static Item chocoMachineGun;
     public static Item nightCap;
@@ -91,6 +89,7 @@ public class ItemList{
         loveChocolate = new LoveChocolate("love_chocolate");
         ahoge = new Ahoge("ahoge");
         ringOfAir = new RingOfAir("ring_of_air");
+        voidChocoBag = new VoidChocoBag("void_choco_bag");
         jarOfRainbow = new JarOfRainbow("jar_of_rainbow");
         chocoMachineGun = new ChocoMachineGun("machine_gun");
         nightCap = new Nightcap("nightcap");

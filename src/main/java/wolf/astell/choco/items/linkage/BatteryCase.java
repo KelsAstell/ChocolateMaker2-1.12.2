@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import wolf.astell.choco.Main;
 import wolf.astell.choco.api.NBTHelper;
+import wolf.astell.choco.api.SpecialDays;
 import wolf.astell.choco.init.ItemList;
 import wolf.astell.choco.init.ModConfig;
 import wolf.astell.choco.init.register.compact.CoFHRegister;
@@ -131,6 +132,16 @@ public class BatteryCase extends Item implements IBauble {
 		}
 		if (stack.getItemDamage() != 0){
 			stack.setTranslatableName("item.battery_case.name." + stack.getItemDamage());
+		}else{
+			if (SpecialDays.getToday().equals("BIRTHDAY_GUAZI")){
+				tooltip.add(I18n.format("message.choco.birthday_guazi"));
+			}
+		}
+		if (SpecialDays.getToday().equals("BIRTHDAY_CONGYUN") && stack.getItemDamage() == 1){
+			tooltip.add(I18n.format("message.choco.birthday_congyun"));
+		}
+		if (SpecialDays.getToday().equals("BIRTHDAY_LINGHU") && stack.getItemDamage() == 3){
+			tooltip.add(I18n.format("message.choco.birthday_linghu"));
 		}
 	}
 

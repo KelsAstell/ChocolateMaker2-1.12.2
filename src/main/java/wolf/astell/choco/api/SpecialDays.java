@@ -16,6 +16,18 @@ public class SpecialDays {
 		{
 			return "BIRTHDAY_ASTELL";
 		}
+		if(calendar.get(Calendar.MONTH) == Calendar.AUGUST && calendar.get(Calendar.DAY_OF_MONTH) == 17)
+		{
+			return "BIRTHDAY_GUAZI";
+		}
+		if(calendar.get(Calendar.MONTH) == Calendar.MARCH && calendar.get(Calendar.DAY_OF_MONTH) == 27)
+		{
+			return "BIRTHDAY_CONGYUN";
+		}
+		if(calendar.get(Calendar.MONTH) == Calendar.JUNE && calendar.get(Calendar.DAY_OF_MONTH) == 17)
+		{
+			return "BIRTHDAY_LINGHU";
+		}
 		if(calendar.get(Calendar.MONTH) == Calendar.FEBRUARY && calendar.get(Calendar.DAY_OF_MONTH) == 14)
 		{
 			return "VALENTINES_DAY";
