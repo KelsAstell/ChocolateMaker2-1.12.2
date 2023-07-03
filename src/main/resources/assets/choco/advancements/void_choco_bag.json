@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "choco:void_choco_bag",
+      "data": 0
+    },
+    "title": {
+      "translate": "advancement.void_choco_bag"
+    },
+    "description": {
+      "translate": "advancement.void_choco_bag.desc"
+    }
+  },
+  "parent": "choco:ring_of_air",
+  "criteria": {
+    "map": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "choco:void_choco_bag",
+            "data": 0
+          }
+        ]
+      }
+    }
+  }
+}

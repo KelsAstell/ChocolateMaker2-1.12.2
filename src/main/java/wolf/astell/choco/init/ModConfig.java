@@ -213,6 +213,12 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public boolean CHOCO_INFINITY = true;
 
+
+        @Config.LangKey("config.chocolate.the_mace.name")
+        @Config.Comment("Enable The Mace, default true")
+        @Config.RequiresMcRestart
+        public boolean THE_MACE = true;
+
         @Config.LangKey("config.chocolate.infinity_bauble_chocolate.name")
         @Config.Comment("Enable Infinity Fondant Chocolate Recipe, default true")
         @Config.RequiresMcRestart

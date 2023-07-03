@@ -35,6 +35,24 @@ public class AvaritiaCompact {
                 'Z', new ItemStack(ItemList.flightChocolate, 1, 0)
         );
         }
+        if (ModConfig.AVARITIA_CONF.THE_MACE){
+            AvaritiaUtils.addShapedRecipe(
+                    new ItemStack(infiniteChocolate, 1, 0),
+                    "    A    ",
+                    "B   A   B",
+                    "Z   A   Z",
+                    "ZZZZEZZZZ",
+                    "    Z    ",
+                    "    Z    ",
+                    "    Z    ",
+                    "    Z    ",
+                    "    Z    ",
+                    'Z', ModItems.neutronium_ingot,
+                    'B', ModItems.infinity_ingot,
+                    'E', ModItems.infinity_catalyst,
+                    'A', new ItemStack(ItemList.ahoge, 1, 0)
+            );
+        }
         if (ModConfig.AVARITIA_CONF.FONDANT_INFINITY){
             AvaritiaUtils.addShapedRecipe(
                 new ItemStack(infiniteBaubleChocolate, 1, 0),
